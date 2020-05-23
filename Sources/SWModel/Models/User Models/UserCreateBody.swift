@@ -15,4 +15,13 @@ public struct UserCreateBody: Encodable {
     public var password: String
     public var role: String
     public var isHidden: Bool
+    
+    public init(firstName: String, lastName: String, email: String, password: String, role: String, isHidden: Bool) {
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.password = password
+        self.role = role
+        self.isHidden = isHidden
+    }
 }

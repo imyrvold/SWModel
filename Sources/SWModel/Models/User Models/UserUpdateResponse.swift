@@ -14,6 +14,15 @@ public struct UserUpdateResponse: Decodable {
     public var email: String
     public var role: String
     
+    public init(id: String, firstName: String, lastName: String, email: String, role: String) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.role = role
+    }
+
+    
     public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName

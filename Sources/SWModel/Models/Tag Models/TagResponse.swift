@@ -24,6 +24,25 @@ public struct TagResponse {
     public var claimID: String
     public var appearanceID: String?
     public var behaviourID: String?
+    
+    public init(id: String, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: String, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: String, appearanceID: String?, behaviourID: String?) {
+        self.id = id
+        self.name = name
+        self.type = type
+        self.image = image
+        self.value = value
+        self.valueType = valueType
+        self.buildingID = buildingID
+        self.group = group
+        self.link = link
+        self.sortIndex = sortIndex
+        self.alarm = alarm
+        self.actionID = actionID
+        self.claimID = claimID
+        self.appearanceID = appearanceID
+        self.behaviourID = behaviourID
+    }
+
 }
 extension TagResponse: Decodable {
     public enum CodingKeys: String, CodingKey {

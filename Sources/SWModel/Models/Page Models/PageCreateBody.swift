@@ -17,4 +17,15 @@ public struct PageCreateBody: Encodable {
     public let elements: [String]
     public let claim: Claim
     public let style: String?
+    
+    public init(name: String, title: String, label: String?, logo: String?, company: String?, elements: [String], claim: Claim, style: String?) {
+        self.name = name
+        self.title = title
+        self.label = label
+        self.logo = logo
+        self.company = company
+        self.elements = elements
+        self.claim = claim
+        self.style = style
+    }
 }

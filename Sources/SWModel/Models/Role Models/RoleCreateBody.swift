@@ -11,4 +11,9 @@ import Foundation
 public struct RoleCreateBody: Encodable {
     public var name: String
     public var claims: [Claim]
+    
+    public init(name: String, claims: [Claim]) {
+        self.name = name
+        self.claims = claims
+    }
 }

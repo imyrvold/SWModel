@@ -17,6 +17,17 @@ public struct UserCreateResponse: Decodable {
     public var token: String
     public var isHidden: Bool?
     
+    public init(id: String, firstName: String, lastName: String, email: String, role: String, token: String, isHidden: Bool?) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.role = role
+        self.token = token
+        self.isHidden = isHidden
+    }
+
+    
     public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName

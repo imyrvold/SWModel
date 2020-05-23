@@ -19,6 +19,20 @@ public struct PageResponse {
     public let claim: String
     public let style: String?
     public var claims: [Claim] = []
+    
+    public init(id: String, name: String, title: String, label: String?, logo: String?, company: String?, elements: [String], claim: String, style: String?, claims: [Claim]) {
+        self.id = id
+        self.name = name
+        self.title = title
+        self.label = label
+        self.logo = logo
+        self.company = company
+        self.elements = elements
+        self.claim = claim
+        self.style = style
+        self.claims = claims
+    }
+
 }
 extension PageResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
