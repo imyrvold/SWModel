@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct IconCreateBody: Encodable {
-    let name: String
-    let icons: IconsCreateBody
+public struct IconCreateBody: Encodable {
+    public let name: String
+    public let icons: IconsCreateBody
 }
 
-struct IconsCreateBody: Encodable {
-    let min: Int?
-    let max: Int?
-    let value: Int?
-    let image: String
+public struct IconsCreateBody: Encodable {
+    public let min: Int?
+    public let max: Int?
+    public let value: Int?
+    public let image: String
 }
