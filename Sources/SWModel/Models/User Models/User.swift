@@ -24,12 +24,13 @@ public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringCo
     public var role: Role
     public var isHidden: Bool? = false
     
-    public init(id: String, firstName: String, lastName: String, email: String, role: Role) {
+    public init(id: String, firstName: String, lastName: String, email: String, role: Role, isHidden: Bool = false) {
         self.id = id
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
         self.role = role
+        self.isHidden = isHidden
     }
 
     public var fullName: String {
