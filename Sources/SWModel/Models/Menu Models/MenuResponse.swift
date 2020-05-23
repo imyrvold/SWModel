@@ -13,6 +13,14 @@ public struct MenuResponse {
     public let name: String
     public let claim: Claim
     public var submenus: [SubmenuResponse] = []
+    
+    public init(id: String, name: String, claim: Claim, submenus: [SubmenuResponse]) {
+        self.id = id
+        self.name = name
+        self.claim = claim
+        self.submenus = submenus
+    }
+
 }
 typealias MenusResponse = [MenuResponse]
 

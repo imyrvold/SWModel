@@ -8,8 +8,14 @@
 
 import Foundation
 
-struct MenuCreateBody: Encodable {
+public struct MenuCreateBody: Encodable {
     let name: String
     let claim: String
     let submenus: [SubmenuCreateBody]
+    
+    public init(name: String, claim: String, submenus: [SubmenuCreateBody]) {
+        self.name = name
+        self.claim = claim
+        self.submenus = submenus
+    }
 }

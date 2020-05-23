@@ -13,6 +13,14 @@ public struct MenuCreateResponse {
     public let name: String
     public let claim: String
     public var submenus: [SubmenuCreateResponse] = []
+    
+    public init(id: String, name: String, claim: String, submenus: [SubmenuCreateResponse]) {
+        self.id = id
+        self.name = name
+        self.claim = claim
+        self.submenus = submenus
+    }
+
 }
 extension MenuCreateResponse: Decodable {
     public enum CodingKeys: String, CodingKey {

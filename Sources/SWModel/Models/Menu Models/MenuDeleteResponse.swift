@@ -12,6 +12,13 @@ struct MenuDeleteResponse {
     let id: String
     let name: String
     let claim: String
+    
+    public init(id: String, name: String, claim: String) {
+        self.id = id
+        self.name = name
+        self.claim = claim
+    }
+
 }
 extension MenuDeleteResponse: Decodable {
     enum CodingKeys: String, CodingKey {

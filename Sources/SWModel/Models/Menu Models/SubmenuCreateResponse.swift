@@ -14,6 +14,15 @@ public struct SubmenuCreateResponse {
     public let claim: String
     public let link: String
     public let newTab: Bool?
+    
+    public init(id: String, name: String, claim: String, link: String, newTab: Bool?) {
+        self.id = id
+        self.name = name
+        self.claim = claim
+        self.link = link
+        self.newTab = newTab
+    }
+
 }
 extension SubmenuCreateResponse: Decodable {
     public enum CodingKeys: String, CodingKey {

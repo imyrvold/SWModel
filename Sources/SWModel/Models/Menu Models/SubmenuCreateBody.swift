@@ -8,9 +8,17 @@
 
 import Foundation
 
-struct SubmenuCreateBody: Encodable {
-    let name: String
-    let claim: String
-    let link: String
-    let newTab: Bool?
+public struct SubmenuCreateBody: Encodable {
+    public let name: String
+    public let claim: String
+    public let link: String
+    public let newTab: Bool?
+    
+    public init(name: String, claim: String, link: String, newTab: Bool?) {
+        self.name = name
+        self.claim = claim
+        self.link = link
+        self.newTab = newTab
+    }
+
 }
