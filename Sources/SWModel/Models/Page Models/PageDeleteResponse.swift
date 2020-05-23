@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct PageDeleteResponse {
-    let id: String
-    let name: String
-    let title: String
-    let label: String?
-    let logo: String?
-    let company: String?
-    let elements: [Element]
-    let claim: String
-    let style: String?
-    var claims: [Claim] = []
+public struct PageDeleteResponse {
+    public let id: String
+    public let name: String
+    public let title: String
+    public let label: String?
+    public let logo: String?
+    public let company: String?
+    public let elements: [Element]
+    public let claim: String
+    public let style: String?
+    public var claims: [Claim] = []
 }
 extension PageDeleteResponse: Decodable {
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
         case title

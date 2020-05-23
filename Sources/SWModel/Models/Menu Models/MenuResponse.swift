@@ -22,7 +22,6 @@ public struct MenuResponse {
     }
 
 }
-typealias MenusResponse = [MenuResponse]
 
 extension MenuResponse: Decodable {
     public enum CodingKeys: String, CodingKey {

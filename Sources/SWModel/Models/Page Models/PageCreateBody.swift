@@ -8,13 +8,13 @@
 
 import Foundation
 
-struct PageCreateBody: Encodable {
-    let name: String
-    let title: String
-    let label: String?
-    let logo: String?
-    let company: String?
-    let elements: [String]
-    let claim: Claim
-    let style: String?
+public struct PageCreateBody: Encodable {
+    public let name: String
+    public let title: String
+    public let label: String?
+    public let logo: String?
+    public let company: String?
+    public let elements: [String]
+    public let claim: Claim
+    public let style: String?
 }
