@@ -24,6 +24,14 @@ public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringCo
     public var role: Role
     public var isHidden: Bool? = false
     
+    public init(id: String, firstName: String, lastName: String, email: String, role: Role) {
+        self.id = id
+        self.firstName = firstName
+        self.lastName = lastName
+        self.email = email
+        self.role = role
+    }
+
     public var fullName: String {
         firstName + " " + lastName
     }
@@ -43,4 +51,3 @@ public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringCo
     
 }
 
-typealias UsersResponse = [User]
