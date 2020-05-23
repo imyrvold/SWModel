@@ -8,25 +8,25 @@
 
 import Foundation
 
-struct TagDeleteResponse {
-    let id: String
-    var name: String
-    var type: String
-    var image: URL?
-    var value: String
-    var valueType: TagValueType
-    var buildingID: String
-    var group: String?
-    var link: URL?
-    var sortIndex: Int?
-    var alarm: Alarm?
-    var actionID: String?
-    var claimID: String
-    var appearanceID: String?
-    var behaviourID: String?
+public struct TagDeleteResponse {
+    public let id: String
+    public var name: String
+    public var type: String
+    public var image: URL?
+    public var value: String
+    public var valueType: TagValueType
+    public var buildingID: String
+    public var group: String?
+    public var link: URL?
+    public var sortIndex: Int?
+    public var alarm: Alarm?
+    public var actionID: String?
+    public var claimID: String
+    public var appearanceID: String?
+    public var behaviourID: String?
 }
 extension TagDeleteResponse: Decodable {
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
         case type

@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct UserCreateResponse: Decodable {
-    let id: String
-    var firstName: String
-    var lastName: String
-    var email: String
-    var role: String
-    var token: String
-    var isHidden: Bool?
+public struct UserCreateResponse: Decodable {
+    public let id: String
+    public var firstName: String
+    public var lastName: String
+    public var email: String
+    public var role: String
+    public var token: String
+    public var isHidden: Bool?
     
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName
         case lastName

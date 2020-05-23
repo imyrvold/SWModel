@@ -7,14 +7,14 @@
 //
 
 import Foundation
-struct UserUpdateResponse: Decodable {
-    let id: String
-    var firstName: String
-    var lastName: String
-    var email: String
-    var role: String
+public struct UserUpdateResponse: Decodable {
+    public let id: String
+    public var firstName: String
+    public var lastName: String
+    public var email: String
+    public var role: String
     
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName
         case lastName

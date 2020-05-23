@@ -8,14 +8,14 @@
 
 import Foundation
 
-struct UserDeleted: Codable {
-    let id: String
-    var firstName: String
-    var lastName: String
-    var email: String
-    var role: String
+public struct UserDeleted: Codable {
+    public let id: String
+    public var firstName: String
+    public var lastName: String
+    public var email: String
+    public var role: String
     
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case firstName
         case lastName

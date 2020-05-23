@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct UserCreateBody: Encodable {
-    var firstName: String
-    var lastName: String
-    var email: String
-    var password: String
-    var role: String
-    var isHidden: Bool
+public struct UserCreateBody: Encodable {
+    public var firstName: String
+    public var lastName: String
+    public var email: String
+    public var password: String
+    public var role: String
+    public var isHidden: Bool
 }

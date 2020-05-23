@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RoleCreateBody: Encodable {
-    var name: String
-    var claims: [Claim]
+public struct RoleCreateBody: Encodable {
+    public var name: String
+    public var claims: [Claim]
 }
