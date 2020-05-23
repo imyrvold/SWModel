@@ -10,4 +10,6 @@ import Foundation
 
 public struct Settings: Codable {
     public var rememberUser: Bool = false
+    
+    public init() {}
 }
