@@ -18,8 +18,6 @@ public struct Icon: Identifiable, CustomStringConvertible {
     }
 }
 
-typealias IconsResponse = [Icon]
-
 public struct SubIcon: Identifiable, CustomStringConvertible {
     public let id = UUID()
     public var min: Int?

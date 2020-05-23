@@ -28,7 +28,6 @@ public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable {
     }
 }
 
-typealias RolesResponse = [Role]
 typealias RoleResponse = Role
 
 public extension Role {

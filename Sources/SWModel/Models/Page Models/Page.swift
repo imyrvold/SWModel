@@ -21,9 +21,19 @@ public struct Page: Identifiable, Hashable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
+    
+    public init(id: String, name: String, title: String, label: String?, claim: Claim, claims: [Claim], elements: [Element], logo: String?, company: Company?) {
+        self.id = id
+        self.name = name
+        self.title = title
+        self.label = label
+        self.claim = claim
+        self.claims = claims
+        self.elements = elements
+        self.logo = logo
+        self.company = company
+    }
 }
-
-typealias PagesResponse = [Page]
 
 extension Page: Codable {
     public enum CodingKeys: String, CodingKey {

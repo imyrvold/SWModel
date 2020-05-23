@@ -21,8 +21,6 @@ public struct Element: Hashable, Identifiable {
     }
 }
 
-typealias ElementsResponse = [Element]
-
 extension Element: Equatable {
     public static func == (lhs: Element, rhs: Element) -> Bool {
         return lhs.id == rhs.id

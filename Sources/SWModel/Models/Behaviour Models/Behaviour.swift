@@ -13,7 +13,6 @@ public enum Orientation: String, Codable {
     case rightToLeft = "right-to-left"
 }
 
-typealias BehavioursResponse = [Behaviour]
 
 public struct Behaviour: Codable, Equatable {
     public static func == (lhs: Behaviour, rhs: Behaviour) -> Bool {

@@ -23,8 +23,6 @@ public struct Claim: Codable, Hashable, Identifiable {
     }
 }
 
-typealias ClaimsResponse = [Claim]
-
 extension Claim: Equatable {
     public static func == (lhs: Claim, rhs: Claim) -> Bool {
         return lhs.id == rhs.id
