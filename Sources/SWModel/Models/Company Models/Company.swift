@@ -17,6 +17,16 @@ public struct Company: Codable, Identifiable {
     public var buildingTabName: String?
     public var buildingUrl: String?
     
+    public init(id: String, title: String, icons: [CompanyIcon], logo: String?, def: Bool, buildingTabName: String?, buildingUrl: String?) {
+        self.id = id
+        self.title = title
+        self.icons = icons
+        self.logo = logo
+        self.def = def
+        self.buildingTabName = buildingTabName
+        self.buildingUrl = buildingUrl
+    }
+    
     public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case title
@@ -42,6 +52,6 @@ extension Company: Comparable {
 
 extension Company {
     public static var empty: Company {
-        return Company(id: "", title: "", icons: [], logo: nil)
+        return Company(id: "", title: "", icons: [], logo: nil, def: false, buildingTabName: nil, buildingUrl: nil)
     }
 }

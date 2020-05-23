@@ -8,6 +8,11 @@
 
 import Foundation
 
-struct ClaimCreateBody: Encodable {
-    var name: String
+public struct ClaimCreateBody: Encodable {
+    public var name: String
+    
+    public init(name: String) {
+        self.name = name
+    }
+
 }

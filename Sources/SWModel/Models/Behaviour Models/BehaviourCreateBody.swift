@@ -15,4 +15,13 @@ public struct BehaviourCreateBody: Encodable {
     public var numberOfDecimals: Int?
     public var orientation: Orientation?
     public var options: [String]?
+    
+    public init(name: String, min: Int?, max: Int?, numberOfDecimals: Int?, orientation: Orientation?, options: [String]?) {
+        self.name = name
+        self.min = min
+        self.max = max
+        self.numberOfDecimals = numberOfDecimals
+        self.orientation = orientation
+        self.options = options
+    }
 }

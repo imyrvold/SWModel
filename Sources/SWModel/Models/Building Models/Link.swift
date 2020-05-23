@@ -14,6 +14,15 @@ public struct Link: Identifiable {
     public let label: String
     public let link: String
     public let newTab: Bool
+    
+    public init(id: String, group: String, label: String, link: String, newTab: Bool) {
+        self.id = id
+        self.group = group
+        self.label = label
+        self.link = link
+        self.newTab = newTab
+    }
+
 }
 
 extension Link: Codable {

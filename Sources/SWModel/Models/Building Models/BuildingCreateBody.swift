@@ -19,4 +19,18 @@ public struct BuildingCreateBody: Encodable {
     let position: Int?
     let claim: String
     let company: String?
+    
+    public init(name: String, address: String?, imageUrl: String?, index: String?, pages: [String]?, menus: [String]?, links: [Link]?, position: Int?,
+        claim: String, company: String?) {
+        self.name = name
+        self.address = address
+        self.imageUrl = imageUrl
+        self.index = index
+        self.pages = pages
+        self.menus = menus
+        self.links = links
+        self.position = position
+        self.claim = claim
+        self.company = company
+    }
 }

@@ -13,4 +13,14 @@ public struct CompanyCreateBody: Encodable {
     public let def: Bool?
     public var buildingTabName: String?
     public var buildingUrl: String?
+    
+    public init(title: String, icons: [CompanyIcon], logo: String?, def: Bool?, buildingTabName: String?, buildingUrl: String?) {
+        self.title = title
+        self.icons = icons
+        self.logo = logo
+        self.def = def
+        self.buildingTabName = buildingTabName
+        self.buildingUrl = buildingUrl
+    }
+
 }

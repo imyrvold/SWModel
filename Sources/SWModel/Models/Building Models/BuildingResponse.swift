@@ -20,6 +20,22 @@ public struct BuildingResponse {
     public let position: Int?
     public let claim: String
     public let company: String?
+    
+    public init(id: String, name: String, address: String?, imageUrl: String?, index: String?, pages: [String]?, menus: [BuildingMenuResponse]?, links: [Link]?, position: Int?,
+        claim: String, company: String?) {
+        self.id = id
+        self.name = name
+        self.address = address
+        self.imageUrl = imageUrl
+        self.index = index
+        self.pages = pages
+        self.menus = menus
+        self.links = links
+        self.position = position
+        self.claim = claim
+        self.company = company
+    }
+
 }
 typealias BuildingsResponse = [BuildingResponse]
 
@@ -44,6 +60,13 @@ public struct BuildingMenuResponse {
     public let name: String
     public let claim: String
     public var submenus: [BuildingSubmenuResponse] = []
+    
+    public init(id: String, name: String, claim: String, submenus: [BuildingSubmenuResponse]) {
+        self.id = id
+        self.name = name
+        self.claim = claim
+        self.submenus = submenus
+    }
 }
 typealias BuildingsMenuResponse = [BuildingMenuResponse]
 
@@ -62,6 +85,15 @@ public struct BuildingSubmenuResponse {
     public let claim: String?
     public let link: String
     public let newTab: Bool?
+    
+    public init(id: String, name: String, claim: String, link: String, newTab: Bool?) {
+        self.id = id
+        self.name = name
+        self.claim = claim
+        self.link = link
+        self.newTab = newTab
+    }
+
 }
 extension BuildingSubmenuResponse: Decodable {
     public enum CodingKeys: String, CodingKey {

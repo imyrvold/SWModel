@@ -8,15 +8,15 @@
 
 import Foundation
 
-struct ElementSimple: Hashable, Identifiable {
+public struct ElementSimple: Hashable, Identifiable {
     
-    let id: String?
-    var name: String
-    var type: ElementType
-    var data: String?
-    var claim: Claim?
+    public let id: String?
+    public var name: String
+    public var type: ElementType
+    public var data: String?
+    public var claim: Claim?
     
-    func hash(into hasher: inout Hasher) {
+    public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
 }
