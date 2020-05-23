@@ -9,9 +9,9 @@
 import Foundation
 
 public struct MenuCreateBody: Encodable {
-    let name: String
-    let claim: String
-    let submenus: [SubmenuCreateBody]
+    public let name: String
+    public let claim: String
+    public let submenus: [SubmenuCreateBody]
     
     public init(name: String, claim: String, submenus: [SubmenuCreateBody]) {
         self.name = name

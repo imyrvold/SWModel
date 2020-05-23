@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct MenuDeleteResponse {
-    let id: String
-    let name: String
-    let claim: String
+public struct MenuDeleteResponse {
+    public let id: String
+    public let name: String
+    public let claim: String
     
     public init(id: String, name: String, claim: String) {
         self.id = id
@@ -21,7 +21,7 @@ struct MenuDeleteResponse {
 
 }
 extension MenuDeleteResponse: Decodable {
-    enum CodingKeys: String, CodingKey {
+    public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
         case claim
