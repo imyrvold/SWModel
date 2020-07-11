@@ -6,7 +6,11 @@
 //  Copyright © 2020 Ivan C Myrvold. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 public struct CompanyIcon: Identifiable {
     public let id = UUID()
@@ -17,7 +21,11 @@ public struct CompanyIcon: Identifiable {
     public var type: String?
     public var href: String?
     public var sizes: String?
+    #if os(iOS)
     public var color: UIColor?
+    #else
+    public var color: NSColor?
+    #endif
 }
 
 extension CompanyIcon: Equatable {
@@ -49,7 +57,11 @@ extension CompanyIcon: Codable {
         self.href = try? container.decode(String.self, forKey: .href)
         self.sizes = try? container.decode(String.self, forKey: .sizes)
         if let hex = try? container.decode(String.self, forKey: .color), hex.count == 7 {
-            self.color = UIColor(hexString: hex)
+            #if os(iOS)
+                self.color = UIColor(hexString: hex)
+            #else
+                self.color = NSColor(hexString: hex)
+            #endif
         }
     }
     
@@ -80,6 +92,7 @@ extension CompanyIcon: Codable {
     }
 }
 
+#if os(iOS)
 public extension UIColor {
     convenience init(hexString: String, alpha: CGFloat = 1.0) {
         var hexFormatted: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
@@ -109,3 +122,34 @@ public extension UIColor {
         return String(format:"#%06x", rgb)
     }
 }
+#else
+public extension NSColor {
+    convenience init(hexString: String, alpha: CGFloat = 1.0) {
+        var hexFormatted: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
+
+        if hexFormatted.hasPrefix("#") {
+            hexFormatted = String(hexFormatted.dropFirst())
+        }
+
+        assert(hexFormatted.count == 6, "Invalid hex code used.")
+
+        var rgbValue: UInt64 = 0
+        Scanner(string: hexFormatted).scanHexInt64(&rgbValue)
+
+        self.init(red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+                  green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+                  blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+                  alpha: alpha)
+    }
+
+    func toHexString() -> String {
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        return String(format:"#%06x", rgb)
+    }
+}
+#endif

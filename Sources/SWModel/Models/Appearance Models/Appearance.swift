@@ -6,7 +6,11 @@
 //  Copyright © 2020 Ivan C Myrvold. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 public struct Appearance: Codable, Equatable {
     public static func == (lhs: Appearance, rhs: Appearance) -> Bool {
@@ -20,8 +24,16 @@ public struct Appearance: Codable, Equatable {
     public var size: Int?
     public var holderSize: Int?
     public var textSize: Double?
+    #if os(iOS)
     public var selectionColor: UIColor?
+    #else
+    public var selectionColor: NSColor?
+    #endif
+    #if os(iOS)
     public var backgroundColor: UIColor?
+    #else
+    public var backgroundColor: NSColor?
+    #endif
     public var isExpanded: Bool?
     
     public enum CodingKeys: String, CodingKey {
@@ -49,10 +61,18 @@ public struct Appearance: Codable, Equatable {
         let selection = try container.decodeIfPresent(String.self, forKey: .selectionColor)
         let background = try container.decodeIfPresent(String.self, forKey: .backgroundColor)
         if let selectionColor = selection {
+            #if os(iOS)
             self.selectionColor = UIColor(hexString: selectionColor)
+            #else
+            self.selectionColor = NSColor(hexString: selectionColor)
+            #endif
         }
         if let backgroundColor = background {
+            #if os(iOS)
             self.backgroundColor = UIColor(hexString: backgroundColor)
+            #else
+            self.backgroundColor = NSColor(hexString: backgroundColor)
+            #endif
         }
         self.isExpanded = try container.decode(Bool.self, forKey: .isExpanded)
     }

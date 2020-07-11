@@ -6,7 +6,11 @@
 //  Copyright © 2020 Ivan C Myrvold. All rights reserved.
 //
 
+#if canImport(UIKit)
 import UIKit
+#else
+import AppKit
+#endif
 
 public struct AppearanceCreateBody {
     public var name: String
@@ -15,8 +19,13 @@ public struct AppearanceCreateBody {
     public var size: Int?
     public var holderSize: Int?
     public var textSize: Double?
+    #if os(iOS)
     public var selectionColor: UIColor?
     public var backgroundColor: UIColor?
+    #else
+    public var selectionColor: NSColor?
+    public var backgroundColor: NSColor?
+    #endif
     public var isExpanded: Bool?
 }
 
