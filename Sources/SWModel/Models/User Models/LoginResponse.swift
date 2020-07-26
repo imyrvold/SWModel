@@ -10,35 +10,23 @@ import Foundation
 
 public struct LoginResponse: Codable {
     public let id: String
-    public var firstName: String
-    public var lastName: String
+    public var fullName: String
     public var email: String
     public let role: String
     public var token: String
     
-    public enum CodingKeys: String, CodingKey {
-        case id
-        case firstName
-        case lastName
-        case email
-        case token
-        case role
-    }
-
 
     public init() {
         self.id = ""
-        self.firstName = ""
-        self.lastName = ""
+        self.fullName = ""
         self.email = ""
         self.role = ""
         self.token = ""
     }
     
-    public init(id: String, firstName: String, lastName: String, email: String, role: String, token: String) {
+    public init(id: String, fullName: String, email: String, role: String, token: String) {
         self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
+        self.fullName = fullName
         self.email = email
         self.role = role
         self.token = token
@@ -47,7 +35,7 @@ public struct LoginResponse: Codable {
 
 extension LoginResponse: CustomDebugStringConvertible {
     public var debugDescription: String {
-    return "\nid: \(id)\nfirstName: \"\(firstName)\" lastName: \"\(lastName)\" email: \"\(email)\"\nrole: \"\(role)\" \ntoken: \(token)"
+    return "\nid: \(id)\nfullName: \"\(fullName)\" email: \"\(email)\"\nrole: \"\(role)\" \ntoken: \(token)"
   }
 }
 typealias CreateUserResponse = LoginResponse
@@ -55,6 +43,6 @@ typealias UserResponse = LoginResponse
 
 public extension LoginResponse {
     static let empty = {
-       LoginResponse(id: "", firstName: "", lastName: "", email: "", role: "", token: "")
+       LoginResponse(id: "", fullName: "", email: "", role: "", token: "")
     }()
 }

@@ -9,19 +9,16 @@
 import Foundation
 
 public struct Profile: Codable {
-    public var firstName: String
-    public var lastName: String
+    public var fullName: String
     public var email: String
     
     public init() {
-        self.firstName = ""
-        self.lastName = ""
+        self.fullName = ""
         self.email = ""
     }
     
-    public init(firstName: String, lastName: String, email: String) {
-        self.firstName = firstName
-        self.lastName = lastName
+    public init(fullName: String, email: String) {
+        self.fullName = fullName
         self.email = email
     }
 }

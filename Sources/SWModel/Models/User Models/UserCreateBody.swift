@@ -9,16 +9,14 @@
 import Foundation
 
 public struct UserCreateBody: Encodable {
-    public var firstName: String
-    public var lastName: String
+    public var fullName: String
     public var email: String
     public var password: String
     public var role: String
     public var isHidden: Bool
     
-    public init(firstName: String, lastName: String, email: String, password: String, role: String, isHidden: Bool) {
-        self.firstName = firstName
-        self.lastName = lastName
+    public init(fullName: String, email: String, password: String, role: String, isHidden: Bool) {
+        self.fullName = fullName
         self.email = email
         self.password = password
         self.role = role
