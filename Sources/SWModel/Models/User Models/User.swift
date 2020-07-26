@@ -23,6 +23,10 @@ public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringCo
     public var role: Role
     public var isHidden: Bool? = false
     
+    public static var empty: User {
+        User(id: "", fullName: "", email: "", role: Role.empty)
+    }
+    
     public init(id: String, fullName: String, email: String, role: Role, isHidden: Bool = false) {
         self.id = id
         self.fullName = fullName
