@@ -24,7 +24,7 @@ public struct MenuCreateResponse {
 }
 extension MenuCreateResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case claim
         case submenus

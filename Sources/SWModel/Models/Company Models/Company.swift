@@ -28,7 +28,7 @@ public struct Company: Codable, Identifiable {
     }
     
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case title
         case icons
         case logo

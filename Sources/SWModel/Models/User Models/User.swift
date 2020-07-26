@@ -38,7 +38,7 @@ public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringCo
     }
     
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case firstName
         case lastName
         case email

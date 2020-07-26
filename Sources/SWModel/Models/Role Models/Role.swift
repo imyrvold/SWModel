@@ -22,7 +22,7 @@ public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable {
     public var claims: [Claim]
     
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case claims
     }

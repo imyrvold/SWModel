@@ -28,7 +28,7 @@ public struct Behaviour: Codable, Equatable {
     public var options: [String]?
     
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case min
         case max

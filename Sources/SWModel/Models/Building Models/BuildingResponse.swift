@@ -41,7 +41,7 @@ typealias BuildingsResponse = [BuildingResponse]
 
 extension BuildingResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case address
         case imageUrl
@@ -72,7 +72,7 @@ typealias BuildingsMenuResponse = [BuildingMenuResponse]
 
 extension BuildingMenuResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case claim
         case submenus
@@ -97,7 +97,7 @@ public struct BuildingSubmenuResponse {
 }
 extension BuildingSubmenuResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case claim
         case link

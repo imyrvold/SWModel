@@ -36,7 +36,7 @@ public struct PageResponse {
 }
 extension PageResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case title
         case label

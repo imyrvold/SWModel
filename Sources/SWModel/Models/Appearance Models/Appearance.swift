@@ -37,7 +37,7 @@ public struct Appearance: Codable, Equatable {
     public var isExpanded: Bool?
     
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case prefix
         case suffix

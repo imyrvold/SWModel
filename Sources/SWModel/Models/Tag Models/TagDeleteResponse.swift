@@ -46,7 +46,7 @@ public struct TagDeleteResponse {
 }
 extension TagDeleteResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case type
         case image

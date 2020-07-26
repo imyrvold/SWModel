@@ -36,7 +36,7 @@ public struct PageDeleteResponse {
 }
 extension PageDeleteResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case title
         case label

@@ -18,7 +18,7 @@ public struct Menu: Codable, Identifiable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case claim
         case submenus

@@ -117,7 +117,7 @@ final public class Tag: Codable, CustomStringConvertible {
     typealias TagsResponse = [TagResponse]
 
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case type
         case image

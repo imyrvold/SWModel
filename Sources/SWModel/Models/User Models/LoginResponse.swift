@@ -17,7 +17,7 @@ public struct LoginResponse: Codable {
     public var token: String
     
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case firstName
         case lastName
         case email

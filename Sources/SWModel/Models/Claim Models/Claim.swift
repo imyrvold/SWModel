@@ -18,7 +18,7 @@ public struct Claim: Codable, Hashable, Identifiable {
     }
     
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
     }
 }

@@ -26,7 +26,7 @@ public struct SubmenuCreateResponse {
 }
 extension SubmenuCreateResponse: Decodable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case claim
         case link

@@ -25,7 +25,7 @@ public struct Building: Identifiable {
 
 extension Building: Codable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case address
         case imageUrl

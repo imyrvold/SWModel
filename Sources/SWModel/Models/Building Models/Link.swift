@@ -27,7 +27,7 @@ public struct Link: Identifiable {
 
 extension Link: Codable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case group
         case label
         case link

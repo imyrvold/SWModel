@@ -24,7 +24,7 @@ public struct UserUpdateResponse: Decodable {
 
     
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case firstName
         case lastName
         case email

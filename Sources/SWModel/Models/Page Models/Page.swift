@@ -37,7 +37,7 @@ public struct Page: Identifiable, Hashable {
 
 extension Page: Codable {
     public enum CodingKeys: String, CodingKey {
-        case id = "_id"
+        case id
         case name
         case title
         case label
