@@ -10,7 +10,7 @@ import Foundation
 
 public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringConvertible {
     public static func < (lhs: User, rhs: User) -> Bool {
-        lhs.firstName < rhs.firstName
+        lhs.fullName < rhs.fullName
     }
     
     public static func == (lhs: User, rhs: User) -> Bool {
@@ -18,36 +18,29 @@ public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringCo
     }
     
     public let id: String
-    public var firstName: String
-    public var lastName: String
+    public var fullName: String
     public var email: String
     public var role: Role
     public var isHidden: Bool? = false
     
-    public init(id: String, firstName: String, lastName: String, email: String, role: Role, isHidden: Bool = false) {
+    public init(id: String, fullName: String, email: String, role: Role, isHidden: Bool = false) {
         self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
+        self.fullName = fullName
         self.email = email
         self.role = role
         self.isHidden = isHidden
     }
 
-    public var fullName: String {
-        firstName + " " + lastName
-    }
-    
     public enum CodingKeys: String, CodingKey {
         case id
-        case firstName
-        case lastName
+        case fullName
         case email
         case role
         case isHidden
     }
     
     public var description: String {
-        return "id: \(id) firstName: \(firstName), lastName: \(lastName), email: \(email), role: \(role)"
+        return "id: \(id) fullName: \(fullName), email: \(email), role: \(role)"
     }
     
 }

@@ -9,32 +9,13 @@
 import Foundation
 
 public struct UserCreateResponse: Decodable {
-    public let id: String
-    public var firstName: String
-    public var lastName: String
-    public var email: String
-    public var role: String
-    public var token: String
-    public var isHidden: Bool?
+    public let user: User
+    public var accessToken: String
+    public var refreshToken: String
     
-    public init(id: String, firstName: String, lastName: String, email: String, role: String, token: String, isHidden: Bool?) {
-        self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
-        self.email = email
-        self.role = role
-        self.token = token
-        self.isHidden = isHidden
-    }
-
-    
-    public enum CodingKeys: String, CodingKey {
-        case id
-        case firstName
-        case lastName
-        case email
-        case role
-        case token
-        case isHidden
+    public init(user: User, accessToken: String, refreshToken: String) {
+        self.user = user
+        self.accessToken = accessToken
+        self.refreshToken = refreshToken
     }
 }
