@@ -13,9 +13,9 @@ public struct UserUpdateResponse: Decodable {
     public var email: String
     public var role: String
     
-    public init(id: String, firstName: String, lastName: String, email: String, role: String) {
+    public init(id: String, fullName: String, lastName: String, email: String, role: String) {
         self.id = id
-        self.fullName = firstName
+        self.fullName = fullName
         self.email = email
         self.role = role
     }
