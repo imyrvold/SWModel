@@ -9,7 +9,7 @@
 import Foundation
 
 public struct LoginResponse: Codable {
-    public let user: User
+    public var user: User
     public var accessToken: String
     public var refreshToken: String
 
