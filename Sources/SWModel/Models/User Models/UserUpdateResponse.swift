@@ -9,15 +9,13 @@
 import Foundation
 public struct UserUpdateResponse: Decodable {
     public let id: String
-    public var firstName: String
-    public var lastName: String
+    public var fullName: String
     public var email: String
     public var role: String
     
     public init(id: String, firstName: String, lastName: String, email: String, role: String) {
         self.id = id
-        self.firstName = firstName
-        self.lastName = lastName
+        self.fullName = firstName
         self.email = email
         self.role = role
     }
@@ -25,8 +23,7 @@ public struct UserUpdateResponse: Decodable {
     
     public enum CodingKeys: String, CodingKey {
         case id
-        case firstName
-        case lastName
+        case fullName
         case email
         case role
     }
