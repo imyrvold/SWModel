@@ -10,9 +10,9 @@ import Foundation
 
 public struct RoleCreateBody: Encodable {
     public var name: String
-    public var claims: [Claim]
+    public var claims: [String]
     
-    public init(name: String, claims: [Claim]) {
+    public init(name: String, claims: [String]) {
         self.name = name
         self.claims = claims
     }
