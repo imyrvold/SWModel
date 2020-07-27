@@ -10,5 +10,5 @@ import Foundation
 public struct RoleResponse {
     public let id: String
     public let name: String
-    public let claims: [String]
+    public var claims: [String]
 }
