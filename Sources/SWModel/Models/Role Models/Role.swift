@@ -28,8 +28,6 @@ public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable {
     }
 }
 
-typealias RoleResponse = Role
-
 public extension Role {
     static var empty: Role {
         return Role(id: "", name: "", claims: [])
