@@ -33,7 +33,6 @@ extension LoginResponse: CustomDebugStringConvertible {
   }
 }
 typealias CreateUserResponse = LoginResponse
-typealias UserResponse = LoginResponse
 
 public extension LoginResponse {
     static let empty = {
