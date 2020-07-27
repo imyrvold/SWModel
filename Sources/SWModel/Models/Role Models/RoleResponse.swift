@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct RoleResponse {
+public struct RoleResponse: Codable {
     public let id: String
     public let name: String
     public var claims: [String]
