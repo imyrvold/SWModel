@@ -21,6 +21,12 @@ public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable {
     public var name: String
     public var claims: [Claim]
     
+    public init(id: String, name: String, claims: [Claim]) {
+        self.id = id
+        self.name = name
+        self.claims = claims
+    }
+    
     public enum CodingKeys: String, CodingKey {
         case id
         case name
