@@ -9,13 +9,17 @@
 import Foundation
 
 public struct UserCreateResponse: Decodable {
-    public let user: User
-    public var accessToken: String
-    public var refreshToken: String
+    public let id: String
+    public var email: String
+    public var fullName: String
+    public var isHidden: Bool
+    public var role: String
     
-    public init(user: User, accessToken: String, refreshToken: String) {
-        self.user = user
-        self.accessToken = accessToken
-        self.refreshToken = refreshToken
+    public init(id: String, email: String, fullName: String, isHidden: Bool, role: String) {
+        self.id = id
+        self.email = email
+        self.fullName = fullName
+        self.isHidden = isHidden
+        self.role = role
     }
 }
