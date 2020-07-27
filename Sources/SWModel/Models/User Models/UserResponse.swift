@@ -12,5 +12,5 @@ public struct UserResponse: Codable {
     public let fullName: String
     public let email: String
     public let isHidden: Bool
-    public var roles: [String]
+    public var role: String
 }
