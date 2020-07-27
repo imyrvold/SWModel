@@ -9,9 +9,9 @@ import Foundation
 
 public struct UserLoginResponse: Codable {
     public let id: String
-    public let email: String
-    public let fullName: String
-    public let role: String
+    public var email: String
+    public var fullName: String
+    public var role: String
     
     public init(id: String, email: String, fullName: String, role: String) {
         self.id = id
