@@ -275,9 +275,12 @@ extension ElementData: Codable {
     }
     
     public init(from decoder: Decoder) throws {
+        print("ElementData init 1")
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        print("ElementData init 2")
         let type = try container.decode(ElementType.self, forKey: .type)
-        
+        print("ElementData init type:", type)
+
         switch type {
         case .tagGroup:
             let data = try container.decode(TagGroupData.self, forKey: .type)
