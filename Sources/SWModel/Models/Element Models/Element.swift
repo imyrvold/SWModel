@@ -48,6 +48,7 @@ extension Element: Codable {
     }
     
     public init(from decoder: Decoder) throws {
+        print("Element init from decoder")
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try? container.decode(String.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
@@ -55,7 +56,8 @@ extension Element: Codable {
         
         let type = try container.decode(ElementType.self, forKey: .type)
         self.type = type
-        
+        print("Element init from decoder type:", type)
+
         switch type {
         case .tagGroup:
             let data = try container.decode(TagGroupData.self, forKey: .data)
@@ -64,6 +66,7 @@ extension Element: Codable {
             let data = try container.decode(TagListData.self, forKey: .data)
             self.data = .tagList(data)
         case .image:
+            print("Element init from decoder .image")
             let data = try container.decode(ImageData.self, forKey: .data)
             self.data = .image(data)
         case .iframe:
