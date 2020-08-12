@@ -94,6 +94,7 @@ public enum ElementRow: String, Codable {
     case name
     case group
     case value
+    case type
     case empty = ""
     
     public var index: Int? {
@@ -109,6 +110,8 @@ public enum ElementRow: String, Codable {
             index = 3
         case .value:
             index = 4
+        case .type:
+            index = 5
         default:
             index = nil
         }
@@ -126,6 +129,8 @@ public enum ElementRow: String, Codable {
             self = .group
         } else if index == 4 {
             self = .value
+        } else if index == 5 {
+            self = .type
         } else {
             return nil
         }
