@@ -14,7 +14,6 @@ public struct Page: Identifiable, Hashable {
     public let title: String
     public let label: String?
     public let claim: Claim
-    public var claims: [Claim] = []
     public var elements: [Element] = []
     public let logo: String?
     public let company: Company?
@@ -22,13 +21,12 @@ public struct Page: Identifiable, Hashable {
         hasher.combine(id)
     }
     
-    public init(id: String, name: String, title: String, label: String?, claim: Claim, claims: [Claim], elements: [Element], logo: String?, company: Company?) {
+    public init(id: String, name: String, title: String, label: String?, claim: Claim, elements: [Element], logo: String?, company: Company?) {
         self.id = id
         self.name = name
         self.title = title
         self.label = label
         self.claim = claim
-        self.claims = claims
         self.elements = elements
         self.logo = logo
         self.company = company
@@ -42,7 +40,6 @@ extension Page: Codable {
         case title
         case label
         case claim
-        case claims
         case elements
         case logo
         case company
@@ -63,6 +60,6 @@ extension Page: Comparable {
 
 public extension Page {
     static var empty: Page {
-        return Page(id: "", name: "", title: "", label: nil, claim: Claim.empty, claims: [], elements: [], logo: nil, company: Company.empty)
+        return Page(id: "", name: "", title: "", label: nil, claim: Claim.empty, elements: [], logo: nil, company: Company.empty)
     }
 }
