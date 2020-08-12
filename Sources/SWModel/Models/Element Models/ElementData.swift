@@ -369,9 +369,16 @@ public struct ImageData: Codable, Equatable {
 
 public struct IframeData: Codable, Equatable {
     public let dataUrl: String?
+    public let dataHeight: Int?
+
+    public init(dataUrl: String?, dataHeight: Int? = nil) {
+        self.dataUrl = dataUrl
+        self.dataHeight = dataHeight
+    }
     
     public enum CodingKeys: String, CodingKey {
         case dataUrl = "data-url"
+        case dataHeight = "data-height"
     }
 }
 
