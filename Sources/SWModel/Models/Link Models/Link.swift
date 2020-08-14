@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Link: Identifiable {
+public struct Link: Codable, Identifiable {
     public let id: String
     public var group: String
     public let label: String
@@ -22,15 +22,16 @@ public struct Link: Identifiable {
         self.link = link
         self.newTab = newTab
     }
-
 }
 
-extension Link: Codable {
-    public enum CodingKeys: String, CodingKey {
-        case id
-        case group
-        case label
-        case link
-        case newTab
+public extension Link {
+    static var empty: Link {
+        return Link(id: "", group: "", label: "", link: "", newTab: false)
+    }
+}
+
+extension Link: Equatable {
+    public static func == (lhs: Link, rhs: Link) -> Bool {
+        return lhs.id == rhs.id
     }
 }
