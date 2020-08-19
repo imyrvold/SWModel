@@ -6,11 +6,7 @@
 //  Copyright © 2020 Ivan C Myrvold. All rights reserved.
 //
 
-#if canImport(UIKit)
-import UIKit
-#else
-import AppKit
-#endif
+import Foundation
 
 public struct CompanyIcon: Identifiable {
     public let id = UUID()
