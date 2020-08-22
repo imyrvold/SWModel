@@ -94,6 +94,7 @@ public enum ElementRow: String, Codable {
     case name
     case group
     case value
+    case type
     case empty = ""
     
     public var index: Int? {
@@ -109,6 +110,8 @@ public enum ElementRow: String, Codable {
             index = 3
         case .value:
             index = 4
+        case .type:
+            index = 5
         default:
             index = nil
         }
@@ -126,6 +129,8 @@ public enum ElementRow: String, Codable {
             self = .group
         } else if index == 4 {
             self = .value
+        } else if index == 5 {
+            self = .type
         } else {
             return nil
         }
@@ -268,56 +273,64 @@ extension ElementData: Equatable {
         return areEqual
     }
 }
-extension ElementData: Codable {
-    private enum CodingKeys: String, CodingKey {
-        case type
-        case data
+
+extension ElementData {
+    enum CodingKeys: CodingKey {
+        case tagGroup, tagList, image, iframe, alarmList, alarmLogList, unsupported
     }
-    
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let type = try container.decode(ElementType.self, forKey: .type)
+}
+
+extension ElementData: Encodable {
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
         
-        switch type {
-        case .tagGroup:
-            let data = try container.decode(TagGroupData.self, forKey: .type)
-            self = .tagGroup(data)
-        case .tagList:
-            let data = try container.decode(TagListData.self, forKey: .type)
-            self = .tagList(data)
-        case .image:
-            let data = try container.decode(ImageData.self, forKey: .type)
-            self = .image(data)
-        case .iframe:
-            let data = try container.decode(IframeData.self, forKey: .type)
-            self = .iframe(data)
-        case .alarmList:
-            let data = try container.decode(AlarmListData.self, forKey: .type)
-            self = .alarmList(data)
-        case .alarmLogList:
-            let data = try container.decode(AlarmLogListData.self, forKey: .type)
-            self = .alarmLogList(data)
+        switch self {
+        case .tagGroup(let tagGroupData):
+            try container.encode(tagGroupData, forKey: .tagGroup)
+        case .tagList(let tagListData):
+            try container.encode(tagListData, forKey: .tagList)
+        case .image(let imageData):
+            try container.encode(imageData, forKey: .image)
+        case .iframe(let iframeData):
+            try container.encode(iframeData, forKey: .iframe)
+        case .alarmList(let alarmListData):
+            try container.encode(alarmListData, forKey: .alarmList)
+        case .alarmLogList(let alarmLogListData):
+            try container.encode(alarmLogListData, forKey: .alarmLogList)
+        case .unsupported:
+            try container.encode(true, forKey: .unsupported)
         }
     }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.singleValueContainer()
-        switch self {
-        case .tagGroup(let data):
-            try container.encode(data)
-        case .tagList(let data):
-            try container.encode(data)
-        case .image(let data):
-            try container.encode(data)
-        case .iframe(let data):
-            try container.encode(data)
-        case .alarmList(let data):
-            try container.encode(data)
-        case .alarmLogList(let data):
-            try container.encode(data)
+}
+
+extension ElementData: Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let key = container.allKeys.first
+        
+        switch key {
+        case .tagGroup:
+            let tagGroupData = try container.decode(TagGroupData.self, forKey: .tagGroup)
+            self = .tagGroup(tagGroupData)
+        case .tagList:
+            let tagListData = try container.decode(TagListData.self, forKey: .tagList)
+            self = .tagList(tagListData)
+        case .image:
+            let imageData = try container.decode(ImageData.self, forKey: .image)
+            self = .image(imageData)
+        case .iframe:
+            let iframeData = try container.decode(IframeData.self, forKey: .iframe)
+            self = .iframe(iframeData)
+        case .alarmList:
+            let alarmListData = try container.decode(AlarmListData.self, forKey: .alarmList)
+            self = .alarmList(alarmListData)
+        case .alarmLogList:
+            let alarmLogListData = try container.decode(AlarmLogListData.self, forKey: .alarmLogList)
+            self = .alarmLogList(alarmLogListData)
         case .unsupported:
-            let context = EncodingError.Context(codingPath: [], debugDescription: "Invalid data")
-            throw EncodingError.invalidValue(self, context)
+            self = .unsupported
+        case .none:
+            self = .unsupported
         }
     }
 }
@@ -356,9 +369,16 @@ public struct ImageData: Codable, Equatable {
 
 public struct IframeData: Codable, Equatable {
     public let dataUrl: String?
+    public let dataHeight: Int?
+
+    public init(dataUrl: String?, dataHeight: Int? = nil) {
+        self.dataUrl = dataUrl
+        self.dataHeight = dataHeight
+    }
     
     public enum CodingKeys: String, CodingKey {
         case dataUrl = "data-url"
+        case dataHeight = "data-height"
     }
 }
 

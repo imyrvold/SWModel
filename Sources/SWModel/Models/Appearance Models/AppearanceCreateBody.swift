@@ -6,11 +6,7 @@
 //  Copyright © 2020 Ivan C Myrvold. All rights reserved.
 //
 
-#if canImport(UIKit)
-import UIKit
-#else
-import AppKit
-#endif
+import Foundation
 
 public struct AppearanceCreateBody {
     public var name: String
@@ -19,13 +15,8 @@ public struct AppearanceCreateBody {
     public var size: Int?
     public var holderSize: Int?
     public var textSize: Double?
-    #if os(iOS)
-    public var selectionColor: UIColor?
-    public var backgroundColor: UIColor?
-    #else
-    public var selectionColor: NSColor?
-    public var backgroundColor: NSColor?
-    #endif
+    public var selectionColor: String?
+    public var backgroundColor: String?
     public var isExpanded: Bool?
 }
 
@@ -62,12 +53,10 @@ extension AppearanceCreateBody: Encodable {
             try container.encode(textSize, forKey: .textSize)
         }
         if let selectionColor = self.selectionColor {
-            let hexColor = selectionColor.toHexString()
-            try container.encode(hexColor, forKey: .selectionColor)
+            try container.encode(selectionColor, forKey: .selectionColor)
         }
         if let backgroundColor = self.backgroundColor {
-            let hexColor = backgroundColor.toHexString()
-            try container.encode(hexColor, forKey: .backgroundColor)
+            try container.encode(backgroundColor, forKey: .backgroundColor)
         }
         if let isExpanded = self.isExpanded {
             try container.encode(isExpanded, forKey: .isExpanded)

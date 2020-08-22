@@ -6,11 +6,7 @@
 //  Copyright © 2020 Ivan C Myrvold. All rights reserved.
 //
 
-#if canImport(UIKit)
-import UIKit
-#else
-import AppKit
-#endif
+import Foundation
 
 public struct CompanyIcon: Identifiable {
     public let id = UUID()
@@ -21,11 +17,7 @@ public struct CompanyIcon: Identifiable {
     public var type: String?
     public var href: String?
     public var sizes: String?
-    #if os(iOS)
-    public var color: UIColor?
-    #else
-    public var color: NSColor?
-    #endif
+    public var color: String?
 }
 
 extension CompanyIcon: Equatable {
@@ -56,13 +48,7 @@ extension CompanyIcon: Codable {
         self.type = try? container.decode(String.self, forKey: .type)
         self.href = try? container.decode(String.self, forKey: .href)
         self.sizes = try? container.decode(String.self, forKey: .sizes)
-        if let hex = try? container.decode(String.self, forKey: .color), hex.count == 7 {
-            #if os(iOS)
-                self.color = UIColor(hexString: hex)
-            #else
-                self.color = NSColor(hexString: hex)
-            #endif
-        }
+        self.color = try? container.decode(String.self, forKey: .color)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -87,12 +73,12 @@ extension CompanyIcon: Codable {
             try container.encode(sizes, forKey: .sizes)
         }
         if let color = self.color {
-            try container.encode(color.toHexString(), forKey: .color)
+            try container.encode(color, forKey: .color)
         }
     }
 }
 
-#if os(iOS)
+/*#if os(iOS)
 public extension UIColor {
     convenience init(hexString: String, alpha: CGFloat = 1.0) {
         var hexFormatted: String = hexString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).uppercased()
@@ -152,4 +138,4 @@ public extension NSColor {
         return String(format:"#%06x", rgb)
     }
 }
-#endif
+#endif*/

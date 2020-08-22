@@ -6,11 +6,7 @@
 //  Copyright © 2020 Ivan C Myrvold. All rights reserved.
 //
 
-#if canImport(UIKit)
-import UIKit
-#else
-import AppKit
-#endif
+import Foundation
 
 public struct Appearance: Codable, Equatable {
     public static func == (lhs: Appearance, rhs: Appearance) -> Bool {
@@ -24,16 +20,8 @@ public struct Appearance: Codable, Equatable {
     public var size: Int?
     public var holderSize: Int?
     public var textSize: Double?
-    #if os(iOS)
-    public var selectionColor: UIColor?
-    #else
-    public var selectionColor: NSColor?
-    #endif
-    #if os(iOS)
-    public var backgroundColor: UIColor?
-    #else
-    public var backgroundColor: NSColor?
-    #endif
+    public var selectionColor: String?
+    public var backgroundColor: String?
     public var isExpanded: Bool?
     
     public enum CodingKeys: String, CodingKey {
@@ -58,22 +46,8 @@ public struct Appearance: Codable, Equatable {
         self.size = try container.decodeIfPresent(Int.self, forKey: .size)
         self.holderSize = try container.decodeIfPresent(Int.self, forKey: .holderSize)
         self.textSize = try container.decodeIfPresent(Double.self, forKey: .textSize)
-        let selection = try container.decodeIfPresent(String.self, forKey: .selectionColor)
-        let background = try container.decodeIfPresent(String.self, forKey: .backgroundColor)
-        if let selectionColor = selection {
-            #if os(iOS)
-            self.selectionColor = UIColor(hexString: selectionColor)
-            #else
-            self.selectionColor = NSColor(hexString: selectionColor)
-            #endif
-        }
-        if let backgroundColor = background {
-            #if os(iOS)
-            self.backgroundColor = UIColor(hexString: backgroundColor)
-            #else
-            self.backgroundColor = NSColor(hexString: backgroundColor)
-            #endif
-        }
+        self.selectionColor = try container.decodeIfPresent(String.self, forKey: .selectionColor)
+        self.backgroundColor = try container.decodeIfPresent(String.self, forKey: .backgroundColor)
         self.isExpanded = try container.decode(Bool.self, forKey: .isExpanded)
     }
     
@@ -98,12 +72,10 @@ public struct Appearance: Codable, Equatable {
             try container.encode(textSize, forKey: .textSize)
         }
         if let selectionColor = self.selectionColor {
-            let hexColor = selectionColor.toHexString()
-            try container.encode(hexColor, forKey: .selectionColor)
+            try container.encode(selectionColor, forKey: .selectionColor)
         }
         if let backgroundColor = self.backgroundColor {
-            let hexColor = backgroundColor.toHexString()
-            try container.encode(hexColor, forKey: .backgroundColor)
+            try container.encode(backgroundColor, forKey: .backgroundColor)
         }
         if let isExpanded = self.isExpanded {
             try container.encode(isExpanded, forKey: .isExpanded)
@@ -132,10 +104,10 @@ extension Appearance: CustomStringConvertible {
             description.append(" textSize: \(textSize)")
         }
         if let selectionColor = self.selectionColor {
-            description.append(" selectionColor: \(selectionColor.toHexString())")
+            description.append(" selectionColor: \(selectionColor)")
         }
         if let backgroundColor = self.backgroundColor {
-            description.append(" backgroundColor: \(backgroundColor.toHexString())")
+            description.append(" backgroundColor: \(backgroundColor)")
         }
         if let isExpanded = self.isExpanded {
             description.append(" isExpanded: \(isExpanded)")
