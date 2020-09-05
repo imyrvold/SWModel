@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol SidebarItemable {
+public protocol SidebarItemable {
     var name: String { get }
 }

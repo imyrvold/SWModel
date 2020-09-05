@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Company: Codable, Identifiable, SidebarItemable {
-    var name: String {
+    public var name: String {
         title
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 
 public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringConvertible, SidebarItemable {
-    var name: String {
+    public var name: String {
         fullName
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 
 public struct Link: Codable, Identifiable, SidebarItemable {
-    var name: String {
+    public var name: String {
         label
     }
     
