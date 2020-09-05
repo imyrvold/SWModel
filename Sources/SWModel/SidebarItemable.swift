@@ -8,10 +8,12 @@
 import Foundation
 
 public enum SidebarMenu {
-    case claims, roles, users, tags, pages, menus, links, icons, elements, companies, buildings, behaviours, appearances
+    case home, claims, roles, users, tags, pages, menus, links, icons, elements, companies, buildings, behaviours, appearances
     
     var name: String {
         switch self {
+        case .home:
+            return "Home"
         case .claims:
             return "Claims"
         case .roles:
