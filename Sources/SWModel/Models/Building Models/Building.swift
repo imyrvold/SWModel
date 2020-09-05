@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Building: Identifiable {
+public struct Building: Identifiable, SidebarItemable {
     public let id: String
     public var name: String
     public let address: String?

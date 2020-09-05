@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Menu: Codable, Identifiable, Hashable {
+public struct Menu: Codable, Identifiable, Hashable, SidebarItemable {
     public let id: String
     public var name: String
     public let claim: Claim

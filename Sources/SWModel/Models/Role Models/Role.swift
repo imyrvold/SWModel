@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable {
+public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable, SidebarItemable {
     public static func == (lhs: Role, rhs: Role) -> Bool {
         return lhs.id == rhs.id
     }

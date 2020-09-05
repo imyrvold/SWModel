@@ -97,7 +97,7 @@ public enum Alarm: Int, Codable {
     }
 }
 
-final public class Tag: Codable, CustomStringConvertible {
+final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     public let id: String
     public var name: String
     public var type: String

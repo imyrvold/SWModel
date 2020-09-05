@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Icon: Identifiable, CustomStringConvertible {
+public struct Icon: Identifiable, CustomStringConvertible, SidebarItemable {
     public let id: String
     public var name: String
     public var icons: [SubIcon] = []

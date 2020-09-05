@@ -8,7 +8,11 @@
 
 import Foundation
 
-public struct Company: Codable, Identifiable {
+public struct Company: Codable, Identifiable, SidebarItemable {
+    var name: String {
+        title
+    }
+    
     public let id: String
     public let title: String
     public var icons: [CompanyIcon] = []

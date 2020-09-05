@@ -8,7 +8,11 @@
 
 import Foundation
 
-public struct Link: Codable, Identifiable {
+public struct Link: Codable, Identifiable, SidebarItemable {
+    var name: String {
+        label
+    }
+    
     public let id: String
     public var group: String
     public let label: String

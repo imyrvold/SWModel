@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Element: Hashable, Identifiable {
+public struct Element: Hashable, Identifiable, SidebarItemable {
     
    public  let id: String?
     public var name: String

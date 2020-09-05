@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Page: Identifiable, Hashable {
+public struct Page: Identifiable, Hashable, SidebarItemable {
     public let id: String
     public var name: String
     public let title: String

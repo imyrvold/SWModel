@@ -8,7 +8,11 @@
 
 import Foundation
 
-public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringConvertible {
+public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringConvertible, SidebarItemable {
+    var name: String {
+        fullName
+    }
+    
     public static func < (lhs: User, rhs: User) -> Bool {
         lhs.fullName < rhs.fullName
     }

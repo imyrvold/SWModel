@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Appearance: Codable, Equatable {
+public struct Appearance: Codable, Equatable, SidebarItemable {
     public static func == (lhs: Appearance, rhs: Appearance) -> Bool {
         return lhs.id == rhs.id
     }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct Claim: Codable, Hashable, Identifiable {
+public struct Claim: Codable, Hashable, Identifiable, SidebarItemable {
     public let id: String
     public var name: String
     
