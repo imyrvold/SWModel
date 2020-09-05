@@ -12,7 +12,10 @@ public struct Icon: Identifiable, CustomStringConvertible, SidebarItemable {
     public let id: String
     public var name: String
     public var icons: [SubIcon] = []
-    
+    public var menuName: SidebarMenu {
+        .icons
+    }
+
     public var description: String {
         return "id: \(self.id) name: \"\(self.name)\" \nicons: \(self.icons)"
     }

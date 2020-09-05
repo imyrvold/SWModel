@@ -12,7 +12,10 @@ public struct Link: Codable, Identifiable, SidebarItemable {
     public var name: String {
         label
     }
-    
+    public var menuName: SidebarMenu {
+        .links
+    }
+
     public let id: String
     public var group: String
     public let label: String

@@ -9,6 +9,10 @@
 import Foundation
 
 public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringConvertible, SidebarItemable {
+    public var menuName: SidebarMenu {
+        .users
+    }
+    
     public var name: String {
         fullName
     }

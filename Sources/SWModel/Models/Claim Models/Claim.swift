@@ -11,7 +11,10 @@ import Foundation
 public struct Claim: Codable, Hashable, Identifiable, SidebarItemable {
     public let id: String
     public var name: String
-    
+    public var menuName: SidebarMenu {
+        .claims
+    }
+
     public init(id: String, name: String) {
         self.id = id
         self.name = name

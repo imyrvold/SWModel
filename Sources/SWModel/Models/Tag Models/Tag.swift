@@ -113,7 +113,10 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     public var claim: Claim
     public var appearance: Appearance?
     public var behaviour: Behaviour?
-    
+    public var menuName: SidebarMenu {
+        .tags
+    }
+
     typealias TagsResponse = [TagResponse]
 
     public enum CodingKeys: String, CodingKey {

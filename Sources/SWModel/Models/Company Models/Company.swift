@@ -20,7 +20,10 @@ public struct Company: Codable, Identifiable, SidebarItemable {
     public var def: Bool = false
     public var buildingTabName: String?
     public var buildingUrl: String?
-    
+    public var menuName: SidebarMenu {
+        .companies
+    }
+
     public init(id: String, title: String, icons: [CompanyIcon], logo: String?, def: Bool, buildingTabName: String?, buildingUrl: String?) {
         self.id = id
         self.title = title

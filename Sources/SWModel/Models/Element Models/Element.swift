@@ -15,7 +15,10 @@ public struct Element: Hashable, Identifiable, SidebarItemable {
     public var type: ElementType
     public var data: ElementData?
     public var claim: Claim?
-    
+    public var menuName: SidebarMenu {
+        .elements
+    }
+
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

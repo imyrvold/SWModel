@@ -20,7 +20,10 @@ public struct Page: Identifiable, Hashable, SidebarItemable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    
+    public var menuName: SidebarMenu {
+        .pages
+    }
+
     public init(id: String, name: String, title: String, label: String?, claim: Claim, elements: [Element], logo: String?, company: Company?) {
         self.id = id
         self.name = name

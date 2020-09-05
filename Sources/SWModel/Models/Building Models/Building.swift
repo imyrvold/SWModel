@@ -21,6 +21,9 @@ public struct Building: Identifiable, SidebarItemable {
     public let claim: Claim
     public let company: Company?
     public var isShowing = false
+    public var menuName: SidebarMenu {
+        .buildings
+    }
 }
 
 extension Building: Codable {
