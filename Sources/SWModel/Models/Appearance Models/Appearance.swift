@@ -23,7 +23,7 @@ public struct Appearance: Codable, Equatable, SidebarItemable {
     public var selectionColor: String?
     public var backgroundColor: String?
     public var isExpanded: Bool?
-    public var menuName: SidebarMenu {
+    public var menuName: NavigationItem {
         .appearances
     }
 

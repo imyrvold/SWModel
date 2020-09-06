@@ -20,7 +20,7 @@ public struct Company: Codable, Identifiable, SidebarItemable {
     public var def: Bool = false
     public var buildingTabName: String?
     public var buildingUrl: String?
-    public var menuName: SidebarMenu {
+    public var menuName: NavigationItem {
         .companies
     }
 

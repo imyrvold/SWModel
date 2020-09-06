@@ -113,7 +113,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     public var claim: Claim
     public var appearance: Appearance?
     public var behaviour: Behaviour?
-    public var menuName: SidebarMenu {
+    public var menuName: NavigationItem {
         .tags
     }
 

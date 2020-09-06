@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum SidebarMenu {
+public enum NavigationItem {
     case home, claims, roles, users, tags, pages, menus, links, icons, elements, companies, buildings, behaviours, appearances
     
     public var name: String {
@@ -48,5 +48,5 @@ public enum SidebarMenu {
 
 public protocol SidebarItemable {
     var name: String { get }
-    var menuName: SidebarMenu { get }
+    var menuName: NavigationItem { get }
 }

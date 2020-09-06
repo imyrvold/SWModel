@@ -26,7 +26,7 @@ public struct Behaviour: Codable, Equatable, SidebarItemable {
     public var numberOfDecimals: Int?
     public var orientation: Orientation?
     public var options: [String]?
-    public var menuName: SidebarMenu {
+    public var menuName: NavigationItem {
         .behaviours
     }
 

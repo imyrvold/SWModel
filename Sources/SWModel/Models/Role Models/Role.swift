@@ -20,7 +20,7 @@ public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable, Side
     public let id: String
     public var name: String
     public var claims: [Claim]
-    public var menuName: SidebarMenu {
+    public var menuName: NavigationItem {
         .roles
     }
 

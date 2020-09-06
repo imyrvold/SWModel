@@ -15,7 +15,7 @@ public struct Element: Hashable, Identifiable, SidebarItemable {
     public var type: ElementType
     public var data: ElementData?
     public var claim: Claim?
-    public var menuName: SidebarMenu {
+    public var menuName: NavigationItem {
         .elements
     }
 

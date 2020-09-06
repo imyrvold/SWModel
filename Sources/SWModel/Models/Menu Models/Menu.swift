@@ -16,7 +16,7 @@ public struct Menu: Codable, Identifiable, Hashable, SidebarItemable {
     public func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }
-    public var menuName: SidebarMenu {
+    public var menuName: NavigationItem {
         .menus
     }
 
