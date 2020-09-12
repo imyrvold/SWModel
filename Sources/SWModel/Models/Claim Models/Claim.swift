@@ -33,6 +33,22 @@ public struct Claim: Codable, Hashable, Identifiable, SidebarItemable {
         case updatedAt
         case deletedAt
     }
+    
+    public init(from decoder: Decoder) throws {
+        print("Claim init from decoder 1")
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        print("Claim init from decoder 2")
+        self.id = try container.decode(String.self, forKey: .id)
+        print("Claim init from decoder 3")
+        self.name = try container.decode(String.self, forKey: .name)
+        print("Claim init from decoder 4")
+        self.createdAt = try container.decode(Date.self, forKey: .createdAt)
+        print("Claim init from decoder 5")
+        self.updatedAt = try container.decode(Date.self, forKey: .updatedAt)
+        print("Claim init from decoder 6")
+        self.deletedAt = try? container.decode(Date.self, forKey: .deletedAt)
+        print("Claim init from decoder 7")
+    }
 }
 
 extension Claim: Equatable {
