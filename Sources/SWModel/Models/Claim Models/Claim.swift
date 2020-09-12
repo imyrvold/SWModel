@@ -11,18 +11,27 @@ import Foundation
 public struct Claim: Codable, Hashable, Identifiable, SidebarItemable {
     public let id: String
     public var name: String
+    public var updatedAt: Date
+    public var createdAt: Date
+    public var deletedAt: Date?
     public var menuName: NavigationItem {
         .claims
     }
 
-    public init(id: String, name: String) {
+    public init(id: String, name: String, createdAt: Date, updatedAt: Date, deletedAt: Date?) {
         self.id = id
         self.name = name
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.deletedAt = deletedAt
     }
     
     public enum CodingKeys: String, CodingKey {
         case id
         case name
+        case createdAt
+        case updatedAt
+        case deletedAt
     }
 }
 
@@ -41,7 +50,8 @@ extension Claim: Comparable {
 
 public extension Claim {
     static var empty: Claim {
-        return Claim(id: "", name: "")
+        let date = Date()
+        return Claim(id: "", name: "", createdAt: date, updatedAt: date, deletedAt: nil)
     }
     
     var isEmpty: Bool {
