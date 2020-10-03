@@ -23,6 +23,9 @@ public struct Appearance: Codable, Equatable, SidebarItemable {
     public var selectionColor: String?
     public var backgroundColor: String?
     public var isExpanded: Bool?
+    public var updatedAt: Date
+    public var createdAt: Date
+    public var deletedAt: Date?
     public var menuName: NavigationItem {
         .appearances
     }
@@ -38,6 +41,9 @@ public struct Appearance: Codable, Equatable, SidebarItemable {
         case selectionColor
         case backgroundColor
         case isExpanded
+        case createdAt
+        case updatedAt
+        case deletedAt
     }
     
     public init(from decoder: Decoder) throws {
@@ -52,6 +58,9 @@ public struct Appearance: Codable, Equatable, SidebarItemable {
         self.selectionColor = try container.decodeIfPresent(String.self, forKey: .selectionColor)
         self.backgroundColor = try container.decodeIfPresent(String.self, forKey: .backgroundColor)
         self.isExpanded = try container.decode(Bool.self, forKey: .isExpanded)
+        self.createdAt = try container.decode(Date.self, forKey: .createdAt)
+        self.updatedAt = try container.decode(Date.self, forKey: .updatedAt)
+        self.deletedAt = try container.decode(Date.self, forKey: .deletedAt)
     }
     
     public func encode(to encoder: Encoder) throws {
@@ -83,6 +92,14 @@ public struct Appearance: Codable, Equatable, SidebarItemable {
         if let isExpanded = self.isExpanded {
             try container.encode(isExpanded, forKey: .isExpanded)
         }
+        
+        try container.encode(createdAt, forKey: .createdAt)
+        try container.encode(updatedAt, forKey: .updatedAt)
+        
+        if let deletedAt = self.deletedAt {
+            try container.encode(deletedAt, forKey: .deletedAt)
+        }
+        
     }
     
 }
