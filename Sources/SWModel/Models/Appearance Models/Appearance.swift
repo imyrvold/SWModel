@@ -9,7 +9,11 @@
 import Foundation
 
 public struct Appearance: Codable, Equatable, SidebarItemable {
+    public static func == (lhs: Appearance, rhs: Appearance) -> Bool {
+        return lhs.id == rhs.id
+    }
     
+    public let id: String
     public var name: String
     public var prefix: String?
     public var suffix: String?
@@ -29,7 +33,8 @@ public struct Appearance: Codable, Equatable, SidebarItemable {
 
 extension Appearance: CustomStringConvertible {
     public var description: String {
-        var description = ""
+        let id = self.id
+        var description = "id: \(id) name: \(self.name)"
         if let prefix = self.prefix {
             description.append(" prefix: \(prefix)")
         }
