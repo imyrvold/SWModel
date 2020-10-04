@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BSON
 
 public struct BuildingResponse {
     public let id: String
@@ -18,11 +19,11 @@ public struct BuildingResponse {
     public let menus: [BuildingMenuResponse]?
     public let links: [Link]?
     public let position: Int?
-    public let claim: String
+    public let claim: ObjectId
     public let company: String?
     
     public init(id: String, name: String, address: String?, imageUrl: String?, index: String?, pages: [String]?, menus: [BuildingMenuResponse]?, links: [Link]?, position: Int?,
-        claim: String, company: String?) {
+        claim: ObjectId, company: String?) {
         self.id = id
         self.name = name
         self.address = address
@@ -58,10 +59,10 @@ extension BuildingResponse: Decodable {
 public struct BuildingMenuResponse {
     public let id: String
     public let name: String
-    public let claim: String
+    public let claim: ObjectId
     public var submenus: [BuildingSubmenuResponse] = []
     
-    public init(id: String, name: String, claim: String, submenus: [BuildingSubmenuResponse]) {
+    public init(id: String, name: String, claim: ObjectId, submenus: [BuildingSubmenuResponse]) {
         self.id = id
         self.name = name
         self.claim = claim
@@ -82,11 +83,11 @@ extension BuildingMenuResponse: Decodable {
 public struct BuildingSubmenuResponse {
     public let id: String
     public let name: String
-    public let claim: String?
+    public let claim: ObjectId?
     public let link: String
     public let newTab: Bool?
     
-    public init(id: String, name: String, claim: String, link: String, newTab: Bool?) {
+    public init(id: String, name: String, claim: ObjectId, link: String, newTab: Bool?) {
         self.id = id
         self.name = name
         self.claim = claim
