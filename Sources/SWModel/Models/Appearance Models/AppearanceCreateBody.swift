@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct AppearanceCreateBody {
+public struct AppearanceCreateBody: Codable {
     public var name: String
     public var prefix: String?
     public var suffix: String?
@@ -19,5 +19,3 @@ public struct AppearanceCreateBody {
     public var backgroundColor: String?
     public var isExpanded: Bool?
 }
-
-extension AppearanceCreateBody: Encodable {}
