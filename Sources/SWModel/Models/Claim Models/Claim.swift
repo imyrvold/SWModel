@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct Claim: Codable, Hashable, Identifiable, SidebarItemable {
-    public let id: String
+    public let id: ObjectId?
     public var name: String
     public var updatedAt: Date
     public var createdAt: Date
@@ -18,7 +19,7 @@ public struct Claim: Codable, Hashable, Identifiable, SidebarItemable {
         .claims
     }
 
-    public init(id: String, name: String, createdAt: Date, updatedAt: Date, deletedAt: Date?) {
+    public init(id: ObjectId?, name: String, createdAt: Date, updatedAt: Date, deletedAt: Date?) {
         self.id = id
         self.name = name
         self.createdAt = createdAt
@@ -43,10 +44,10 @@ extension Claim: Comparable {
 public extension Claim {
     static var empty: Claim {
         let date = Date()
-        return Claim(id: "", name: "", createdAt: date, updatedAt: date, deletedAt: nil)
+        return Claim(id: nil, name: "", createdAt: date, updatedAt: date, deletedAt: nil)
     }
     
     var isEmpty: Bool {
-        return self.id.isEmpty || name.isEmpty
+        return self.id == nil || name.isEmpty
     }
 }

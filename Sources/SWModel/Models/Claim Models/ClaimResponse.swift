@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct ClaimResponse: Decodable {
-    public let id: String
+    public let id: ObjectId
     public let name: String
     public let createdAt: String
     public let updatedAt: String
