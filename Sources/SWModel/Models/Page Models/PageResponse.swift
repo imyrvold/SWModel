@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BSON
 
 public struct PageResponse {
     public let id: String
@@ -16,11 +17,11 @@ public struct PageResponse {
     public let logo: String?
     public let company: String?
     public let elements: [String]
-    public let claim: String
+    public let claim: ObjectId
     public let style: String?
     public var claims: [Claim] = []
     
-    public init(id: String, name: String, title: String, label: String?, logo: String?, company: String?, elements: [String], claim: String, style: String?, claims: [Claim]) {
+    public init(id: String, name: String, title: String, label: String?, logo: String?, company: String?, elements: [String], claim: ObjectId, style: String?, claims: [Claim]) {
         self.id = id
         self.name = name
         self.title = title
@@ -34,17 +35,4 @@ public struct PageResponse {
     }
 
 }
-extension PageResponse: Decodable {
-    public enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case title
-        case label
-        case logo
-        case company
-        case elements
-        case claim
-        case style
-        case claims
-    }
-}
+extension PageResponse: Decodable {}
