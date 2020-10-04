@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import BSON
 
 public struct SubmenuCreateBody: Encodable {
     public let name: String
-    public let claim: String
+    public let claim: ObjectId
     public let link: String
     public let newTab: Bool?
     
-    public init(name: String, claim: String, link: String, newTab: Bool?) {
+    public init(name: String, claim: ObjectId, link: String, newTab: Bool?) {
         self.name = name
         self.claim = claim
         self.link = link
