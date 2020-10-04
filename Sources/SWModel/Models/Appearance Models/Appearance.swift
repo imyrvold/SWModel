@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import BSON
 
 public struct Appearance: Codable, Equatable, SidebarItemable {
     public static func == (lhs: Appearance, rhs: Appearance) -> Bool {
         return lhs.id == rhs.id
     }
     
-    public let id: String
+    public let id: ObjectId?
     public var name: String
     public var prefix: String?
     public var suffix: String?
