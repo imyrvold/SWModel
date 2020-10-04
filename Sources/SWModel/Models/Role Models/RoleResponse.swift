@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct RoleResponse: Codable {
     public let id: String
     public let name: String
-    public var claims: [String]
+    public var claims: [ObjectId]
 }
