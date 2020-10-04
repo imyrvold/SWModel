@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BSON
 
 public struct TagResponse {
     public var id: String
@@ -22,10 +23,10 @@ public struct TagResponse {
     public var alarm: Alarm?
     public var actionID: String?
     public var claimID: String
-    public var appearanceID: String?
+    public var appearanceID: ObjectId?
     public var behaviourID: String?
     
-    public init(id: String, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: String, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: String, appearanceID: String?, behaviourID: String?) {
+    public init(id: String, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: String, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: String, appearanceID: ObjectId?, behaviourID: String?) {
         self.id = id
         self.name = name
         self.type = type
