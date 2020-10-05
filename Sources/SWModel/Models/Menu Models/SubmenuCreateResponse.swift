@@ -10,13 +10,13 @@ import Foundation
 import BSON
 
 public struct SubmenuCreateResponse {
-    public let id: String
+    public let id: ObjectId
     public let name: String
     public let claim: ObjectId
     public let link: String
     public let newTab: Bool?
     
-    public init(id: String, name: String, claim: ObjectId, link: String, newTab: Bool?) {
+    public init(id: ObjectId, name: String, claim: ObjectId, link: String, newTab: Bool?) {
         self.id = id
         self.name = name
         self.claim = claim

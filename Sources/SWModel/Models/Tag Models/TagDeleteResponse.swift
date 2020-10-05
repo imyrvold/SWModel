@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct TagDeleteResponse {
-    public let id: String
+    public let id: ObjectId
     public var name: String
     public var type: String
     public var image: URL?
@@ -25,7 +26,7 @@ public struct TagDeleteResponse {
     public var appearanceID: String?
     public var behaviourID: String?
     
-    public init(id: String, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: String, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: String, appearanceID: String?, behaviourID: String?) {
+    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: String, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: String, appearanceID: String?, behaviourID: String?) {
         self.id = id
         self.name = name
         self.type = type

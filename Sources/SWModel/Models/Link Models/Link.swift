@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BSON
 
 public struct Link: Codable, Identifiable, SidebarItemable {
     public var name: String {
@@ -16,13 +17,13 @@ public struct Link: Codable, Identifiable, SidebarItemable {
         .links
     }
 
-    public let id: String
+    public let id: ObjectId?
     public var group: String
     public let label: String
     public let link: String
     public let newTab: Bool
     
-    public init(id: String, group: String, label: String, link: String, newTab: Bool) {
+    public init(id: ObjectId?, group: String, label: String, link: String, newTab: Bool) {
         self.id = id
         self.group = group
         self.label = label
@@ -33,7 +34,7 @@ public struct Link: Codable, Identifiable, SidebarItemable {
 
 public extension Link {
     static var empty: Link {
-        return Link(id: "", group: "", label: "", link: "", newTab: false)
+        return Link(id: nil, group: "", label: "", link: "", newTab: false)
     }
 }
 

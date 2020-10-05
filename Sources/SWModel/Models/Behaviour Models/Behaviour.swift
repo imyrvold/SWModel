@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BSON
 
 public enum Orientation: String, Codable {
     case leftToRight = "left-to-right"
@@ -19,7 +20,7 @@ public struct Behaviour: Codable, Equatable, SidebarItemable {
         return lhs.id == rhs.id
     }
     
-    public let id: String
+    public let id: ObjectId?
     public var name: String
     public var min: Int?
     public var max: Int?

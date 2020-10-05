@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import BSON
 
 public struct MenuResponse {
-    public let id: String
+    public let id: ObjectId
     public let name: String
     public let claim: Claim
     public var submenus: [SubmenuResponse] = []
     
-    public init(id: String, name: String, claim: Claim, submenus: [SubmenuResponse]) {
+    public init(id: ObjectId, name: String, claim: Claim, submenus: [SubmenuResponse]) {
         self.id = id
         self.name = name
         self.claim = claim

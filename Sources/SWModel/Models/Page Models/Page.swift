@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct Page: Identifiable, Hashable, SidebarItemable {
-    public let id: String
+    public let id: ObjectId?
     public var name: String
     public let title: String
     public let label: String?
@@ -24,7 +25,7 @@ public struct Page: Identifiable, Hashable, SidebarItemable {
         .pages
     }
 
-    public init(id: String, name: String, title: String, label: String?, claim: Claim, elements: [Element], logo: String?, company: Company?) {
+    public init(id: ObjectId?, name: String, title: String, label: String?, claim: Claim, elements: [Element], logo: String?, company: Company?) {
         self.id = id
         self.name = name
         self.title = title
@@ -63,6 +64,6 @@ extension Page: Comparable {
 
 public extension Page {
     static var empty: Page {
-        return Page(id: "", name: "", title: "", label: nil, claim: Claim.empty, elements: [], logo: nil, company: Company.empty)
+        return Page(id: nil, name: "", title: "", label: nil, claim: Claim.empty, elements: [], logo: nil, company: Company.empty)
     }
 }

@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct ElementResponse: Codable {
-   public  let id: String
+   public  let id: ObjectId
     public var name: String
     public var type: ElementType
     public var data: ElementData?

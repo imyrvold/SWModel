@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BSON
 
 public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable, SidebarItemable {
     public static func == (lhs: Role, rhs: Role) -> Bool {
@@ -17,14 +18,14 @@ public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable, Side
         lhs.name < rhs.name
     }
 
-    public let id: String
+    public let id: ObjectId?
     public var name: String
     public var claims: [Claim]
     public var menuName: NavigationItem {
         .roles
     }
 
-    public init(id: String, name: String, claims: [Claim]) {
+    public init(id: ObjectId?, name: String, claims: [Claim]) {
         self.id = id
         self.name = name
         self.claims = claims
@@ -39,6 +40,6 @@ public struct Role: Codable, Comparable, Identifiable, Hashable, Equatable, Side
 
 public extension Role {
     static var empty: Role {
-        return Role(id: "", name: "", claims: [])
+        return Role(id: nil, name: "", claims: [])
     }
 }

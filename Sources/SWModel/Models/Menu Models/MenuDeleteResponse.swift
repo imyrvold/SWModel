@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import BSON
 
 public struct MenuDeleteResponse {
-    public let id: String
+    public let id: ObjectId
     public let name: String
     public let claim: String
     
-    public init(id: String, name: String, claim: String) {
+    public init(id: ObjectId, name: String, claim: String) {
         self.id = id
         self.name = name
         self.claim = claim

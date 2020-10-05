@@ -10,7 +10,7 @@ import Foundation
 import BSON
 
 public struct BuildingResponse {
-    public let id: String
+    public let id: ObjectId?
     public let name: String
     public let address: String?
     public let imageUrl: String?
@@ -22,7 +22,7 @@ public struct BuildingResponse {
     public let claim: ObjectId
     public let company: String?
     
-    public init(id: String, name: String, address: String?, imageUrl: String?, index: String?, pages: [String]?, menus: [BuildingMenuResponse]?, links: [Link]?, position: Int?,
+    public init(id: ObjectId, name: String, address: String?, imageUrl: String?, index: String?, pages: [String]?, menus: [BuildingMenuResponse]?, links: [Link]?, position: Int?,
         claim: ObjectId, company: String?) {
         self.id = id
         self.name = name
@@ -57,12 +57,12 @@ extension BuildingResponse: Decodable {
 }
 
 public struct BuildingMenuResponse {
-    public let id: String
+    public let id: ObjectId
     public let name: String
     public let claim: ObjectId
     public var submenus: [BuildingSubmenuResponse] = []
     
-    public init(id: String, name: String, claim: ObjectId, submenus: [BuildingSubmenuResponse]) {
+    public init(id: ObjectId, name: String, claim: ObjectId, submenus: [BuildingSubmenuResponse]) {
         self.id = id
         self.name = name
         self.claim = claim
@@ -81,13 +81,13 @@ extension BuildingMenuResponse: Decodable {
 }
 
 public struct BuildingSubmenuResponse {
-    public let id: String
+    public let id: ObjectId
     public let name: String
     public let claim: ObjectId?
     public let link: String
     public let newTab: Bool?
     
-    public init(id: String, name: String, claim: ObjectId, link: String, newTab: Bool?) {
+    public init(id: ObjectId, name: String, claim: ObjectId, link: String, newTab: Bool?) {
         self.id = id
         self.name = name
         self.claim = claim

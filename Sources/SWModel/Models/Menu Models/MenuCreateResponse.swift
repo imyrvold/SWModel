@@ -10,12 +10,12 @@ import Foundation
 import BSON
 
 public struct MenuCreateResponse {
-    public let id: String
+    public let id: ObjectId
     public let name: String
     public let claim: ObjectId
     public var submenus: [SubmenuCreateResponse] = []
     
-    public init(id: String, name: String, claim: ObjectId, submenus: [SubmenuCreateResponse]) {
+    public init(id: ObjectId, name: String, claim: ObjectId, submenus: [SubmenuCreateResponse]) {
         self.id = id
         self.name = name
         self.claim = claim

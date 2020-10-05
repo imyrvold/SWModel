@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct Building: Identifiable, SidebarItemable {
-    public let id: String
+    public let id: ObjectId?
     public var name: String
     public let address: String?
     public let imageUrl: URL?
@@ -43,7 +44,7 @@ extension Building: Codable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
+        self.id = try? container.decode(ObjectId.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.address = try? container.decode(String.self, forKey: .address)
         if let imageUrlStr = try? container.decode(String.self, forKey: .imageUrl) {
@@ -60,7 +61,7 @@ extension Building: Codable {
         self.company = try? container.decode(Company.self, forKey: .company)
     }
     
-    public init(id: String, name: String, address: String?, imageUrl: URL?, index: Page?, pages: [Page]?, menus: [Menu]?, links: [Link]?, position: Int?, claim: Claim, company: Company?) {
+    public init(id: ObjectId, name: String, address: String?, imageUrl: URL?, index: Page?, pages: [Page]?, menus: [Menu]?, links: [Link]?, position: Int?, claim: Claim, company: Company?) {
         self.id = id
         self.name = name
         self.address = address
@@ -93,5 +94,5 @@ extension Building: Comparable {
 
 public extension Building {
     static var empty: Building {
-        return Building(id: "", name: "", address: nil, imageUrl: nil, index: nil, pages: nil, menus: nil, links: nil, position: nil, claim: Claim.empty, company: nil)   }
+        return Building(id: nil, name: "", address: nil, imageUrl: nil, index: nil, pages: nil, menus: nil, links: nil, position: nil, claim: Claim.empty, company: nil)   }
 }

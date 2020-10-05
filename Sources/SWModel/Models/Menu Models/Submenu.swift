@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import BSON
 
 public struct Submenu: Codable, Identifiable {
-    public var id: String
+    public var id: ObjectId?
     public var name: String
     public let claim: Claim
     public let link: String
     public let newTab: Bool?
     
-    public init(id: String, name: String, claim: Claim, link: String, newTab: Bool?) {
+    public init(id: ObjectId, name: String, claim: Claim, link: String, newTab: Bool?) {
         self.id = id
         self.name = name
         self.claim = claim

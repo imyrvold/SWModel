@@ -7,13 +7,14 @@
 //
 
 import Foundation
+import BSON
 
 public struct Company: Codable, Identifiable, SidebarItemable {
     public var name: String {
         title
     }
     
-    public let id: String
+    public let id: ObjectId?
     public let title: String
     public var icons: [CompanyIcon] = []
     public let logo: String?
@@ -24,7 +25,7 @@ public struct Company: Codable, Identifiable, SidebarItemable {
         .companies
     }
 
-    public init(id: String, title: String, icons: [CompanyIcon], logo: String?, def: Bool, buildingTabName: String?, buildingUrl: String?) {
+    public init(id: ObjectId?, title: String, icons: [CompanyIcon], logo: String?, def: Bool, buildingTabName: String?, buildingUrl: String?) {
         self.id = id
         self.title = title
         self.icons = icons
@@ -59,6 +60,6 @@ extension Company: Comparable {
 
 extension Company {
     public static var empty: Company {
-        return Company(id: "", title: "", icons: [], logo: nil, def: false, buildingTabName: nil, buildingUrl: nil)
+        return Company(id: nil, title: "", icons: [], logo: nil, def: false, buildingTabName: nil, buildingUrl: nil)
     }
 }

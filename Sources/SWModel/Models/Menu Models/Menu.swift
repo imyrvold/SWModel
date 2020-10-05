@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct Menu: Codable, Identifiable, Hashable, SidebarItemable {
-    public let id: String
+    public let id: ObjectId?
     public var name: String
     public let claim: Claim
     public let submenus: [Submenu]
@@ -27,7 +28,7 @@ public struct Menu: Codable, Identifiable, Hashable, SidebarItemable {
         case submenus
     }
     
-    public init(id: String, name: String, claim: Claim, submenus: [Submenu]) {
+    public init(id: ObjectId?, name: String, claim: Claim, submenus: [Submenu]) {
         self.id = id
         self.name = name
         self.claim = claim
@@ -50,10 +51,10 @@ extension Menu: Comparable {
 
 public extension Menu {
     static var empty: Menu {
-        return Menu(id: "", name: "", claim: Claim.empty, submenus: [])
+        return Menu(id: nil, name: "", claim: Claim.empty, submenus: [])
     }
     
     var isEmpty: Bool {
-        return id.isEmpty && name.isEmpty && claim.isEmpty && submenus.isEmpty
+        return id == nil && name.isEmpty && claim.isEmpty && submenus.isEmpty
     }
 }

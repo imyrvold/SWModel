@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BSON
 
 public enum TagValueType: String, CaseIterable, Codable {
     case text
@@ -98,7 +99,7 @@ public enum Alarm: Int, Codable {
 }
 
 final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
-    public let id: String
+    public let id: ObjectId?
     public var name: String
     public var type: String
     public var image: URL?
@@ -138,7 +139,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     }
     
     
-    public init(id: String, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: Building, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: Tag?, claim: Claim, appearance: Appearance?, behaviour: Behaviour?) {
+    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: Building, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: Tag?, claim: Claim, appearance: Appearance?, behaviour: Behaviour?) {
         self.id = id
         self.name = name
         self.type = type
@@ -173,7 +174,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
+        self.id = try? container.decode(ObjectId.self, forKey: .id)
         self.name = try container.decode(String.self, forKey: .name)
         self.type = try container.decode(String.self, forKey: .type)
         if let imageStr = try? container.decode(String.self, forKey: .image) {

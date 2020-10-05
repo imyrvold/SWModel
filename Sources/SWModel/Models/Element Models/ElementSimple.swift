@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import BSON
 
 public struct ElementSimple: Hashable, Identifiable {
     
-    public let id: String?
+    public let id: ObjectId?
     public var name: String
     public var type: ElementType
     public var data: String?

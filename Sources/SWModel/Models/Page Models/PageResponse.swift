@@ -10,18 +10,18 @@ import Foundation
 import BSON
 
 public struct PageResponse {
-    public let id: String
+    public let id: ObjectId
     public let name: String
     public let title: String
     public let label: String?
     public let logo: String?
-    public let company: String?
-    public let elements: [String]
+    public let company: ObjectId?
+    public let elements: [ObjectId]
     public let claim: ObjectId
     public let style: String?
     public var claims: [Claim] = []
     
-    public init(id: String, name: String, title: String, label: String?, logo: String?, company: String?, elements: [String], claim: ObjectId, style: String?, claims: [Claim]) {
+    public init(id: ObjectId, name: String, title: String, label: String?, logo: String?, company: ObjectId?, elements: [ObjectId], claim: ObjectId, style: String?, claims: [Claim]) {
         self.id = id
         self.name = name
         self.title = title

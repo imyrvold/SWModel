@@ -7,20 +7,21 @@
 //
 
 import Foundation
+import BSON
 
 public struct PageDeleteResponse {
-    public let id: String
+    public let id: ObjectId
     public let name: String
     public let title: String
     public let label: String?
     public let logo: String?
-    public let company: String?
+    public let company: ObjectId?
     public let elements: [Element]
-    public let claim: String
+    public let claim: ObjectId
     public let style: String?
     public var claims: [Claim] = []
     
-    public init(id: String, name: String, title: String, label: String?, logo: String?, company: String?, elements: [Element], claim: String, style: String?, claims: [Claim]) {
+    public init(id: ObjectId, name: String, title: String, label: String?, logo: String?, company: ObjectId?, elements: [Element], claim: ObjectId, style: String?, claims: [Claim]) {
         self.id = id
         self.name = name
         self.title = title

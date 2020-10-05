@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct Icon: Identifiable, CustomStringConvertible, SidebarItemable {
-    public let id: String
+    public let id: ObjectId?
     public var name: String
     public var icons: [SubIcon] = []
     public var menuName: NavigationItem {
