@@ -14,16 +14,16 @@ public struct BuildingResponse {
     public let name: String
     public let address: String?
     public let imageUrl: String?
-    public let index: String?
-    public let pages: [String]?
-    public let menus: [BuildingMenuResponse]?
-    public let links: [Link]?
+    public let index: ObjectId?
+    public let pages: [ObjectId]?
+    public let menus: [ObjectId]?
+    public let links: [ObjectId]?
     public let position: Int?
     public let claim: ObjectId
-    public let company: String?
+    public let company: ObjectId?
     
-    public init(id: ObjectId, name: String, address: String?, imageUrl: String?, index: String?, pages: [String]?, menus: [BuildingMenuResponse]?, links: [Link]?, position: Int?,
-        claim: ObjectId, company: String?) {
+    public init(id: ObjectId, name: String, address: String?, imageUrl: String?, index: ObjectId?, pages: [ObjectId]?, menus: [ObjectId]?, links: [ObjectId]?, position: Int?,
+        claim: ObjectId, company: ObjectId?) {
         self.id = id
         self.name = name
         self.address = address
