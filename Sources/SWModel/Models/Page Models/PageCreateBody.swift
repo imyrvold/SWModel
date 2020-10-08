@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BSON
 
 public struct PageCreateBody: Encodable {
     public let name: String
@@ -14,11 +15,11 @@ public struct PageCreateBody: Encodable {
     public let label: String?
     public let logo: String?
     public let company: String?
-    public let elements: [String]
+    public let elements: [ObjectId]
     public let claim: Claim
     public let style: String?
     
-    public init(name: String, title: String, label: String?, logo: String?, company: String?, elements: [String], claim: Claim, style: String?) {
+    public init(name: String, title: String, label: String?, logo: String?, company: String?, elements: [ObjectId], claim: Claim, style: String?) {
         self.name = name
         self.title = title
         self.label = label
