@@ -13,15 +13,15 @@ public struct BuildingCreateBody: Encodable {
     let name: String
     let address: String?
     let imageUrl: String?
-    let index: String?
+    let index: ObjectId?
     let pages: [ObjectId]?
     let menus: [ObjectId]?
-    let links: [Link]?
+    let links: [ObjectId]?
     let position: Int?
     let claim: ObjectId
     let company: ObjectId?
     
-    public init(name: String, address: String?, imageUrl: String?, index: String?, pages: [ObjectId]?, menus: [ObjectId]?, links: [Link]?, position: Int?,
+    public init(name: String, address: String?, imageUrl: String?, index: ObjectId?, pages: [ObjectId]?, menus: [ObjectId]?, links: [ObjectId]?, position: Int?,
         claim: ObjectId, company: ObjectId?) {
         self.name = name
         self.address = address
