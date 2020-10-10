@@ -21,12 +21,12 @@ public struct TagResponse {
     public var link: URL?
     public var sortIndex: Int?
     public var alarm: Alarm?
-    public var actionID: String?
+    public var actionID: ObjectId?
     public var claimID: ObjectId
     public var appearanceID: ObjectId?
     public var behaviourID: ObjectId?
     
-    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: ObjectId, appearanceID: ObjectId?, behaviourID: ObjectId?) {
+    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: ObjectId?, claimID: ObjectId, appearanceID: ObjectId?, behaviourID: ObjectId?) {
         self.id = id
         self.name = name
         self.type = type
