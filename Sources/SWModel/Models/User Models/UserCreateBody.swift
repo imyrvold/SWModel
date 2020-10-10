@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import BSON
 
 public struct UserCreateBody: Encodable {
     public var fullName: String
     public var email: String
     public var password: String
-    public var role: String
+    public var role: ObjectId
     public var isHidden: Bool
     
-    public init(fullName: String, email: String, password: String, role: String, isHidden: Bool) {
+    public init(fullName: String, email: String, password: String, role: ObjectId, isHidden: Bool) {
         self.fullName = fullName
         self.email = email
         self.password = password
