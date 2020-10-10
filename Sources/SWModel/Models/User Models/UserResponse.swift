@@ -6,11 +6,12 @@
 //
 
 import Foundation
+import BSON
 
 public struct UserResponse: Codable {
-    public let id: String
+    public let id: ObjectId
     public let fullName: String
     public let email: String
     public let isHidden: Bool
-    public var role: String
+    public var role: ObjectId
 }
