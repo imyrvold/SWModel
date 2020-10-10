@@ -78,7 +78,7 @@ public extension Appearance {
     }
     
     var isEmpty: Bool {
-        self.id == nil || name.isEmpty
+        name.isEmpty
     }
 }
 

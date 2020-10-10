@@ -47,6 +47,6 @@ public extension Behaviour {
         return Behaviour(id: nil, name: "", min: nil, max: nil, numberOfDecimals: nil, orientation: nil, options: nil, updatedAt: date, createdAt: date, deletedAt: nil)
     }
     var isEmpty: Bool {
-        self.id == nil || name.isEmpty
+        name.isEmpty
     }
 }
