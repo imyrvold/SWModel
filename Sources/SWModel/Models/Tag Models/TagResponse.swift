@@ -16,7 +16,7 @@ public struct TagResponse {
     public var image: URL?
     public var value: String
     public var valueType: TagValueType
-    public var buildingID: String
+    public var buildingID: ObjectId
     public var group: String?
     public var link: URL?
     public var sortIndex: Int?
@@ -24,9 +24,9 @@ public struct TagResponse {
     public var actionID: String?
     public var claimID: ObjectId
     public var appearanceID: ObjectId?
-    public var behaviourID: String?
+    public var behaviourID: ObjectId?
     
-    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: String, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: ObjectId, appearanceID: ObjectId?, behaviourID: String?) {
+    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: ObjectId, appearanceID: ObjectId?, behaviourID: ObjectId?) {
         self.id = id
         self.name = name
         self.type = type
@@ -45,22 +45,4 @@ public struct TagResponse {
     }
 
 }
-extension TagResponse: Decodable {
-    public enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case type
-        case image
-        case value
-        case valueType
-        case buildingID
-        case group
-        case link
-        case sortIndex
-        case alarm
-        case actionID
-        case claimID
-        case appearanceID
-        case behaviourID
-    }
-}
+extension TagResponse: Decodable {}
