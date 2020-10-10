@@ -7,24 +7,18 @@
 //
 
 import Foundation
+import BSON
+
 public struct UserUpdateResponse: Decodable {
-    public let id: String
+    public let id: ObjectId
     public var fullName: String
     public var email: String
-    public var role: String
+    public var role: ObjectId
     
-    public init(id: String, fullName: String, email: String, role: String) {
+    public init(id: ObjectId, fullName: String, email: String, role: ObjectId) {
         self.id = id
         self.fullName = fullName
         self.email = email
         self.role = role
-    }
-
-    
-    public enum CodingKeys: String, CodingKey {
-        case id
-        case fullName
-        case email
-        case role
     }
 }
