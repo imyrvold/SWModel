@@ -7,15 +7,16 @@
 //
 
 import Foundation
+import BSON
 
 public struct UserCreateResponse: Decodable {
-    public let id: String
+    public let id: ObjectId
     public var email: String
     public var fullName: String
     public var isHidden: Bool
-    public var role: String
+    public var role: ObjectId
     
-    public init(id: String, email: String, fullName: String, isHidden: Bool, role: String) {
+    public init(id: ObjectId, email: String, fullName: String, isHidden: Bool, role: ObjectId) {
         self.id = id
         self.email = email
         self.fullName = fullName
