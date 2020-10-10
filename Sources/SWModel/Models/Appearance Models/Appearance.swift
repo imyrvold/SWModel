@@ -76,4 +76,9 @@ public extension Appearance {
         let date = Date()
         return Appearance(id: nil, name: "", prefix: nil, suffix: nil, size: nil, holderSize: nil, textSize: nil, selectionColor: nil, backgroundColor: nil, isExpanded: nil, updatedAt: date, createdAt: date, deletedAt: nil)
     }
+    
+    var isEmpty: Bool {
+        self.id == nil || name.isEmpty
+    }
 }
+
