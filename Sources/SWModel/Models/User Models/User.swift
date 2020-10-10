@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import BSON
 
 public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringConvertible, SidebarItemable {
     public var menuName: NavigationItem {
@@ -25,17 +26,17 @@ public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringCo
         return lhs.id == rhs.id
     }
     
-    public let id: String
+    public let id: ObjectId?
     public var fullName: String
     public var email: String
     public var role: Role
     public var isHidden: Bool? = false
     
     public static var empty: User {
-        User(id: "", fullName: "", email: "", role: Role.empty)
+        User(id: nil, fullName: "", email: "", role: Role.empty)
     }
     
-    public init(id: String, fullName: String, email: String, role: Role, isHidden: Bool = false) {
+    public init(id: ObjectId?, fullName: String, email: String, role: Role, isHidden: Bool = false) {
         self.id = id
         self.fullName = fullName
         self.email = email
@@ -52,7 +53,13 @@ public struct User: Codable, Equatable, Comparable, Identifiable, CustomStringCo
     }
     
     public var description: String {
-        return "id: \(id) fullName: \(fullName), email: \(email), role: \(role)"
+        let userId: String
+        if let id = self.id {
+            userId = id.hexString
+        } else {
+            userId = ""
+        }
+        return "id: \(userId) fullName: \(fullName), email: \(email), role: \(role)"
     }
     
 }
