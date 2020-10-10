@@ -7,14 +7,15 @@
 //
 
 import Foundation
+import BSON
 
 public struct UserDeleted: Codable {
-    public let id: String
+    public let id: ObjectId
     public var fullName: String
     public var email: String
-    public var role: String
+    public var role: ObjectId
     
-    public init(id: String, fullName: String, email: String, role: String) {
+    public init(id: ObjectId, fullName: String, email: String, role: ObjectId) {
         self.id = id
         self.fullName = fullName
         self.email = email
