@@ -27,24 +27,23 @@ public struct Behaviour: Codable, Equatable, SidebarItemable {
     public var numberOfDecimals: Int?
     public var orientation: Orientation?
     public var options: [String]?
+    public var updatedAt: Date
+    public var createdAt: Date
+    public var deletedAt: Date?
     public var menuName: NavigationItem {
         .behaviours
-    }
-
-    public enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case min
-        case max
-        case numberOfDecimals
-        case orientation
-        case options
-    }
-    
+    }    
 }
 
 extension Behaviour: Comparable {
     public static func < (lhs: Behaviour, rhs: Behaviour) -> Bool {
         return lhs.name < rhs.name
+    }
+}
+
+public extension Behaviour {
+    static var empty: Behaviour {
+        let date = Date()
+        return Behaviour(id: nil, name: "", min: nil, max: nil, numberOfDecimals: nil, orientation: nil, options: nil, updatedAt: date, createdAt: date, deletedAt: nil)
     }
 }
