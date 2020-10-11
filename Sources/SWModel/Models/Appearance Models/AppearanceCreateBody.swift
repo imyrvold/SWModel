@@ -31,3 +31,4 @@ public struct AppearanceCreateBody: Codable {
         self.isExpanded = isExpanded
     }
 }
+

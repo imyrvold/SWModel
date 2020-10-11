@@ -16,7 +16,7 @@ public struct BehaviourCreateBody: Encodable {
     public var orientation: Orientation?
     public var options: [String]?
     
-    public init(name: String, min: Int?, max: Int?, numberOfDecimals: Int?, orientation: Orientation?, options: [String]?) {
+    public init(name: String, min: Int? = nil, max: Int? = nil, numberOfDecimals: Int? = nil, orientation: Orientation? = nil, options: [String]? = nil) {
         self.name = name
         self.min = min
         self.max = max
