@@ -9,7 +9,7 @@
 import Foundation
 import BSON
 
-public struct Appearance: Codable, Equatable, SidebarItemable {
+public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
     public static func == (lhs: Appearance, rhs: Appearance) -> Bool {
         return lhs.id == rhs.id
     }

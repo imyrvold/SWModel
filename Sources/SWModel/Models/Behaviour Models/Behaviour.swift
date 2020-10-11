@@ -15,7 +15,7 @@ public enum Orientation: String, Codable {
 }
 
 
-public struct Behaviour: Codable, Equatable, SidebarItemable {
+public struct Behaviour: Codable, Identifiable, Equatable, SidebarItemable {
     public static func == (lhs: Behaviour, rhs: Behaviour) -> Bool {
         return lhs.id == rhs.id
     }
