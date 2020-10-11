@@ -19,7 +19,7 @@ public struct AppearanceCreateBody: Codable {
     public var backgroundColor: String?
     public var isExpanded: Bool?
     
-    init(name: String, prefix: String? = nil, suffix: String? = nil, size: Int? = nil, holderSize: Int? = nil, textSize: Double? = nil, selectionColor: String? = nil, backgroundColor: String? = nil, isExpanded: Bool? = nil) {
+    public init(name: String, prefix: String? = nil, suffix: String? = nil, size: Int? = nil, holderSize: Int? = nil, textSize: Double? = nil, selectionColor: String? = nil, backgroundColor: String? = nil, isExpanded: Bool? = nil) {
         self.name = name
         self.prefix = prefix
         self.suffix = suffix
