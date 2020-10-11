@@ -30,5 +30,17 @@ public struct AppearanceCreateBody: Codable {
         self.backgroundColor = backgroundColor
         self.isExpanded = isExpanded
     }
+    
+    public func clear() {
+        self.name = ""
+        self.prefix = nil
+        self.suffix = nil
+        self.size = nil
+        self.holderSize = nil
+        self.textSize = nil
+        self.selectionColor = nil
+        self.backgroundColor = nil
+        self.isExpanded = nil
+    }
 }
 
