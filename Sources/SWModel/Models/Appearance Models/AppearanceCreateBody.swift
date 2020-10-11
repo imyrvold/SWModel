@@ -31,7 +31,7 @@ public struct AppearanceCreateBody: Codable {
         self.isExpanded = isExpanded
     }
     
-    public func clear() {
+     public mutating func clear() {
         self.name = ""
         self.prefix = nil
         self.suffix = nil
