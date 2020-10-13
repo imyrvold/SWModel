@@ -19,4 +19,7 @@ public struct AppearanceResponse: Codable {
     public var selectionColor: String?
     public var backgroundColor: String?
     public var isExpanded: Bool?
+    public let createdAt: String
+    public let updatedAt: String
+    public let deletedAt: String?
 }
