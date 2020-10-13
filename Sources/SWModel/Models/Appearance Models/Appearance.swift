@@ -30,6 +30,22 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
     public var menuName: NavigationItem {
         .appearances
     }
+    
+    public init(id: ObjectId?, name: String, prefix: String?, suffix: String?, size: Int?, holderSize: Int?, textSize: Double?, selectionColor: String?, backgroundColor: String?, isExpanded: Bool?, createdAt: Date, updatedAt: Date, deletedAt: Date?) {
+        self.id = id
+        self.name = name
+        self.prefix = prefix
+        self.suffix = suffix
+        self.size = size
+        self.holderSize = holderSize
+        self.textSize = textSize
+        self.selectionColor = selectionColor
+        self.backgroundColor = backgroundColor
+        self.isExpanded = isExpanded
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.deletedAt = deletedAt
+    }
 }
 
 extension Appearance: CustomStringConvertible {
@@ -74,7 +90,7 @@ extension Appearance: Comparable {
 public extension Appearance {
     static var empty: Appearance {
         let date = Date()
-        return Appearance(id: nil, name: "", prefix: nil, suffix: nil, size: nil, holderSize: nil, textSize: nil, selectionColor: nil, backgroundColor: nil, isExpanded: nil, updatedAt: date, createdAt: date, deletedAt: nil)
+        return Appearance(id: nil, name: "", prefix: nil, suffix: nil, size: nil, holderSize: nil, textSize: nil, selectionColor: nil, backgroundColor: nil, isExpanded: nil, createdAt: date, updatedAt: date, deletedAt: nil)
     }
     
     var isEmpty: Bool {
