@@ -8,7 +8,7 @@
 import Foundation
 import BSON
 
-public struct AppearanceResponse: Codable {
+public struct AppearanceResponse: Decodable {
     public let id: ObjectId?
     public let name: String
     public var prefix: String?
