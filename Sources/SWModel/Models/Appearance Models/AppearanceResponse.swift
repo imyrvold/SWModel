@@ -19,11 +19,11 @@ public struct AppearanceResponse: Codable {
     public var selectionColor: String?
     public var backgroundColor: String?
     public var isExpanded: Bool?
-    public let createdAt: Date
-    public let updatedAt: Date
+    public let createdAt: Date?
+    public let updatedAt: Date?
     public let deletedAt: Date?
     
-    init(id: ObjectId?, name: String, prefix: String?, suffix: String?, size: Int?, holderSize: Int?, textSize: Double?, selectionColor: String?, backgroundColor: String?, isExpanded: Bool?, createdAt: Date, updatedAt: Date, deletedAt: Date?) {
+    init(id: ObjectId?, name: String, prefix: String?, suffix: String?, size: Int?, holderSize: Int?, textSize: Double?, selectionColor: String?, backgroundColor: String?, isExpanded: Bool?, createdAt: Date?, updatedAt: Date?, deletedAt: Date?) {
         self.id = id
         self.name = name
         self.prefix = prefix
