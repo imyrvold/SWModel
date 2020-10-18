@@ -40,6 +40,7 @@ public struct AppearanceResponse: Codable {
     }
     
     public init(from appearance: Appearance) {
+        print("AppearanceResponse id:", appearance.id)
         self.init(id: appearance.id, name: appearance.name, prefix: appearance.prefix, suffix: appearance.suffix, size: appearance.size, holderSize: appearance.holderSize, textSize: appearance.textSize, selectionColor: appearance.selectionColor, backgroundColor: appearance.backgroundColor, isExpanded: appearance.isExpanded, createdAt: appearance.createdAt, updatedAt: appearance.updatedAt, deletedAt: appearance.deletedAt)
     }
 }
