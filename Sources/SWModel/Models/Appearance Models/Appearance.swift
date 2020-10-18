@@ -24,14 +24,14 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
     public var selectionColor: String?
     public var backgroundColor: String?
     public var isExpanded: Bool?
-    public var updatedAt: Date
-    public var createdAt: Date
+    public var updatedAt: Date?
+    public var createdAt: Date?
     public var deletedAt: Date?
     public var menuName: NavigationItem {
         .appearances
     }
     
-    public init(id: ObjectId?, name: String, prefix: String?, suffix: String?, size: Int?, holderSize: Int?, textSize: Double?, selectionColor: String?, backgroundColor: String?, isExpanded: Bool?, createdAt: Date, updatedAt: Date, deletedAt: Date?) {
+    public init(id: ObjectId?, name: String, prefix: String?, suffix: String?, size: Int?, holderSize: Int?, textSize: Double?, selectionColor: String?, backgroundColor: String?, isExpanded: Bool?, createdAt: Date?, updatedAt: Date?, deletedAt: Date?) {
         self.id = id
         self.name = name
         self.prefix = prefix
