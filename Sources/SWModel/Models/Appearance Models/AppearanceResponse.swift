@@ -9,7 +9,7 @@ import Foundation
 import BSON
 
 public struct AppearanceResponse: Decodable {
-    public let id: ObjectId?
+    public let id: ObjectId
     public let name: String
     public var prefix: String?
     public var suffix: String?
