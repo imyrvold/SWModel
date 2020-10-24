@@ -98,3 +98,8 @@ public extension Appearance {
     }
 }
 
+extension Appearance {
+    public init(with appearanceResponse: AppearanceResponse) {
+        self.init(id: appearanceResponse.id, name: appearanceResponse.name, prefix: appearanceResponse.prefix, suffix: appearanceResponse.suffix, size: appearanceResponse.size, holderSize: appearanceResponse.holderSize, textSize: appearanceResponse.textSize, selectionColor: appearanceResponse.selectionColor, backgroundColor: appearanceResponse.backgroundColor, isExpanded: appearanceResponse.isExpanded, createdAt: appearanceResponse.createdAt, updatedAt: appearanceResponse.updatedAt, deletedAt: appearanceResponse.deletedAt)
+    }
+}
