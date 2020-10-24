@@ -39,41 +39,7 @@ public struct AppearanceResponse: Codable {
         self.deletedAt = deletedAt
     }
     
-    public init(from decoder: Decoder) throws {
-        print("AppearanceResponse init 1")
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        print("AppearanceResponse init 2")
-        self.id = try? container.decode(ObjectId.self, forKey: .id)
-        print("AppearanceResponse init 3")
-        self.name = try container.decode(String.self, forKey: .name)
-        print("AppearanceResponse init 4")
-        self.prefix = try? container.decode(String.self, forKey: .prefix)
-        print("AppearanceResponse init 5")
-        self.suffix = try? container.decode(String.self, forKey: .suffix)
-        print("AppearanceResponse init 6")
-        self.size = try? container.decode(Int.self, forKey: .size)
-        print("AppearanceResponse init 7")
-        self.holderSize = try? container.decode(Int.self, forKey: .holderSize)
-        print("AppearanceResponse init 8")
-        self.textSize = try? container.decode(Double.self, forKey: .textSize)
-        print("AppearanceResponse init 9")
-        self.selectionColor = try? container.decode(String.self, forKey: .selectionColor)
-        print("AppearanceResponse init 10")
-        self.backgroundColor = try? container.decode(String.self, forKey: .backgroundColor)
-        print("AppearanceResponse init 11")
-        self.isExpanded = try? container.decode(Bool.self, forKey: .isExpanded)
-        print("AppearanceResponse init 12")
-        self.createdAt = try? container.decode(Date.self, forKey: .createdAt)
-        print("AppearanceResponse init 13")
-        self.updatedAt = try? container.decode(Date.self, forKey: .updatedAt)
-        print("AppearanceResponse init 14")
-        self.deletedAt = try? container.decode(Date.self, forKey: .deletedAt)
-        print("AppearanceResponse init 15")
-    }
-
-    
     public init(from appearance: Appearance) {
-        print("AppearanceResponse id:", appearance.id)
         self.init(id: appearance.id, name: appearance.name, prefix: appearance.prefix, suffix: appearance.suffix, size: appearance.size, holderSize: appearance.holderSize, textSize: appearance.textSize, selectionColor: appearance.selectionColor, backgroundColor: appearance.backgroundColor, isExpanded: appearance.isExpanded, createdAt: appearance.createdAt, updatedAt: appearance.updatedAt, deletedAt: appearance.deletedAt)
     }
 }
