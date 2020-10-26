@@ -7,7 +7,8 @@
 
 import Foundation
 
-public struct AppearanceUpdateBody: Codable {
+public struct AppearanceUpdateBody: Codable, CustomDebugStringConvertible {
+    
     public var name: String?
     public var prefix: String?
     public var suffix: String?
@@ -40,5 +41,42 @@ public struct AppearanceUpdateBody: Codable {
         self.selectionColor = nil
         self.backgroundColor = nil
         self.isExpanded = nil
+    }
+
+    public var debugDescription: String {
+        let name = self.name ?? "nil"
+        let prefix = self.prefix ?? "nil"
+        let suffix = self.suffix ?? "nil"
+        let sizeString: String
+        if let size = self.size {
+            sizeString = String(size)
+        } else {
+            sizeString = "nil"
+        }
+        let holderSizeString: String
+        if let holderSize = self.holderSize {
+            holderSizeString = String(holderSize)
+        } else {
+            holderSizeString = "nil"
+        }
+        let textSizeString: String
+        if let textSize = self.textSize {
+            let numberFormatter = NumberFormatter()
+            numberFormatter.numberStyle = .decimal
+            numberFormatter.maximumFractionDigits = 1
+            textSizeString = numberFormatter.string(from: NSNumber(value: textSize)) ?? "nil"
+        } else {
+            textSizeString = "nil"
+        }
+        let selectionColor = self.selectionColor ?? "nil"
+        let backgroundColor = self.backgroundColor ?? "nil"
+        let isExpandedString: String
+        if let isExpanded = self.isExpanded {
+            isExpandedString = String(isExpanded)
+        } else {
+            isExpandedString = "nil"
+        }
+        
+        return "name: \(name) prefix: \(prefix) suffix: \(suffix) size: \(sizeString) holderSize: \(holderSizeString) textSize: \(textSizeString) selectionColor: \(selectionColor) backgroundColor: \(backgroundColor) isExpanded: \(isExpandedString)"
     }
 }
