@@ -19,17 +19,17 @@ public struct AppearanceUpdateBody: Codable, CustomDebugStringConvertible {
     public var backgroundColor: String?
     public var isExpanded: Bool?
     
-//    public init(name: String?, prefix: String? = nil, suffix: String? = nil, size: Int? = nil, holderSize: Int? = nil, textSize: Double? = nil, selectionColor: String? = nil, backgroundColor: String? = nil, isExpanded: Bool? = nil) {
-//        self.name = name
-//        self.prefix = prefix
-//        self.suffix = suffix
-//        self.size = size
-//        self.holderSize = holderSize
-//        self.textSize = textSize
-//        self.selectionColor = selectionColor
-//        self.backgroundColor = backgroundColor
-//        self.isExpanded = isExpanded
-//    }
+    public init(name: String?, prefix: String? = nil, suffix: String? = nil, size: Int? = nil, holderSize: Int? = nil, textSize: Double? = nil, selectionColor: String? = nil, backgroundColor: String? = nil, isExpanded: Bool? = nil) {
+        self.name = name
+        self.prefix = prefix
+        self.suffix = suffix
+        self.size = size
+        self.holderSize = holderSize
+        self.textSize = textSize
+        self.selectionColor = selectionColor
+        self.backgroundColor = backgroundColor
+        self.isExpanded = isExpanded
+    }
     
      public mutating func clear() {
         self.name = nil
