@@ -16,14 +16,14 @@ public struct AppearanceResponse: Codable {
     public var size: Int?
     public var holderSize: Int?
     public var textSize: Double?
-    public var selectionColor: String?
-    public var backgroundColor: String?
+    public var selectionColor: AppearanceColor?
+    public var backgroundColor: AppearanceColor?
     public var isExpanded: Bool?
     public let createdAt: Date?
     public let updatedAt: Date?
     public let deletedAt: Date?
     
-    init(id: ObjectId?, name: String, prefix: String?, suffix: String?, size: Int?, holderSize: Int?, textSize: Double?, selectionColor: String?, backgroundColor: String?, isExpanded: Bool?, createdAt: Date?, updatedAt: Date?, deletedAt: Date?) {
+    init(id: ObjectId?, name: String, prefix: String?, suffix: String?, size: Int?, holderSize: Int?, textSize: Double?, selectionColor: AppearanceColor?, backgroundColor: AppearanceColor?, isExpanded: Bool?, createdAt: Date?, updatedAt: Date?, deletedAt: Date?) {
         self.id = id
         self.name = name
         self.prefix = prefix
@@ -48,8 +48,8 @@ public struct AppearanceResponse: Codable {
         self.size = try? container.decode(Int.self, forKey: .size)
         self.holderSize = try? container.decode(Int.self, forKey: .holderSize)
         self.textSize = try? container.decode(Double.self, forKey: .textSize)
-        self.selectionColor = try? container.decode(String.self, forKey: .selectionColor)
-        self.backgroundColor = try? container.decode(String.self, forKey: .backgroundColor)
+        self.selectionColor = try? container.decode(AppearanceColor.self, forKey: .selectionColor)
+        self.backgroundColor = try? container.decode(AppearanceColor.self, forKey: .backgroundColor)
         self.isExpanded = try? container.decode(Bool.self, forKey: .isExpanded)
         self.createdAt = try? container.decode(Date.self, forKey: .createdAt)
         self.updatedAt = try? container.decode(Date.self, forKey: .updatedAt)

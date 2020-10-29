@@ -9,6 +9,11 @@
 import Foundation
 import BSON
 
+public struct AppearanceColor: Codable {
+    let lightColor: String
+    let darkColor: String
+}
+
 public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
     public static func == (lhs: Appearance, rhs: Appearance) -> Bool {
         return lhs.id == rhs.id
@@ -21,8 +26,8 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
     public var size: Int?
     public var holderSize: Int?
     public var textSize: Double?
-    public var selectionColor: String?
-    public var backgroundColor: String?
+    public var selectionColor: AppearanceColor?
+    public var backgroundColor: AppearanceColor?
     public var isExpanded: Bool?
     public var updatedAt: Date?
     public var createdAt: Date?
@@ -31,7 +36,7 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
         .appearances
     }
     
-    public init(id: ObjectId?, name: String, prefix: String?, suffix: String?, size: Int?, holderSize: Int?, textSize: Double?, selectionColor: String?, backgroundColor: String?, isExpanded: Bool?, createdAt: Date?, updatedAt: Date?, deletedAt: Date?) {
+    public init(id: ObjectId?, name: String, prefix: String?, suffix: String?, size: Int?, holderSize: Int?, textSize: Double?, selectionColor: AppearanceColor?, backgroundColor: AppearanceColor?, isExpanded: Bool?, createdAt: Date?, updatedAt: Date?, deletedAt: Date?) {
         self.id = id
         self.name = name
         self.prefix = prefix
@@ -51,7 +56,7 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
 extension Appearance: CustomStringConvertible {
     public var description: String {
         let id = self.id
-        var description = "id: \(id) name: \(self.name)"
+        var description = "id: \(id?.hexString ?? "") name: \(self.name)"
         if let prefix = self.prefix {
             description.append(" prefix: \(prefix)")
         }
