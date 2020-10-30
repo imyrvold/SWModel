@@ -31,31 +31,7 @@ public struct AppearanceCreateBody: Codable {
         self.isExpanded = isExpanded
     }
     
-    public init(from decoder: Decoder) throws {
-        print("AppearanceCreateBody init from decoder 1")
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        print("AppearanceCreateBody init from decoder 2")
-        self.name = try container.decode(String.self, forKey: .name)
-        print("AppearanceCreateBody init from decoder 3")
-        self.prefix = try? container.decode(String.self, forKey: .prefix)
-        print("AppearanceCreateBody init from decoder 4")
-        self.suffix = try? container.decode(String.self, forKey: .suffix)
-        print("AppearanceCreateBody init from decoder 5")
-        self.size = try? container.decode(Int.self, forKey: .size)
-        print("AppearanceCreateBody init from decoder 6")
-        self.holderSize = try? container.decode(Int.self, forKey: .holderSize)
-        print("AppearanceCreateBody init from decoder 7")
-        self.textSize = try? container.decode(Double.self, forKey: .textSize)
-        print("AppearanceCreateBody init from decoder 8")
-        self.selectionColor = try? container.decode(AppearanceColor.self, forKey: .selectionColor)
-        print("AppearanceCreateBody init from decoder 9")
-        self.backgroundColor = try? container.decode(AppearanceColor.self, forKey: .backgroundColor)
-        print("AppearanceCreateBody init from decoder 10")
-        self.isExpanded = try? container.decode(Bool.self, forKey: .isExpanded)
-        print("AppearanceCreateBody init from decoder 11")
-    }
-
-     public mutating func clear() {
+    public mutating func clear() {
         self.name = ""
         self.prefix = nil
         self.suffix = nil
