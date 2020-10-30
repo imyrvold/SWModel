@@ -31,7 +31,7 @@ public struct AppearanceCreateBody: Codable {
         self.isExpanded = isExpanded
     }
     
-    private init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         print("AppearanceCreateBody init from decoder 1")
         let container = try decoder.container(keyedBy: CodingKeys.self)
         print("AppearanceCreateBody init from decoder 2")
