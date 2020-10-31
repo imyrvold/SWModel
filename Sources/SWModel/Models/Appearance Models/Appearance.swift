@@ -10,8 +10,8 @@ import Foundation
 import BSON
 
 public struct AppearanceColor: Codable, Equatable {
-    let lightColor: String
-    let darkColor: String
+    public let lightColor: String
+    public let darkColor: String
 }
 
 public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
