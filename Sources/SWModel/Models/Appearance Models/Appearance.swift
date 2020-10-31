@@ -10,8 +10,11 @@ import Foundation
 import BSON
 
 public struct AppearanceColor: Codable, Equatable {
-    public let lightColor: String
-    public let darkColor: String
+    public var lightColor: String
+    public var darkColor: String
+    public var isEmpty: Bool {
+        lightColor == "#ffffff" && darkColor == "#000000"
+    }
     
     public init(lightColor: String, darkColor: String) {
         self.lightColor = lightColor
