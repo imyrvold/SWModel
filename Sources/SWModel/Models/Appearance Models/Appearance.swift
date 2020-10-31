@@ -19,6 +19,12 @@ public struct AppearanceColor: Codable, Equatable {
     }
 }
 
+public extension AppearanceColor {
+    static var empty: AppearanceColor {
+        AppearanceColor(lightColor: "#ffffff", darkColor: "#000000")
+    }
+}
+
 public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
     public static func == (lhs: Appearance, rhs: Appearance) -> Bool {
         return lhs.id == rhs.id
