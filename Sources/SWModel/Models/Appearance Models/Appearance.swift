@@ -9,7 +9,7 @@
 import Foundation
 import BSON
 
-public struct AppearanceColor: Codable {
+public struct AppearanceColor: Codable, Equatable {
     let lightColor: String
     let darkColor: String
 }
