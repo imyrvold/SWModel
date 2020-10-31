@@ -12,6 +12,11 @@ import BSON
 public struct AppearanceColor: Codable, Equatable {
     public let lightColor: String
     public let darkColor: String
+    
+    public init(lightColor: String, darkColor: String) {
+        self.lightColor = lightColor
+        self.darkColor = darkColor
+    }
 }
 
 public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
