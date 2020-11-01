@@ -95,7 +95,13 @@ extension Appearance: CustomStringConvertible {
         if let isExpanded = self.isExpanded {
             description.append(" isExpanded: \(isExpanded)")
         }
-        
+        if let createdAt = self.createdAt {
+            description.append(" createdAt:", createdAt)
+        }
+        if let updatedAt = self.updatedAt {
+            description.append(" updatedAt:", updatedAt)
+        }
+
         return description
     }
 }
