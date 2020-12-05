@@ -132,31 +132,59 @@ extension Appearance {
 // Used when want to return nil when value is empty
 public extension Appearance {
     var modifiedPrefix: String? {
-        self.prefix?.isEmpty ? nil : self.prefix
+        if let prefix = self.prefix {
+            return prefix.isEmpty ? nil : prefix
+        } else {
+            return nil
+        }
     }
     
     var modifiedSuffix: String? {
-        self.suffix?.isEmpty ? nil : self.suffix
+        if let suffix = self.suffix {
+            return suffix.isEmpty ? nil : suffix
+        } else {
+            return nil
+        }
     }
     
     var modifiedSize: Int? {
-        self.size <= 0 ? nil : self.size
+        if let size = self.size {
+            return size <= 0 ? nil : size
+        } else {
+            return nil
+        }
     }
     
     var modifiedHolderSize: Int? {
-        self.holderSize <= 0 ? nil : self.holderSize
+        if let holderSize = self.holderSize {
+            return holderSize <= 0 ? nil : holderSize
+        } else {
+            return nil
+        }
     }
     
     var modifiedTextSize: Double? {
-        self.textSize <= 0 ? nil : self.textSize
+        if let textSize = self.textSize {
+            return textSize <= 0 ? nil : textSize
+        } else {
+            return nil
+        }
     }
     
     var modifiedSelectionColor: AppearanceColor? {
-        self.selectionColor?.isEmpty ? nil : self.selectionColor
+        if let selectionColor = self.selectionColor {
+            return selectionColor.isEmpty ? nil : selectionColor
+        } else {
+            return nil
+        }
     }
     
     var modifiedBackgroundColor: AppearanceColor? {
-        self.backgroundColor?.isEmpty ? nil : self.backgroundColor
+        if let backgroundColor = self.backgroundColor {
+            return backgroundColor.isEmpty ? nil : backgroundColor
+        } else {
+            return nil
+        }
     }
 }
 
