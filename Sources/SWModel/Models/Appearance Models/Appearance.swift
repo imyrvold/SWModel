@@ -128,3 +128,65 @@ extension Appearance {
         self.init(id: appearanceResponse.id, name: appearanceResponse.name, prefix: appearanceResponse.prefix, suffix: appearanceResponse.suffix, size: appearanceResponse.size, holderSize: appearanceResponse.holderSize, textSize: appearanceResponse.textSize, selectionColor: appearanceResponse.selectionColor, backgroundColor: appearanceResponse.backgroundColor, isExpanded: appearanceResponse.isExpanded, createdAt: appearanceResponse.createdAt, updatedAt: appearanceResponse.updatedAt, deletedAt: appearanceResponse.deletedAt)
     }
 }
+
+// Used when want to return nil when value is empty
+public extension Appearance {
+    var modifiedPrefix: String? {
+        self.prefix?.isEmpty ? nil : self.prefix
+    }
+    
+    var modifiedSuffix: String? {
+        self.suffix?.isEmpty ? nil : self.suffix
+    }
+    
+    var modifiedSize: Int? {
+        self.size <= 0 ? nil : self.size
+    }
+    
+    var modifiedHolderSize: Int? {
+        self.holderSize <= 0 ? nil : self.holderSize
+    }
+    
+    var modifiedTextSize: Double? {
+        self.textSize <= 0 ? nil : self.textSize
+    }
+    
+    var modifiedSelectionColor: AppearanceColor? {
+        self.selectionColor?.isEmpty ? nil : self.selectionColor
+    }
+    
+    var modifiedBackgroundColor: AppearanceColor? {
+        self.backgroundColor?.isEmpty ? nil : self.backgroundColor
+    }
+}
+
+// Used when prepare for editing in TextField
+public extension Appearance {
+    var editPrefix: String {
+        self.prefix ?? ""
+    }
+    
+    var editSuffix: String {
+        self.suffix ?? ""
+    }
+    
+    var editSize: Int {
+        self.size ?? 0
+    }
+    
+    var editHolderSize: Int {
+        self.holderSize ?? 0
+    }
+    
+    var editTextSize: Double {
+        self.textSize ?? 0
+    }
+    
+    var editSelectionColor: AppearanceColor {
+        self.selectionColor ?? AppearanceColor.empty
+    }
+    
+    var editBackgroundColor: AppearanceColor {
+        self.backgroundColor ?? AppearanceColor.empty
+    }
+}
