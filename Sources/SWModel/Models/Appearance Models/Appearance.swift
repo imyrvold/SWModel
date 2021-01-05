@@ -39,7 +39,7 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
     public var suffix: String?
     public var size: Int? {
         didSet {
-            print("Appearance didSet size:", size ?? )
+            print("Appearance didSet size:", size ?? 0)
         }
     }
     public var holderSize: Int?
