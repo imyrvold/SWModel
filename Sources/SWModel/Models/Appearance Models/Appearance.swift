@@ -64,7 +64,6 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.deletedAt = deletedAt
-        print("Appearance init size:", size ?? 0)
     }
 }
 
