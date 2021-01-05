@@ -37,7 +37,11 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
     public var name: String
     public var prefix: String?
     public var suffix: String?
-    public var size: Int?
+    public var size: Int? {
+        didSet {
+            print("Appearance didSet size:", size ?? )
+        }
+    }
     public var holderSize: Int?
     public var textSize: Double?
     public var selectionColor: AppearanceColor?
