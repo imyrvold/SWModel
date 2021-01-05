@@ -37,11 +37,7 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
     public var name: String
     public var prefix: String?
     public var suffix: String?
-    public var size: Int? {
-        didSet {
-            print("Appearance didSet size:", size ?? 0)
-        }
-    }
+    public var size: Int?
     public var holderSize: Int?
     public var textSize: Double?
     public var selectionColor: AppearanceColor?
@@ -68,6 +64,7 @@ public struct Appearance: Codable, Identifiable, Equatable, SidebarItemable {
         self.createdAt = createdAt
         self.updatedAt = updatedAt
         self.deletedAt = deletedAt
+        print("Appearance init size:", size ?? 0)
     }
 }
 
