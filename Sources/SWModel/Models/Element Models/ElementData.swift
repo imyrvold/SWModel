@@ -303,46 +303,46 @@ extension ElementData: Encodable {
     }
 }
 
-//extension ElementData: Decodable {
-//    public init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: CodingKeys.self)
-//        let key = container.allKeys.first
-//        print("ElementData init key:", key)
-//
-//        switch key {
-//        case .tagGroup:
-//            print("ElementData init tagGroup")
-//            let tagGroupData = try container.decode(TagGroupData.self, forKey: .tagGroup)
-//            self = .tagGroup(tagGroupData)
-//        case .tagList:
-//            print("ElementData init tagList")
-//            let tagListData = try container.decode(TagListData.self, forKey: .tagList)
-//            self = .tagList(tagListData)
-//        case .image:
-//            print("ElementData init image")
-//            let imageData = try container.decode(ImageData.self, forKey: .image)
-//            self = .image(imageData)
-//        case .iframe:
-//            print("ElementData init iframe")
-//            let iframeData = try container.decode(IframeData.self, forKey: .iframe)
-//            self = .iframe(iframeData)
-//        case .alarmList:
-//            print("ElementData init alarmList")
-//            let alarmListData = try container.decode(AlarmListData.self, forKey: .alarmList)
-//            self = .alarmList(alarmListData)
-//        case .alarmLogList:
-//            print("ElementData init alarmLogList")
-//            let alarmLogListData = try container.decode(AlarmLogListData.self, forKey: .alarmLogList)
-//            self = .alarmLogList(alarmLogListData)
-//        case .unsupported:
-//            print("ElementData init unsupported")
-//            self = .unsupported
-//        case .none:
-//            print("ElementData init none")
-//            self = .unsupported
-//        }
-//    }
-//}
+extension ElementData: Decodable {
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let key = container.allKeys.first
+        print("ElementData init key:", key)
+
+        switch key {
+        case .tagGroup:
+            print("ElementData init tagGroup")
+            let tagGroupData = try container.decode(TagGroupData.self, forKey: .tagGroup)
+            self = .tagGroup(tagGroupData)
+        case .tagList:
+            print("ElementData init tagList")
+            let tagListData = try container.decode(TagListData.self, forKey: .tagList)
+            self = .tagList(tagListData)
+        case .image:
+            print("ElementData init image")
+            let imageData = try container.decode(ImageData.self, forKey: .image)
+            self = .image(imageData)
+        case .iframe:
+            print("ElementData init iframe")
+            let iframeData = try container.decode(IframeData.self, forKey: .iframe)
+            self = .iframe(iframeData)
+        case .alarmList:
+            print("ElementData init alarmList")
+            let alarmListData = try container.decode(AlarmListData.self, forKey: .alarmList)
+            self = .alarmList(alarmListData)
+        case .alarmLogList:
+            print("ElementData init alarmLogList")
+            let alarmLogListData = try container.decode(AlarmLogListData.self, forKey: .alarmLogList)
+            self = .alarmLogList(alarmLogListData)
+        case .unsupported:
+            print("ElementData init unsupported")
+            self = .unsupported
+        case .none:
+            print("ElementData init none")
+            self = .unsupported
+        }
+    }
+}
 
 public struct TagGroupData: Codable, Equatable {
     public let dataSpan: Int?
