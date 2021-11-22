@@ -276,7 +276,7 @@ extension ElementData: Equatable {
 
 extension ElementData {
     enum CodingKeys: CodingKey {
-        case tagGroup, tagList, image, iframe, alarmList, alarmLogList, unsupported
+        case tagGroup, tagList, image, iframe, alarmList, alarmLogList, dataSpan, dataGridArea, subelements, groupName, dataImageUrl, dataspan, fitImage, dataUrl, dataHeight, buildingId, refreshRate, unsupported
     }
 }
 
@@ -286,17 +286,23 @@ extension ElementData: Encodable {
         
         switch self {
         case .tagGroup(let tagGroupData):
-            try container.encode(tagGroupData, forKey: .tagGroup)
+            try container.encode(tagGroupData.dataSpan, forKey: .dataSpan)
+            try container.encode(tagGroupData.dataGridArea, forKey: .dataGridArea)
+            try container.encode(tagGroupData.subelements, forKey: .subelements)
         case .tagList(let tagListData):
-            try container.encode(tagListData, forKey: .tagList)
+            try container.encode(tagListData.groupName, forKey: .groupName)
         case .image(let imageData):
-            try container.encode(imageData, forKey: .image)
+            try container.encode(imageData.dataImageUrl, forKey: .dataImageUrl)
+            try container.encode(imageData.dataSpan, forKey: .dataSpan)
+            try container.encode(imageData.fitImage, forKey: .fitImage)
         case .iframe(let iframeData):
-            try container.encode(iframeData, forKey: .iframe)
+            try container.encode(iframeData.dataUrl, forKey: .dataUrl)
+            try container.encode(iframeData.dataHeight, forKey: .dataHeight)
         case .alarmList(let alarmListData):
-            try container.encode(alarmListData, forKey: .alarmList)
+            try container.encode(alarmListData.buildingId, forKey: .buildingId)
+            try container.encode(alarmListData.refreshRate, forKey: .refreshRate)
         case .alarmLogList(let alarmLogListData):
-            try container.encode(alarmLogListData, forKey: .alarmLogList)
+            try container.encode(alarmLogListData.buildingId, forKey: .buildingId)
         case .unsupported:
             try container.encode(true, forKey: .unsupported)
         }
@@ -334,10 +340,7 @@ extension ElementData: Decodable {
             print("ElementData init alarmLogList")
             let alarmLogListData = try container.decode(AlarmLogListData.self, forKey: .alarmLogList)
             self = .alarmLogList(alarmLogListData)
-        case .unsupported:
-            print("ElementData init unsupported")
-            self = .unsupported
-        case .none:
+        default:
             print("ElementData init none")
             self = .unsupported
         }
