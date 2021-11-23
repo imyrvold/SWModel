@@ -309,7 +309,7 @@ extension ElementData: Encodable {
     }
 }
 
-extension ElementData: Decodable {
+extension ElementData/*: Decodable*/ {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let key = container.allKeys.first
