@@ -276,7 +276,7 @@ extension ElementData: Equatable {
 
 extension ElementData {
     enum CodingKeys: CodingKey {
-        case tagGroup, tagList, image, iframe, alarmList, alarmLogList, dataSpan, dataGridArea, subelements, groupName, dataImageUrl, dataspan, fitImage, dataUrl, dataHeight, buildingId, refreshRate, unsupported
+        case tagGroup, tagList, image, iframe, alarmList, alarmLogList, unsupported
     }
 }
 
@@ -286,62 +286,50 @@ extension ElementData: Encodable {
         
         switch self {
         case .tagGroup(let tagGroupData):
-            try container.encode(tagGroupData.dataSpan, forKey: .dataSpan)
-            try container.encode(tagGroupData.dataGridArea, forKey: .dataGridArea)
-            try container.encode(tagGroupData.subelements, forKey: .subelements)
+            try container.encode(tagGroupData, forKey: .tagGroup)
         case .tagList(let tagListData):
-            try container.encode(tagListData.groupName, forKey: .groupName)
+            try container.encode(tagListData, forKey: .tagList)
         case .image(let imageData):
-            try container.encode(imageData.dataImageUrl, forKey: .dataImageUrl)
-            try container.encode(imageData.dataSpan, forKey: .dataSpan)
-            try container.encode(imageData.fitImage, forKey: .fitImage)
+            try container.encode(imageData, forKey: .image)
         case .iframe(let iframeData):
-            try container.encode(iframeData.dataUrl, forKey: .dataUrl)
-            try container.encode(iframeData.dataHeight, forKey: .dataHeight)
+            try container.encode(iframeData, forKey: .iframe)
         case .alarmList(let alarmListData):
-            try container.encode(alarmListData.buildingId, forKey: .buildingId)
-            try container.encode(alarmListData.refreshRate, forKey: .refreshRate)
+            try container.encode(alarmListData, forKey: .alarmList)
         case .alarmLogList(let alarmLogListData):
-            try container.encode(alarmLogListData.buildingId, forKey: .buildingId)
+            try container.encode(alarmLogListData, forKey: .alarmLogList)
         case .unsupported:
             try container.encode(true, forKey: .unsupported)
         }
     }
 }
 
-extension ElementData/*: Decodable*/ {
+extension ElementData: Decodable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let key = container.allKeys.first
-        print("ElementData init key:", key)
-
+        
         switch key {
         case .tagGroup:
-            print("ElementData init tagGroup")
             let tagGroupData = try container.decode(TagGroupData.self, forKey: .tagGroup)
             self = .tagGroup(tagGroupData)
         case .tagList:
-            print("ElementData init tagList")
             let tagListData = try container.decode(TagListData.self, forKey: .tagList)
             self = .tagList(tagListData)
         case .image:
-            print("ElementData init image")
             let imageData = try container.decode(ImageData.self, forKey: .image)
             self = .image(imageData)
         case .iframe:
-            print("ElementData init iframe")
             let iframeData = try container.decode(IframeData.self, forKey: .iframe)
             self = .iframe(iframeData)
         case .alarmList:
-            print("ElementData init alarmList")
             let alarmListData = try container.decode(AlarmListData.self, forKey: .alarmList)
             self = .alarmList(alarmListData)
         case .alarmLogList:
-            print("ElementData init alarmLogList")
             let alarmLogListData = try container.decode(AlarmLogListData.self, forKey: .alarmLogList)
             self = .alarmLogList(alarmLogListData)
-        default:
-            print("ElementData init none")
+        case .unsupported:
+            self = .unsupported
+        case .none:
             self = .unsupported
         }
     }
