@@ -8,7 +8,7 @@
 import Foundation
 import BSON
 
-public struct ClaimResponse: Decodable {
+public struct ClaimResponse: Codable {
     public let id: ObjectId
     public let name: String
     public let createdAt: String
