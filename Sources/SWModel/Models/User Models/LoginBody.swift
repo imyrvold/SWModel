@@ -17,7 +17,7 @@ public struct LoginBody: Encodable {
     }
 }
 
-extension LoginBody {
+public extension LoginBody {
     func httpBody() throws -> Data {
         try JSONEncoder().encode(self)
     }
