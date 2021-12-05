@@ -14,5 +14,10 @@ public struct ClaimCreateBody: Encodable {
     public init(name: String) {
         self.name = name
     }
+}
 
+public extension ClaimCreateBody {
+    func httpBody() throws -> Data {
+        try JSONEncoder().encode(self)
+    }
 }

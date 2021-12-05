@@ -24,13 +24,29 @@ public extension ClaimResponse {
         let updatedAt: String
         let deletedAt: String?
     }
+    
+    static func claimJson(from response: ClaimResponse) -> ClaimJson {
+        ClaimJson(id: response.id.hexString, name: response.name, createdAt: response.createdAt, updatedAt: response.updatedAt, deletedAt: response.deletedAt)
+    }
 
     static func json(from response: [ClaimResponse]) throws -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let claimsOutput = response.map { ClaimJson(id: $0.id.hexString, name: $0.name, createdAt: $0.createdAt, updatedAt: $0.updatedAt, deletedAt: $0.deletedAt) }
+        let claimsOutput = response.map { Self.claimJson(from: $0) }
         
         let claimsData = try encoder.encode(claimsOutput)
+        if let json = String(data: claimsData, encoding: .utf8) {
+            return json
+        }
+        return "Couldn't convert response to JSON"
+    }
+
+    static func json(from response: ClaimResponse) throws -> String {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let claimOutput = Self.claimJson(from: response)
+        
+        let claimsData = try encoder.encode(claimOutput)
         if let json = String(data: claimsData, encoding: .utf8) {
             return json
         }
