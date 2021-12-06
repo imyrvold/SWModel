@@ -11,16 +11,16 @@ import BSON
 public struct ClaimResponseLegacy: Codable {
     public let id: ObjectId
     public let name: String
-    public let createdAt: String
-    public let updatedAt: String
-    public let deletedAt: String?
+    public let createdOn: String
+    public let updatedOn: String
+    public let deletedOn: String?
     
     public enum CodingKeys: String, CodingKey {
         case id = "_id"
         case name
-        case createdAt
-        case updatedAt
-        case deletedAt
+        case createdOn
+        case updatedOn
+        case deletedOn
     }
 }
 
@@ -28,13 +28,13 @@ public extension ClaimResponseLegacy {
     struct ClaimJson: Encodable {
         let id: String
         let name: String
-        let createdAt: String
-        let updatedAt: String
-        let deletedAt: String?
+        let createdOn: String
+        let updatedOn: String
+        let deletedOn: String?
     }
     
     static func claimJson(from response: ClaimResponseLegacy) -> ClaimJson {
-        ClaimJson(id: response.id.hexString, name: response.name, createdAt: response.createdAt, updatedAt: response.updatedAt, deletedAt: response.deletedAt)
+        ClaimJson(id: response.id.hexString, name: response.name, createdOn: response.createdOn, updatedOn: response.updatedOn, deletedOn: response.deletedOn)
     }
 
     static func json(from response: [ClaimResponseLegacy]) throws -> String {
