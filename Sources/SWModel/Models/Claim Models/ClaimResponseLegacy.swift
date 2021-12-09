@@ -25,7 +25,7 @@ public struct ClaimResponseLegacy: Codable {
 }
 
 public extension ClaimResponseLegacy {
-    struct ClaimJson: Encodable {
+    struct Claim: Encodable {
         let id: String
         let name: String
         let createdOn: String
@@ -33,14 +33,17 @@ public extension ClaimResponseLegacy {
         let deletedOn: String?
     }
     
-    static func claimJson(from response: ClaimResponseLegacy) -> ClaimJson {
-        ClaimJson(id: response.id.hexString, name: response.name, createdOn: response.createdOn, updatedOn: response.updatedOn, deletedOn: response.deletedOn)
+    static func claimResponse(from response: ClaimResponseLegacy) -> Claim {
+        Claim(id: response.id.hexString, name: response.name, createdOn: response.createdOn, updatedOn: response.updatedOn, deletedOn: response.deletedOn)
+    }
+    static func claimsResponse(from response: [ClaimResponseLegacy]) -> [Claim] {
+        response.map { Claim(id: $0.id.hexString, name: $0.name, createdOn: $0.createdOn, updatedOn: $0.updatedOn, deletedOn: $0.deletedOn) }
     }
 
     static func json(from response: [ClaimResponseLegacy]) throws -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let claimsOutput = response.map { Self.claimJson(from: $0) }
+        let claimsOutput = response.map { Self.claimResponse(from: $0) }
         
         let claimsData = try encoder.encode(claimsOutput)
         if let json = String(data: claimsData, encoding: .utf8) {
@@ -52,7 +55,7 @@ public extension ClaimResponseLegacy {
     static func json(from response: ClaimResponseLegacy) throws -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let claimOutput = Self.claimJson(from: response)
+        let claimOutput = Self.claimResponse(from: response)
         
         let claimsData = try encoder.encode(claimOutput)
         if let json = String(data: claimsData, encoding: .utf8) {

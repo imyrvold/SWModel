@@ -17,7 +17,7 @@ public struct ClaimResponse: Codable {
 }
 
 public extension ClaimResponse {
-    struct ClaimJson: Encodable {
+    struct Claim: Encodable {
         let id: String
         let name: String
         let createdAt: String
@@ -25,14 +25,14 @@ public extension ClaimResponse {
         let deletedAt: String?
     }
     
-    static func claimJson(from response: ClaimResponse) -> ClaimJson {
-        ClaimJson(id: response.id.hexString, name: response.name, createdAt: response.createdAt, updatedAt: response.updatedAt, deletedAt: response.deletedAt)
+    static func claimResponse(from response: ClaimResponse) -> Claim {
+        Claim(id: response.id.hexString, name: response.name, createdAt: response.createdAt, updatedAt: response.updatedAt, deletedAt: response.deletedAt)
     }
 
     static func json(from response: [ClaimResponse]) throws -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let claimsOutput = response.map { Self.claimJson(from: $0) }
+        let claimsOutput = response.map { Self.claimResponse(from: $0) }
         
         let claimsData = try encoder.encode(claimsOutput)
         if let json = String(data: claimsData, encoding: .utf8) {
@@ -44,7 +44,7 @@ public extension ClaimResponse {
     static func json(from response: ClaimResponse) throws -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
-        let claimOutput = Self.claimJson(from: response)
+        let claimOutput = Self.claimResponse(from: response)
         
         let claimsData = try encoder.encode(claimOutput)
         if let json = String(data: claimsData, encoding: .utf8) {
