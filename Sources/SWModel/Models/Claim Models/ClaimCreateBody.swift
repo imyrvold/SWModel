@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct ClaimCreateBody: Encodable {
+    public var id: ObjectId?
     public var name: String
     
     public init(name: String) {
