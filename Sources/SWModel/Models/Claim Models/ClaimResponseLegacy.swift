@@ -26,11 +26,11 @@ public struct ClaimResponseLegacy: Codable {
 
 public extension ClaimResponseLegacy {
     struct Claim: Encodable {
-        let id: String
-        let name: String
-        let createdOn: String
-        let updatedOn: String
-        let deletedOn: String?
+        public let id: String
+        public let name: String
+        public let createdOn: String
+        public let updatedOn: String
+        public let deletedOn: String?
     }
     
     static func claimResponse(from response: ClaimResponseLegacy) -> Claim {
