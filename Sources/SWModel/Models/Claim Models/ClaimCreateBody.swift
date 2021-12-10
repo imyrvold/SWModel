@@ -13,7 +13,7 @@ public struct ClaimCreateBody: Encodable {
     public var id: ObjectId?
     public var name: String
     
-    public init(name: String) {
+    public init(id: ObjectId?, name: String) {
         self.name = name
     }
 }
