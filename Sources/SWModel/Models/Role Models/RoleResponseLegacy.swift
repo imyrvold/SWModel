@@ -2,22 +2,32 @@
 //  File.swift
 //  
 //
-//  Created by Ivan C Myrvold on 27/07/2020.
+//  Created by Ivan C Myrvold on 11/12/2021.
 //
 
 import Foundation
 import BSON
 
-public struct RoleResponse: Codable {
+public struct RoleResponseLegacy: Codable {
     public let id: ObjectId
     public let name: String
     public var claims: [ObjectId]
     public let createdOn: String
     public let updatedOn: String
     public let deletedOn: String?
+
+    
+    public enum CodingKeys: String, CodingKey {
+        case id = "_id"
+        case name
+        case claims
+        case createdOn
+        case updatedOn
+        case deletedOn
+    }
 }
 
-public extension RoleResponse {
+public extension RoleResponseLegacy {
     struct Role: Encodable {
         public let id: String
         public let name: String
@@ -27,19 +37,19 @@ public extension RoleResponse {
         public let deletedOn: String?
     }
 
-    static func roleResponse(from response: RoleResponse) -> Role {
+    static func roleResponse(from response: RoleResponseLegacy) -> Role {
         let claims = response.claims.map { $0.hexString }
         return Role(id: response.id.hexString, name: response.name, claims: claims, createdOn: response.createdOn, updatedOn: response.updatedOn, deletedOn: response.deletedOn)
     }
 
-    static func rolesResponse(from response: [RoleResponse]) -> [Role] {
-        response.map { roleResponse in
-            let claims = roleResponse.claims.map { $0.hexString }
-            return Role(id: roleResponse.id.hexString, name: roleResponse.name, claims: claims, createdOn: roleResponse.createdOn, updatedOn: roleResponse.updatedOn, deletedOn: roleResponse.deletedOn)
+    static func rolesResponse(from response: [RoleResponseLegacy]) -> [Role] {
+        response.map { roleResponseLegacy in
+            let claims = roleResponseLegacy.claims.map { $0.hexString }
+            return Role(id: roleResponseLegacy.id.hexString, name: roleResponseLegacy.name, claims: claims, createdOn: roleResponseLegacy.createdOn, updatedOn: roleResponseLegacy.updatedOn, deletedOn: roleResponseLegacy.deletedOn)
         }
     }
 
-    static func json(from response: [RoleResponse]) throws -> String {
+    static func json(from response: [RoleResponseLegacy]) throws -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         let rolesOutput = response.map { Self.roleResponse(from: $0) }
@@ -51,7 +61,7 @@ public extension RoleResponse {
         return "Couldn't convert response to JSON"
     }
 
-    static func json(from response: RoleResponse) throws -> String {
+    static func json(from response: RoleResponseLegacy) throws -> String {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         let roleOutput = Self.roleResponse(from: response)
