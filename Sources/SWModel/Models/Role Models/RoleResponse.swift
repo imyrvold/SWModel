@@ -12,9 +12,9 @@ public struct RoleResponse: Codable {
     public let id: ObjectId
     public let name: String
     public var claims: [ObjectId]
-    public let createdOn: String
-    public let updatedOn: String
-    public let deletedOn: String?
+    public let createdAT: String
+    public let updatedAt: String
+    public let deletedAt: String?
 }
 
 public extension RoleResponse {
@@ -22,20 +22,20 @@ public extension RoleResponse {
         public let id: String
         public let name: String
         public let claims: [String]
-        public let createdOn: String
-        public let updatedOn: String
-        public let deletedOn: String?
+        public let createdAt: String
+        public let updatedAt: String
+        public let deletedAt: String?
     }
 
     static func roleResponse(from response: RoleResponse) -> Role {
         let claims = response.claims.map { $0.hexString }
-        return Role(id: response.id.hexString, name: response.name, claims: claims, createdOn: response.createdOn, updatedOn: response.updatedOn, deletedOn: response.deletedOn)
+        return Role(id: response.id.hexString, name: response.name, claims: claims, createdAt: response.createdAt, updatedAt: response.updatedAt, deletedAt: response.deletedAt)
     }
 
     static func rolesResponse(from response: [RoleResponse]) -> [Role] {
         response.map { roleResponse in
             let claims = roleResponse.claims.map { $0.hexString }
-            return Role(id: roleResponse.id.hexString, name: roleResponse.name, claims: claims, createdOn: roleResponse.createdOn, updatedOn: roleResponse.updatedOn, deletedOn: roleResponse.deletedOn)
+            return Role(id: roleResponse.id.hexString, name: roleResponse.name, claims: claims, createdAt: roleResponse.createdAt, updatedAt: roleResponse.updatedAt, deletedAt: roleResponse.deletedAt)
         }
     }
 
