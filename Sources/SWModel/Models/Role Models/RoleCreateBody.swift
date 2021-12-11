@@ -18,3 +18,9 @@ public struct RoleCreateBody: Encodable {
         self.claims = claims
     }
 }
+
+public extension RoleCreateBody {
+    func httpBody() throws -> Data {
+        try JSONEncoder().encode(self)
+    }
+}
