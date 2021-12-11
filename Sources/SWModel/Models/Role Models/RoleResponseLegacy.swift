@@ -9,9 +9,18 @@ import Foundation
 import BSON
 
 public struct RoleResponseLegacy: Codable {
+    public struct ClaimResponseMinimum: Codable {
+        let id: ObjectId
+        let name: String
+        
+        public enum CodingKeys: String, CodingKey {
+            case id = "_id"
+            case name
+        }
+    }
     public let id: ObjectId
     public let name: String
-    public var claims: [ClaimResponseLegacy]
+    public var claims: [ClaimResponseMinimum]
     public let createdOn: String
     public let updatedOn: String
     public let deletedOn: String?
