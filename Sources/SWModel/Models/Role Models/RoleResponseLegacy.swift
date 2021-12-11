@@ -11,7 +11,7 @@ import BSON
 public struct RoleResponseLegacy: Codable {
     public let id: ObjectId
     public let name: String
-    public var claims: [ObjectId]
+    public var claims: [ClaimResponseLegacy]
     public let createdOn: String
     public let updatedOn: String
     public let deletedOn: String?
@@ -38,13 +38,13 @@ public extension RoleResponseLegacy {
     }
 
     static func roleResponse(from response: RoleResponseLegacy) -> Role {
-        let claims = response.claims.map { $0.hexString }
+        let claims = response.claims.map { $0.id.hexString }
         return Role(id: response.id.hexString, name: response.name, claims: claims, createdOn: response.createdOn, updatedOn: response.updatedOn, deletedOn: response.deletedOn)
     }
 
     static func rolesResponse(from response: [RoleResponseLegacy]) -> [Role] {
         response.map { roleResponseLegacy in
-            let claims = roleResponseLegacy.claims.map { $0.hexString }
+            let claims = roleResponseLegacy.claims.map { $0.id.hexString }
             return Role(id: roleResponseLegacy.id.hexString, name: roleResponseLegacy.name, claims: claims, createdOn: roleResponseLegacy.createdOn, updatedOn: roleResponseLegacy.updatedOn, deletedOn: roleResponseLegacy.deletedOn)
         }
     }
