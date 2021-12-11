@@ -12,7 +12,7 @@ public struct RoleResponse: Codable {
     public let id: ObjectId
     public let name: String
     public var claims: [ObjectId]
-    public let createdAT: String
+    public let createdAt: String
     public let updatedAt: String
     public let deletedAt: String?
 }
