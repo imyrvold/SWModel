@@ -13,7 +13,7 @@ public struct ElementResponseLegacy: Codable {
     public let name: String
     public let type: ElementType
     public var data: ElementData?
-    public var claim: Claim
+    public var claim: ClaimResponseLegacy
     public let createdOn: String
     public let updatedOn: String
     public let deletedOn: String?
