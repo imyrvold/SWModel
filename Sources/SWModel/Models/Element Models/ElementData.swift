@@ -427,7 +427,7 @@ public struct AlarmListData: Codable, Equatable {
 }
 
 public struct AlarmLogListData: Codable, Equatable {
-    public let buildingId: String
+    public let buildingId: String?
     public let dataImageUrl: String?
     public let dataSpan: Int?
 
