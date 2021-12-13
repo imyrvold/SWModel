@@ -51,6 +51,11 @@ public struct ElementResponseLegacy: Codable {
             data = try .iframe(values.decode(IframeData.self, forKey: .data))
         case .image:
             data = try .image(values.decode(ImageData.self, forKey: .data))
+        case .avPagesCalendar:
+            print("ElementLegacy init from decoder avPagesCalendar")
+            data = try .avPagesCalendar(values.decode(AvPagesCalendarData.self, forKey: .data))
+        case .avMonthlyCalendar, .advRoundSlider:
+            data = nil
         }
     }
 }

@@ -15,6 +15,9 @@ public enum ElementType: String, Codable {
     case alarmList = "alarm-list"
     case alarmLogList = "alarm-log-list"
     case iframe
+    case avPagesCalendar = "av-pages-calendar"
+    case avMonthlyCalendar = "av-monthly-calender"
+    case advRoundSlider = "adv-round-slider"
 
     public var index: Int {
         let index: Int
@@ -31,6 +34,12 @@ public enum ElementType: String, Codable {
             index = 4
         case .iframe:
             index = 5
+        case .avPagesCalendar:
+            index = 6
+        case .avMonthlyCalendar:
+            index = 7
+        case .advRoundSlider:
+            index = 8
         }
         return index
     }
@@ -48,6 +57,12 @@ public enum ElementType: String, Codable {
             self = .alarmLogList
         } else if index == 5 {
             self = .iframe
+        } else if index == 6 {
+            self = .avPagesCalendar
+        } else if index == 7 {
+            self = .avMonthlyCalendar
+        } else if index == 8 {
+            self = .advRoundSlider
         } else {
             return nil
         }
@@ -218,6 +233,7 @@ public enum ElementData {
     case iframe(IframeData)
     case alarmList(AlarmListData)
     case alarmLogList(AlarmLogListData)
+    case avPagesCalendar(AvPagesCalendarData)
     case unsupported
 
 }
@@ -267,6 +283,13 @@ extension ElementData: Equatable {
             default:
                 areEqual = false
             }
+        case .avPagesCalendar(let lhsData):
+            switch rhs {
+            case .avPagesCalendar(let rhsData):
+                areEqual = lhsData == rhsData
+            default:
+                areEqual = false
+            }
         case .unsupported:
             areEqual = false
         }
@@ -276,7 +299,7 @@ extension ElementData: Equatable {
 
 extension ElementData {
     enum CodingKeys: CodingKey {
-        case tagGroup, tagList, image, iframe, alarmList, alarmLogList, unsupported
+        case tagGroup, tagList, image, iframe, alarmList, alarmLogList, avPagesCalendar, unsupported
     }
 }
 
@@ -297,6 +320,8 @@ extension ElementData: Encodable {
             try container.encode(alarmListData, forKey: .alarmList)
         case .alarmLogList(let alarmLogListData):
             try container.encode(alarmLogListData, forKey: .alarmLogList)
+        case .avPagesCalendar(let avPagesCalendarData):
+            try container.encode(avPagesCalendarData, forKey: .avPagesCalendar)
         case .unsupported:
             try container.encode(true, forKey: .unsupported)
         }
@@ -327,6 +352,9 @@ extension ElementData: Decodable {
         case .alarmLogList:
             let alarmLogListData = try container.decode(AlarmLogListData.self, forKey: .alarmLogList)
             self = .alarmLogList(alarmLogListData)
+        case .avPagesCalendar:
+            let avPagesCalendarData = try container.decode(AvPagesCalendarData.self, forKey: .avPagesCalendar)
+            self = .avPagesCalendar(avPagesCalendarData)
         case .unsupported:
             self = .unsupported
         case .none:
@@ -370,15 +398,21 @@ public struct ImageData: Codable, Equatable {
 public struct IframeData: Codable, Equatable {
     public let dataUrl: String?
     public let dataHeight: Int?
+    public let dataName: String?
+    public let dataMinHeight: String?
 
-    public init(dataUrl: String?, dataHeight: Int? = nil) {
+    public init(dataUrl: String?, dataHeight: Int? = nil, dataName: String? = nil, dataMinHeight: String? = nil) {
         self.dataUrl = dataUrl
         self.dataHeight = dataHeight
+        self.dataName = dataName
+        self.dataMinHeight = dataMinHeight
     }
     
     public enum CodingKeys: String, CodingKey {
         case dataUrl = "data-url"
         case dataHeight = "data-height"
+        case dataName = "data-name"
+        case dataMinHeight = "data-min-height"
     }
 }
 
@@ -394,8 +428,16 @@ public struct AlarmListData: Codable, Equatable {
 
 public struct AlarmLogListData: Codable, Equatable {
     public let buildingId: String
-    
+    public let dataImageUrl: String?
+    public let dataSpan: Int?
+
     public enum CodingKeys: String, CodingKey {
         case buildingId = "building-id"
+        case dataImageUrl = "data-image-url"
+        case dataSpan = "data-span"
     }
+}
+
+public struct AvPagesCalendarData: Codable, Equatable {
+    public let events: [String]
 }
