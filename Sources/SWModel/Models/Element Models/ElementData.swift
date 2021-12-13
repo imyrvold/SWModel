@@ -432,7 +432,7 @@ public struct IframeData: Codable, Equatable {
         } else {
             self.dataMinHeight = nil
         }
-        dataName = try values.decode(String.self, forKey: .dataName)
+        dataName = try? values.decode(String.self, forKey: .dataName)
     }
 
 }
