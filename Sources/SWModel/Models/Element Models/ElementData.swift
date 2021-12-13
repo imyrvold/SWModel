@@ -399,9 +399,9 @@ public struct IframeData: Codable, Equatable {
     public let dataUrl: String?
     public let dataHeight: Int?
     public let dataName: String?
-    public let dataMinHeight: String?
+    public let dataMinHeight: Int?
 
-    public init(dataUrl: String?, dataHeight: Int? = nil, dataName: String? = nil, dataMinHeight: String? = nil) {
+    public init(dataUrl: String?, dataHeight: Int? = nil, dataName: String? = nil, dataMinHeight: Int? = nil) {
         self.dataUrl = dataUrl
         self.dataHeight = dataHeight
         self.dataName = dataName
@@ -414,6 +414,27 @@ public struct IframeData: Codable, Equatable {
         case dataName = "data-name"
         case dataMinHeight = "data-min-height"
     }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        dataUrl = try values.decode(String.self, forKey: .dataUrl)
+        if let dataHeight = try? values.decode(Int.self, forKey: .dataHeight) {
+            self.dataHeight = dataHeight
+        } else if let dataHeight = try? values.decode(String.self, forKey: .dataHeight) {
+            self.dataHeight = Int(dataHeight)
+        } else {
+            self.dataHeight = nil
+        }
+        if let dataMinHeight = try? values.decode(Int.self, forKey: .dataMinHeight) {
+            self.dataMinHeight = dataMinHeight
+        } else if let dataMinHeight = try? values.decode(String.self, forKey: .dataMinHeight) {
+            self.dataMinHeight = Int(dataMinHeight)
+        } else {
+            self.dataMinHeight = nil
+        }
+        dataName = try values.decode(String.self, forKey: .dataName)
+    }
+
 }
 
 public struct AlarmListData: Codable, Equatable {
