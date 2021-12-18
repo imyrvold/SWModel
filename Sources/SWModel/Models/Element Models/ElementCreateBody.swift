@@ -9,12 +9,14 @@ import Foundation
 import BSON
 
 public struct ElementCreateBody: Encodable {
+    public var id: ObjectId?
     public var name: String
     public var claim: ObjectId
     public var type: ElementType
     public var data: ElementData?
 
-    public init(name: String, claim: ObjectId, type: ElementType, data: ElementData?) {
+    public init(id: ObjectId?, name: String, claim: ObjectId, type: ElementType, data: ElementData?) {
+        self.id = id
         self.name = name
         self.claim = claim
         self.type = type
