@@ -393,6 +393,20 @@ public struct ImageData: Codable, Equatable {
         case dataSpan = "data-span"
         case fitImage = "fit-image"
     }
+    
+    public init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        dataImageUrl = try values.decode(String.self, forKey: .dataImageUrl)
+        fitImage = try? values.decode(Bool.self, forKey: .fitImage)
+        if let dataSpan = try? values.decode(Int.self, forKey: .dataSpan) {
+            self.dataSpan = dataSpan
+        } else if let dataspan = try? values.decode(String.self, forKey: .dataSpan) {
+            self.dataSpan = Int(dataspan)
+        } else {
+            self.dataSpan = nil
+        }
+    }
+
 }
 
 public struct IframeData: Codable, Equatable {
