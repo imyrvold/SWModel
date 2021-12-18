@@ -10,10 +10,12 @@ import Foundation
 import BSON
 
 public struct RoleCreateBody: Encodable {
+    public var id: ObjectId?
     public var name: String
     public var claims: [ObjectId]
     
-    public init(name: String, claims: [ObjectId]) {
+    public init(id: ObjectId?, name: String, claims: [ObjectId]) {
+        self.id = id
         self.name = name
         self.claims = claims
     }
