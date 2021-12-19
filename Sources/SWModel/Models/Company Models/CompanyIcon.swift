@@ -9,7 +9,7 @@
 import Foundation
 
 public struct CompanyIcon: Identifiable {
-    public let id = UUID()
+    public let id: UUID
     public var name: String?
     public var link: Bool
     public var content: String?
@@ -41,6 +41,7 @@ extension CompanyIcon: Codable {
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = UUID()
         self.name = try? container.decode(String.self, forKey: .name)
         self.link = try container.decode(Bool.self, forKey: .link)
         self.content = try? container.decode(String.self, forKey: .content)
