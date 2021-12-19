@@ -6,6 +6,8 @@
 //  Copyright © 2020 Ivan C Myrvold. All rights reserved.
 //
 
+import Foundation
+
 public struct CompanyCreateBody: Encodable {
     public let title: String
     public let icons: [CompanyIcon]
@@ -22,5 +24,10 @@ public struct CompanyCreateBody: Encodable {
         self.buildingTabName = buildingTabName
         self.buildingUrl = buildingUrl
     }
+}
 
+public extension CompanyCreateBody {
+    func httpBody() throws -> Data {
+        try JSONEncoder().encode(self)
+    }
 }
