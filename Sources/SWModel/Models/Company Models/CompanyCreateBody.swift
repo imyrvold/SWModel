@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import BSON
 
 public struct CompanyCreateBody: Encodable {
+    public var id: ObjectId?
     public let title: String
     public let icons: [CompanyIcon]
     public let logo: String?
@@ -16,7 +18,8 @@ public struct CompanyCreateBody: Encodable {
     public var buildingTabName: String?
     public var buildingUrl: String?
     
-    public init(title: String, icons: [CompanyIcon], logo: String?, def: Bool?, buildingTabName: String?, buildingUrl: String?) {
+    public init(id: ObjectId?, title: String, icons: [CompanyIcon], logo: String?, def: Bool?, buildingTabName: String?, buildingUrl: String?) {
+        self.id = id
         self.title = title
         self.icons = icons
         self.logo = logo
