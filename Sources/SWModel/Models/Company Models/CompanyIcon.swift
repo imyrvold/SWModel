@@ -27,57 +27,7 @@ extension CompanyIcon: Equatable {
     
 }
 
-extension CompanyIcon: Codable {
-    public enum CodingKeys: String, CodingKey {
-        case name
-        case link
-        case content
-        case rel
-        case type
-        case href
-        case sizes
-        case color
-    }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = UUID()
-        self.name = try? container.decode(String.self, forKey: .name)
-        self.link = try container.decode(Bool.self, forKey: .link)
-        self.content = try? container.decode(String.self, forKey: .content)
-        self.rel = try? container.decode(String.self, forKey: .rel)
-        self.type = try? container.decode(String.self, forKey: .type)
-        self.href = try? container.decode(String.self, forKey: .href)
-        self.sizes = try? container.decode(String.self, forKey: .sizes)
-        self.color = try? container.decode(String.self, forKey: .color)
-    }
-    
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        if let name = self.name {
-            try container.encode(name, forKey: .name)
-        }
-        try container.encode(self.link, forKey: .link)
-        if let content = self.content {
-            try container.encode(content, forKey: .content)
-        }
-        if let rel = self.rel {
-            try container.encode(rel, forKey: .rel)
-        }
-        if let type = self.type {
-            try container.encode(type, forKey: .type)
-        }
-        if let href = self.href {
-            try container.encode(href, forKey: .href)
-        }
-        if let sizes = self.sizes {
-            try container.encode(sizes, forKey: .sizes)
-        }
-        if let color = self.color {
-            try container.encode(color, forKey: .color)
-        }
-    }
-}
+extension CompanyIcon: Codable {}
 
 /*#if os(iOS)
 public extension UIColor {

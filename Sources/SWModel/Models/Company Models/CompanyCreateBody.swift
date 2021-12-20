@@ -22,7 +22,6 @@ public struct CompanyCreateBody: Encodable {
         self.id = id
         self.title = title
         self.icons = icons.map { CompanyIcon(id: UUID(), name: $0.name, link: $0.link, content: $0.content, rel: $0.rel, type: $0.type, href: $0.href, sizes: $0.sizes, color: $0.color) }
-        print("CompanyCreateBody init icons:", self.icons)
         self.logo = logo
         self.def = def
         self.buildingTabName = buildingTabName
