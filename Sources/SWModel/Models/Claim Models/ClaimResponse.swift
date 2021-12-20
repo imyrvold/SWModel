@@ -24,8 +24,4 @@ public extension ClaimResponse {
         let updatedAt: String
         let deletedAt: String?
     }
-    
-    static func claimResponse(from response: ClaimResponse) -> Claim {
-        Claim(id: response.id.hexString, name: response.name, createdAt: response.createdAt, updatedAt: response.updatedAt, deletedAt: response.deletedAt)
-    }
 }

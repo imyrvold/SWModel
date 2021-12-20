@@ -32,12 +32,4 @@ public extension ClaimResponseLegacy {
         public let updatedOn: String
         public let deletedOn: String?
     }
-    
-    static func claimResponse(from response: ClaimResponseLegacy) -> Claim {
-        Claim(id: response.id.hexString, name: response.name, createdOn: response.createdOn, updatedOn: response.updatedOn, deletedOn: response.deletedOn)
-    }
-    
-    static func claimsResponse(from response: [ClaimResponseLegacy]) -> [Claim] {
-        response.map { Claim(id: $0.id.hexString, name: $0.name, createdOn: $0.createdOn, updatedOn: $0.updatedOn, deletedOn: $0.deletedOn) }
-    }
 }
