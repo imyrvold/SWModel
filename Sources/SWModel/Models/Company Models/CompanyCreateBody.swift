@@ -21,7 +21,7 @@ public struct CompanyCreateBody: Encodable {
     public init(id: ObjectId?, title: String, icons: [CompanyIcon], logo: String?, def: Bool?, buildingTabName: String?, buildingUrl: String?) {
         self.id = id
         self.title = title
-        self.icons = icons
+        self.icons = icons.map { CompanyIcon(id: UUID(), name: $0.name, link: $0.link, content: $0.content, rel: $0.rel, type: $0.type, href: $0.href, sizes: $0.sizes, color: $0.color) }
         self.logo = logo
         self.def = def
         self.buildingTabName = buildingTabName
