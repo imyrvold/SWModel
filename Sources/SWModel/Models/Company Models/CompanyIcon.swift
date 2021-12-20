@@ -29,7 +29,6 @@ extension CompanyIcon: Equatable {
 
 extension CompanyIcon: Codable {
     public enum CodingKeys: String, CodingKey {
-        case id
         case name
         case link
         case content
@@ -55,7 +54,6 @@ extension CompanyIcon: Codable {
     
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(id, forKey: .id)
         if let name = self.name {
             try container.encode(name, forKey: .name)
         }
