@@ -44,29 +44,4 @@ public extension CompanyResponse {
             return Company(id: companyResponse.id.hexString, title: companyResponse.title, icons: companyResponse.icons, logo: companyResponse.logo, def: companyResponse.def, buildingTabName: companyResponse.buildingTabName, buildingUrl: companyResponse.buildingUrl, createdAt: companyResponse.createdAt, updatedAt: companyResponse.updatedAt, deletedAt: companyResponse.deletedAt)
         }
     }
-
-    static func json(from response: [CompanyResponse]) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let companiesOutput = response.map { Self.companyResponse(from: $0) }
-        
-        let companiesData = try encoder.encode(companiesOutput)
-        if let json = String(data: companiesData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
-    static func json(from response: CompanyResponse) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let companyOutput = Self.companyResponse(from: response)
-        
-        let companiesData = try encoder.encode(companyOutput)
-        if let json = String(data: companiesData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
 }

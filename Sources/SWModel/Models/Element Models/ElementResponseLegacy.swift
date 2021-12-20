@@ -80,27 +80,4 @@ public extension ElementResponseLegacy {
             return Element(id: elementResponseLegacy.id.hexString, name: elementResponseLegacy.name, type: elementResponseLegacy.type, data: elementResponseLegacy.data, claim: elementResponseLegacy.claim.id.hexString, createdOn: elementResponseLegacy.createdOn, updatedOn: elementResponseLegacy.updatedOn, deletedOn: elementResponseLegacy.deletedOn)
         }
     }
-
-    static func json(from response: [ElementResponseLegacy]) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        
-        let elementsData = try encoder.encode(response)
-        if let json = String(data: elementsData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
-    static func json(from response: ElementResponseLegacy) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        
-        let elementsData = try encoder.encode(response)
-        if let json = String(data: elementsData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
 }

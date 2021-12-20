@@ -38,29 +38,4 @@ public extension RoleResponse {
             return Role(id: roleResponse.id.hexString, name: roleResponse.name, claims: claims, createdAt: roleResponse.createdAt, updatedAt: roleResponse.updatedAt, deletedAt: roleResponse.deletedAt)
         }
     }
-
-    static func json(from response: [RoleResponse]) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let rolesOutput = response.map { Self.roleResponse(from: $0) }
-        
-        let rolesData = try encoder.encode(rolesOutput)
-        if let json = String(data: rolesData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
-    static func json(from response: RoleResponse) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let roleOutput = Self.roleResponse(from: response)
-        
-        let rolesData = try encoder.encode(roleOutput)
-        if let json = String(data: rolesData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
 }

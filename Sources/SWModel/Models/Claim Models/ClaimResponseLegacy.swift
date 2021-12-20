@@ -40,28 +40,4 @@ public extension ClaimResponseLegacy {
     static func claimsResponse(from response: [ClaimResponseLegacy]) -> [Claim] {
         response.map { Claim(id: $0.id.hexString, name: $0.name, createdOn: $0.createdOn, updatedOn: $0.updatedOn, deletedOn: $0.deletedOn) }
     }
-
-    static func json(from response: [ClaimResponseLegacy]) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let claimsOutput = response.map { Self.claimResponse(from: $0) }
-        
-        let claimsData = try encoder.encode(claimsOutput)
-        if let json = String(data: claimsData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
-    static func json(from response: ClaimResponseLegacy) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let claimOutput = Self.claimResponse(from: response)
-        
-        let claimsData = try encoder.encode(claimOutput)
-        if let json = String(data: claimsData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
 }

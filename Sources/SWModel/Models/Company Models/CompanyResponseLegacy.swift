@@ -76,29 +76,4 @@ public extension CompanyResponseLegacy {
             return Company(id: companyResponseLegacy.id.hexString, title: companyResponseLegacy.title, icons: companyResponseLegacy.icons, logo: companyResponseLegacy.logo, def: companyResponseLegacy.def ?? false, buildingTabName: companyResponseLegacy.buildingTabName, buildingUrl: companyResponseLegacy.buildingUrl, createdOn: companyResponseLegacy.createdOn, updatedOn: companyResponseLegacy.updatedOn, deletedOn: companyResponseLegacy.deletedOn)
         }
     }
-    
-    static func json(from response: [CompanyResponseLegacy]) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let companiesOutput = response.map { Self.companyResponse(from: $0) }
-        
-        let companiesData = try encoder.encode(companiesOutput)
-        if let json = String(data: companiesData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-    
-    static func json(from response: CompanyResponseLegacy) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let companyOutput = Self.companyResponse(from: response)
-        
-        let companiesData = try encoder.encode(companyOutput)
-        if let json = String(data: companiesData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
 }

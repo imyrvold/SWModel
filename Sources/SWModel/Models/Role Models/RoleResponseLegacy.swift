@@ -57,29 +57,4 @@ public extension RoleResponseLegacy {
             return Role(id: roleResponseLegacy.id.hexString, name: roleResponseLegacy.name, claims: claims, createdOn: roleResponseLegacy.createdOn, updatedOn: roleResponseLegacy.updatedOn, deletedOn: roleResponseLegacy.deletedOn)
         }
     }
-
-    static func json(from response: [RoleResponseLegacy]) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let rolesOutput = response.map { Self.roleResponse(from: $0) }
-        
-        let rolesData = try encoder.encode(rolesOutput)
-        if let json = String(data: rolesData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
-    static func json(from response: RoleResponseLegacy) throws -> String {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let roleOutput = Self.roleResponse(from: response)
-        
-        let rolesData = try encoder.encode(roleOutput)
-        if let json = String(data: rolesData, encoding: .utf8) {
-            return json
-        }
-        return "Couldn't convert response to JSON"
-    }
-
 }
