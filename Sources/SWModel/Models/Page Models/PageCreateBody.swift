@@ -30,3 +30,9 @@ public struct PageCreateBody: Encodable {
         self.style = style
     }
 }
+
+public extension PageCreateBody {
+    func httpBody() throws -> Data {
+        try JSONEncoder().encode(self)
+    }
+}
