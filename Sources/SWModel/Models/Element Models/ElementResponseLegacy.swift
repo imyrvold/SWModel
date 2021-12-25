@@ -32,6 +32,7 @@ public struct ElementResponseLegacy: Codable {
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(ObjectId.self, forKey: .id)
+        print("ElementResponseLegacy init id:", id)
         name = try values.decode(String.self, forKey: .name)
         type = try values.decode(ElementType.self, forKey: .type)
         claim = try values.decode(ClaimResponseLegacy.self, forKey: .claim)
