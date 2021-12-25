@@ -24,7 +24,7 @@ public struct PageResponseLegacy {
     public let label: String?
     public let logo: String?
     public let company: ObjectId?
-    public let elements: [ObjectId]
+    public let elements: [ElementResponseLegacyMinimum]
     public let claim: ClaimResponseMinimum?
     public let style: String?
     public var claims: [ObjectId] = []
@@ -67,14 +67,14 @@ public extension PageResponseLegacy {
     
     static func pageResponse(from response: PageResponseLegacy) -> Page {
         let claims = response.claims.map { $0.hexString }
-        let elements = response.elements.compactMap { $0.hexString }
+        let elements = response.elements.compactMap { $0.id.hexString }
         return Page(id: response.id.hexString, name: response.name, title: response.title, label: response.label, logo: response.logo, company: response.company?.hexString, elements: elements, claim: response.id.hexString, style: response.style, claims: claims)
     }
     
     static func pagesResponse(from response: [PageResponseLegacy]) -> [Page] {
         response.map { pageResponseLegacy in
             let claims = pageResponseLegacy.claims.map { $0.hexString }
-            let elements = pageResponseLegacy.elements.compactMap { $0.hexString }
+            let elements = pageResponseLegacy.elements.compactMap { $0.id.hexString }
             return Page(id: pageResponseLegacy.id.hexString, name: pageResponseLegacy.name, title: pageResponseLegacy.title, label: pageResponseLegacy.label, logo: pageResponseLegacy.logo, company: pageResponseLegacy.company?.hexString, elements: elements, claim: pageResponseLegacy.claim?.id.hexString, style: pageResponseLegacy.style, claims: claims)
         }
     }
