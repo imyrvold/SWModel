@@ -17,10 +17,10 @@ public struct PageCreateBody: Encodable {
     public let logo: String?
     public let company: String?
     public let elements: [ObjectId]
-    public let claim: Claim
+    public let claim: ObjectId
     public let style: String?
     
-    public init(id: ObjectId?, name: String, title: String, label: String?, logo: String?, company: String?, elements: [ObjectId], claim: Claim, style: String?) {
+    public init(id: ObjectId?, name: String, title: String, label: String?, logo: String?, company: String?, elements: [ObjectId], claim: ObjectId, style: String?) {
         self.id = id
         self.name = name
         self.title = title
