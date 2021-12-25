@@ -73,7 +73,6 @@ public extension PageResponseLegacy {
     
     static func pagesResponse(from response: [PageResponseLegacy]) -> [Page] {
         response.map { pageResponseLegacy in
-            print("PageResponseLegacy pagesResponse element pageResponseLegacy:", pageResponseLegacy)
             let claims = pageResponseLegacy.claims.map { $0.hexString }
             let elements = pageResponseLegacy.elements.compactMap { $0.id.hexString }
             return Page(id: pageResponseLegacy.id.hexString, name: pageResponseLegacy.name, title: pageResponseLegacy.title, label: pageResponseLegacy.label, logo: pageResponseLegacy.logo, company: pageResponseLegacy.company?.hexString, elements: elements, claim: pageResponseLegacy.claim?.id.hexString, style: pageResponseLegacy.style, claims: claims)
