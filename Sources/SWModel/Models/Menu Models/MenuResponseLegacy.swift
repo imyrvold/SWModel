@@ -38,7 +38,7 @@ public struct MenuResponseLegacy: Decodable {
     public let id: ObjectId
     public let name: String
     public let claim: ClaimResponseMinimum
-    public let submenus: [SubmenuResponseMinimum]
+    public let submenus: [SubmenuResponseLegacy]
     public let createdOn: String
     public let updatedOn: String
     public let deletedOn: String?
