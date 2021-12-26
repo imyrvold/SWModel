@@ -12,7 +12,7 @@ import BSON
 public struct SubmenuResponse {
     public let id: ObjectId
     public let name: String
-    public let claim: Claim
+    public let claim: String
     public let link: String
     public let newTab: Bool?
     
