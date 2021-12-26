@@ -12,10 +12,10 @@ import BSON
 public struct MenuResponse {
     public let id: ObjectId
     public let name: String
-    public let claim: Claim
-    public var submenus: [SubmenuResponse] = []
+    public let claim: ObjectId
+    public let submenus: [ObjectId]
     
-    public init(id: ObjectId, name: String, claim: Claim, submenus: [SubmenuResponse]) {
+    public init(id: ObjectId, name: String, claim: ObjectId, submenus: [ObjectId]) {
         self.id = id
         self.name = name
         self.claim = claim
