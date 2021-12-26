@@ -10,13 +10,21 @@ import Foundation
 import BSON
 
 public struct MenuCreateBody: Encodable {
+    public let id: ObjectId?
     public let name: String
     public let claim: ObjectId
     public let submenus: [SubmenuCreateBody]
     
-    public init(name: String, claim: ObjectId, submenus: [SubmenuCreateBody]) {
+    public init(id: ObjectId?, name: String, claim: ObjectId, submenus: [SubmenuCreateBody]) {
+        self.id = id
         self.name = name
         self.claim = claim
         self.submenus = submenus
+    }
+}
+
+public extension MenuCreateBody {
+    func httpBody() throws -> Data {
+        try JSONEncoder().encode(self)
     }
 }
