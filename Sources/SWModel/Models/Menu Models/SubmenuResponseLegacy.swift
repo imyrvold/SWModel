@@ -11,9 +11,9 @@ import BSON
 public struct SubmenuResponseLegacy: Decodable {
     public let id: ObjectId
     public let name: String
-    let link: String
-    let claim: ClaimResponseLegacy
-    let newTab: Bool?
+    public let link: String
+    public let claim: ClaimResponseLegacy
+    public let newTab: Bool?
     
     public enum CodingKeys: String, CodingKey {
         case id = "_id"
