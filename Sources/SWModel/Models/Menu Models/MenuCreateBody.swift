@@ -13,9 +13,9 @@ public struct MenuCreateBody: Encodable {
     public let id: ObjectId?
     public let name: String
     public let claim: ObjectId
-    public let submenus: [SubmenuCreateBody]
+    public let submenus: [ObjectId]
     
-    public init(id: ObjectId?, name: String, claim: ObjectId, submenus: [SubmenuCreateBody]) {
+    public init(id: ObjectId?, name: String, claim: ObjectId, submenus: [ObjectId]) {
         self.id = id
         self.name = name
         self.claim = claim
