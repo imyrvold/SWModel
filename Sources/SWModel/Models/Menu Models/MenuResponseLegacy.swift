@@ -10,8 +10,8 @@ import BSON
 
 public struct MenuResponseLegacy: Decodable {
     public struct ClaimResponseMinimum: Codable {
-        let id: ObjectId
-        let name: String
+        public let id: ObjectId
+        public let name: String
         
         public enum CodingKeys: String, CodingKey {
             case id = "_id"
