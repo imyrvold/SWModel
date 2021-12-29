@@ -37,3 +37,9 @@ public struct BuildingCreateBody: Encodable {
         self.company = company
     }
 }
+
+public extension BuildingCreateBody {
+    func httpBody() throws -> Data {
+        try JSONEncoder().encode(self)
+    }
+}
