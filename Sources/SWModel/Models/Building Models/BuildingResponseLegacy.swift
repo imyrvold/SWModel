@@ -19,7 +19,7 @@ public struct BuildingResponseLegacy: Decodable {
     public let menus: [ObjectId]?
     public let links: [LinkResponseLegacy]?
     public let position: Int?
-    public let claim: ObjectId
+    public let claim: ObjectId?
     public let company: ObjectId?
     public let createdOn: String
     public let updatedOn: String
