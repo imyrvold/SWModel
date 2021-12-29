@@ -10,6 +10,7 @@ import Foundation
 import BSON
 
 public struct BuildingCreateBody: Encodable {
+    public let id: ObjectId?
     let name: String
     let address: String?
     let imageUrl: String?
@@ -21,8 +22,9 @@ public struct BuildingCreateBody: Encodable {
     let claim: ObjectId
     let company: ObjectId?
     
-    public init(name: String, address: String?, imageUrl: String?, index: ObjectId?, pages: [ObjectId]?, menus: [ObjectId]?, links: [ObjectId]?, position: Int?,
+    public init(id: ObjectId?, name: String, address: String?, imageUrl: String?, index: ObjectId?, pages: [ObjectId]?, menus: [ObjectId]?, links: [ObjectId]?, position: Int?,
         claim: ObjectId, company: ObjectId?) {
+        self.id = id
         self.name = name
         self.address = address
         self.imageUrl = imageUrl
