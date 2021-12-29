@@ -9,13 +9,6 @@ import Foundation
 import BSON
 
 public struct BuildingResponseLegacy: Decodable {
-    public struct LinkResponseMinimum: Codable {
-        public let id: ObjectId
-        public let group: String
-        public let label: String
-        public let link: String
-        public let newTab: Bool?
-    }
     
     public let id: ObjectId?
     public let name: String
@@ -24,7 +17,7 @@ public struct BuildingResponseLegacy: Decodable {
     public let index: ObjectId?
     public let pages: [ObjectId]?
     public let menus: [ObjectId]?
-    public let links: [LinkResponseMinimum]?
+    public let links: [LinkResponseLegacy]?
     public let position: Int?
     public let claim: ObjectId
     public let company: ObjectId?
