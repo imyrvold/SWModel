@@ -42,4 +42,38 @@ public struct BuildingResponseLegacy: Decodable {
         case deletedOn
     }
 
+    public init(from decoder: Decoder) throws {
+        print("BuildingResponseLegacy init")
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        id = try values.decodeIfPresent(ObjectId.self, forKey: .id)
+        print("BuildingResponseLegacy init id:", id)
+        name = try values.decode(String.self, forKey: .name)
+        print("BuildingResponseLegacy init name:", name)
+        address = try? values.decodeIfPresent(String.self, forKey: .address)
+        print("BuildingResponseLegacy init address:", address)
+        imageUrl = try? values.decodeIfPresent(String.self, forKey: .imageUrl)
+        print("BuildingResponseLegacy init imageUrl:", imageUrl)
+        index = try values.decodeIfPresent(ObjectId.self, forKey: .index)
+        print("BuildingResponseLegacy init index:", index)
+        pages = try values.decodeIfPresent([ObjectId].self, forKey: .pages)
+        print("BuildingResponseLegacy init pages:", pages)
+        menus = try values.decodeIfPresent([ObjectId].self, forKey: .menus)
+        print("BuildingResponseLegacy init menus:", menus)
+        links = try? values.decodeIfPresent([LinkResponseLegacy].self, forKey: .links)
+        print("BuildingResponseLegacy init links:", links)
+        position = try? values.decodeIfPresent(Int.self, forKey: .position)
+        print("BuildingResponseLegacy init position:", position)
+        claim = try values.decodeIfPresent(ObjectId.self, forKey: .claim)
+        print("BuildingResponseLegacy init claim:", claim)
+        company = try values.decodeIfPresent(ObjectId.self, forKey: .company)
+        print("BuildingResponseLegacy init company:", company)
+        createdOn = try values.decode(String.self, forKey: .createdOn)
+        print("BuildingResponseLegacy init createdOn:", createdOn)
+        updatedOn = try values.decode(String.self, forKey: .updatedOn)
+        print("BuildingResponseLegacy init updatedOn:", updatedOn)
+        deletedOn = try values.decodeIfPresent(String.self, forKey: .deletedOn)
+        print("BuildingResponseLegacy init deletedOn:", deletedOn)
+    }
+
+
 }
