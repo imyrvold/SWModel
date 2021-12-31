@@ -9,8 +9,8 @@ import Foundation
 import BSON
 
 public struct AppearanceResponse: Codable {
-    public let id: ObjectId?
-    public let name: String
+    public var id: ObjectId?
+    public var name: String
     public var prefix: String?
     public var suffix: String?
     public var size: Int?
