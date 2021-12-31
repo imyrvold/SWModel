@@ -9,7 +9,7 @@
 import Foundation
 import BSON
 
-public struct AppearanceCreateBody: Encodable {
+public struct AppearanceCreateBody: Codable {
     public var id: ObjectId?
     public var name: String
     public var prefix: String?
