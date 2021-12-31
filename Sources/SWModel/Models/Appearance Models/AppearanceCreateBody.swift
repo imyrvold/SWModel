@@ -7,8 +7,10 @@
 //
 
 import Foundation
+import BSON
 
-public struct AppearanceCreateBody: Codable {
+public struct AppearanceCreateBody: Encodable {
+    public var id: ObjectId?
     public var name: String
     public var prefix: String?
     public var suffix: String?
@@ -19,7 +21,8 @@ public struct AppearanceCreateBody: Codable {
     public var backgroundColor: AppearanceColor?
     public var isExpanded: Bool?
     
-    public init(name: String, prefix: String? = nil, suffix: String? = nil, size: Int? = nil, holderSize: Int? = nil, textSize: Double? = nil, selectionColor: AppearanceColor? = nil, backgroundColor: AppearanceColor? = nil, isExpanded: Bool? = nil) {
+    public init(id: ObjectId?, name: String, prefix: String? = nil, suffix: String? = nil, size: Int? = nil, holderSize: Int? = nil, textSize: Double? = nil, selectionColor: AppearanceColor? = nil, backgroundColor: AppearanceColor? = nil, isExpanded: Bool? = nil) {
+        self.id = id
         self.name = name
         self.prefix = prefix
         self.suffix = suffix
@@ -47,5 +50,22 @@ public struct AppearanceCreateBody: Codable {
 public extension AppearanceCreateBody {
     func httpBody() throws -> Data {
         try JSONEncoder().encode(self)
+    }
+}
+
+public extension AppearanceCreateBody {
+    static func createBody(from appearanceLegacy: AppearanceResponseLegacy) -> AppearanceCreateBody {
+        let selectionColor, backgroundColor: AppearanceColor?
+        if let selection = appearanceLegacy.selectionColor {
+            selectionColor = AppearanceColor(lightColor: selection, darkColor: selection)
+        } else {
+            selectionColor = nil
+        }
+        if let background = appearanceLegacy.backgroundColor {
+            backgroundColor = AppearanceColor(lightColor: background, darkColor: background)
+        } else {
+            backgroundColor = nil
+        }
+        return AppearanceCreateBody(id: appearanceLegacy.id, name: appearanceLegacy.name, prefix: appearanceLegacy.prefix, suffix: appearanceLegacy.suffix, size: appearanceLegacy.size, holderSize: appearanceLegacy.holderSize, textSize: appearanceLegacy.textSize, selectionColor: selectionColor, backgroundColor: backgroundColor, isExpanded: appearanceLegacy.isExpanded)
     }
 }

@@ -16,8 +16,8 @@ public struct AppearanceResponseLegacy: Decodable {
     public var size: Int?
     public var holderSize: Int?
     public var textSize: Double?
-    public var selectionColor: AppearanceColor?
-    public var backgroundColor: AppearanceColor?
+    public var selectionColor: String?
+    public var backgroundColor: String?
     public var isExpanded: Bool?
     public let createdOn: String
     public let updatedOn: String
@@ -56,7 +56,7 @@ public struct AppearanceResponseLegacy: Decodable {
 //        public let updatedOn: String
 //        public let deletedOn: String?
 //    }
-//    
+//
 //    static func appearanceResponse(from response: AppearanceResponseLegacy) -> Appearance {
 //        return Appearance(id: response.id, name: response.name, prefix: response.prefix, suffix: response.suffix, size: response.size, holderSize: response.holderSize, textSize: response.textSize, selectionColor: response.selectionColor, backgroundColor: response.backgroundColor, isExpanded: response.isExpanded, createdOn: response.createdOn, updatedOn: response.updatedOn, deletedOn: response.deletedOn)
 //    }
