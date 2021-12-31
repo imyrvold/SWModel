@@ -44,3 +44,8 @@ public struct AppearanceCreateBody: Codable {
     }
 }
 
+public extension AppearanceCreateBody {
+    func httpBody() throws -> Data {
+        try JSONEncoder().encode(self)
+    }
+}
