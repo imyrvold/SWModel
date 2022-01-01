@@ -19,6 +19,7 @@ public struct BehaviourCreateBody: Codable {
     public var options: [String]?
     
     public init(id: ObjectId?, name: String, min: Int? = nil, max: Int? = nil, numberOfDecimals: Int? = nil, orientation: Orientation? = nil, options: [String]? = nil) {
+        self.id = id
         self.name = name
         self.min = min
         self.max = max
