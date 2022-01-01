@@ -27,14 +27,14 @@ public struct Behaviour: Codable, Identifiable, Equatable, SidebarItemable {
     public var numberOfDecimals: Int?
     public var orientation: Orientation?
     public var options: [String]?
-    public var updatedAt: Date
-    public var createdAt: Date
+    public var updatedAt: Date?
+    public var createdAt: Date?
     public var deletedAt: Date?
     public var menuName: NavigationItem {
         .behaviours
     }
     
-    public init(id: ObjectId?, name: String, min: Int?, max: Int?, numberOfDecimals: Int?, orientation: Orientation?, options: [String]?, createdAt: Date, updatedAt: Date, deletedAt: Date?) {
+    public init(id: ObjectId?, name: String, min: Int?, max: Int?, numberOfDecimals: Int?, orientation: Orientation?, options: [String]?, createdAt: Date?, updatedAt: Date?, deletedAt: Date?) {
         self.id = id
         self.name = name
         self.min = min
