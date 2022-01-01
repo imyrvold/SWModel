@@ -10,7 +10,7 @@ import BSON
 
 public struct BuildingResponseLegacy: Decodable {
     
-    public let id: ObjectId?
+    public let id: ObjectId
     public let name: String
     public let address: String?
     public let imageUrl: String?
@@ -44,7 +44,7 @@ public struct BuildingResponseLegacy: Decodable {
 
     public init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decodeIfPresent(ObjectId.self, forKey: .id)
+        id = try values.decode(ObjectId.self, forKey: .id)
         name = try values.decode(String.self, forKey: .name)
         address = try? values.decodeIfPresent(String.self, forKey: .address)
         imageUrl = try? values.decodeIfPresent(String.self, forKey: .imageUrl)

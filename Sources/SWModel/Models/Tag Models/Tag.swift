@@ -105,15 +105,15 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     public var image: URL?
     public var value: String
     public var valueType: TagValueType
-    public var building: Building
+    public var building: ObjectId
     public var group: String?
     public var link: URL?
     public var sortIndex: Int?
     public var alarm: Alarm?
-    public var action: Tag?
-    public var claim: Claim
-    public var appearance: Appearance?
-    public var behaviour: Behaviour?
+    public var action: ObjectId?
+    public var claim: ObjectId
+    public var appearance: ObjectId?
+    public var behaviour: ObjectId?
     public var menuName: NavigationItem {
         .tags
     }
@@ -139,7 +139,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     }
     
     
-    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: Building, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: Tag?, claim: Claim, appearance: Appearance?, behaviour: Behaviour?) {
+    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?) {
         self.id = id
         self.name = name
         self.type = type
@@ -158,14 +158,14 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     }
     
     public var description: String {
-        let id = self.id
+        let id = self.id?.hexString
         let sortIndex = self.sortIndex ?? -1
-        
-        return "id: \(id) name: \(name) building: \(building.name) type: \(type) value: \(value) sortIndex: \(sortIndex)"
+
+        return "id: \(id ?? "") name: \(name) type: \(type) value: \(value) sortIndex: \(sortIndex)"
     }
-    
+
     public var modelDescription: String {
-        var text = "\(self.name) (\(self.building.name))"
+        var text = "\(self.name))"
         if let sortIndex = self.sortIndex {
             text.append(" sortIndex: \(sortIndex)")
         }
@@ -184,7 +184,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
         }
         self.value = try container.decode(String.self, forKey: .value)
         self.valueType = try container.decode(TagValueType.self, forKey: .valueType)
-        self.building = try container.decode(Building.self, forKey: .building)
+        self.building = try container.decode(ObjectId.self, forKey: .building)
         self.group = try? container.decode(String.self, forKey: .group)
         if let linkStr = try? container.decode(String.self, forKey: .link) {
             self.link = URL(string: linkStr)
@@ -193,10 +193,10 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
         }
         self.sortIndex = try? container.decode(Int.self, forKey: .sortIndex)
         self.alarm = try? container.decode(Alarm.self, forKey: .alarm)
-        self.action = try? container.decode(Tag.self, forKey: .action)
-        self.claim = try container.decode(Claim.self, forKey: .claim)
-        self.appearance = try? container.decode(Appearance.self, forKey: .appearance)
-        self.behaviour = try? container.decode(Behaviour.self, forKey: .behaviour)
+        self.action = try? container.decode(ObjectId.self, forKey: .action)
+        self.claim = try container.decode(ObjectId.self, forKey: .claim)
+        self.appearance = try? container.decode(ObjectId.self, forKey: .appearance)
+        self.behaviour = try? container.decode(ObjectId.self, forKey: .behaviour)
     }
 
 }
@@ -214,4 +214,10 @@ extension Tag: Comparable {
     }
     
     
+}
+
+extension Tag {
+    public convenience init(with tagResponse: TagResponse) {
+        self.init(id: tagResponse.id, name: tagResponse.name, type: tagResponse.type, image: tagResponse.image, value: tagResponse.value, valueType: tagResponse.valueType, building: tagResponse.building, group: tagResponse.group, link: tagResponse.link, sortIndex: tagResponse.sortIndex, alarm: tagResponse.alarm, action: tagResponse.action, claim: tagResponse.claim, appearance: tagResponse.appearance, behaviour: tagResponse.behaviour)
+    }
 }

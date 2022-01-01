@@ -9,40 +9,43 @@
 import Foundation
 import BSON
 
-public struct TagResponse {
-    public var id: ObjectId
+public struct TagResponse: Codable {
+    public var id: ObjectId?
     public var name: String
     public var type: String
     public var image: URL?
     public var value: String
     public var valueType: TagValueType
-    public var buildingID: ObjectId
+    public var building: ObjectId
     public var group: String?
     public var link: URL?
     public var sortIndex: Int?
     public var alarm: Alarm?
-    public var actionID: ObjectId?
-    public var claimID: ObjectId
-    public var appearanceID: ObjectId?
-    public var behaviourID: ObjectId?
+    public var action: ObjectId?
+    public var claim: ObjectId
+    public var appearance: ObjectId?
+    public var behaviour: ObjectId?
     
-    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: ObjectId?, claimID: ObjectId, appearanceID: ObjectId?, behaviourID: ObjectId?) {
+    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?) {
         self.id = id
         self.name = name
         self.type = type
         self.image = image
         self.value = value
         self.valueType = valueType
-        self.buildingID = buildingID
+        self.building = building
         self.group = group
         self.link = link
         self.sortIndex = sortIndex
         self.alarm = alarm
-        self.actionID = actionID
-        self.claimID = claimID
-        self.appearanceID = appearanceID
-        self.behaviourID = behaviourID
+        self.action = action
+        self.claim = claim
+        self.appearance = appearance
+        self.behaviour = behaviour
+    }
+    
+    public init(from tag: Tag) {
+        self.init(id: tag.id, name: tag.name, type: tag.type, image: tag.image, value: tag.value, valueType: tag.valueType, building: tag.building, group: tag.group, link: tag.link, sortIndex: tag.sortIndex, alarm: tag.alarm, action: tag.action, claim: tag.claim, appearance: tag.appearance, behaviour: tag.behaviour)
     }
 
 }
-extension TagResponse: Decodable {}
