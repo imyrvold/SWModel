@@ -26,6 +26,7 @@ public struct Behaviour: Codable, Identifiable, Equatable, SidebarItemable {
     public var max: Int?
     public var numberOfDecimals: Int?
     public var orientation: Orientation?
+    public var step: Int?
     public var options: [String]?
     public var updatedAt: Date?
     public var createdAt: Date?
@@ -34,13 +35,14 @@ public struct Behaviour: Codable, Identifiable, Equatable, SidebarItemable {
         .behaviours
     }
     
-    public init(id: ObjectId?, name: String, min: Int?, max: Int?, numberOfDecimals: Int?, orientation: Orientation?, options: [String]?, createdAt: Date?, updatedAt: Date?, deletedAt: Date?) {
+    public init(id: ObjectId?, name: String, min: Int?, max: Int?, numberOfDecimals: Int?, orientation: Orientation?, step: Int?, options: [String]?, createdAt: Date?, updatedAt: Date?, deletedAt: Date?) {
         self.id = id
         self.name = name
         self.min = min
         self.max = max
         self.numberOfDecimals = numberOfDecimals
         self.orientation = orientation
+        self.step = step
         self.options = options
         self.createdAt = createdAt
         self.updatedAt = updatedAt
@@ -57,7 +59,7 @@ extension Behaviour: Comparable {
 public extension Behaviour {
     static var empty: Behaviour {
         let date = Date()
-        return Behaviour(id: nil, name: "", min: nil, max: nil, numberOfDecimals: nil, orientation: nil, options: nil, createdAt: date, updatedAt: date, deletedAt: nil)
+        return Behaviour(id: nil, name: "", min: nil, max: nil, numberOfDecimals: nil, orientation: nil, step: nil, options: nil, createdAt: date, updatedAt: date, deletedAt: nil)
     }
     var isEmpty: Bool {
         name.isEmpty

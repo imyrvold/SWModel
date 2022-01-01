@@ -15,6 +15,7 @@ public struct BehaviourResponseLegacy: Decodable {
     public var max: Int?
     public var numberOfDecimals: Int?
     public var orientation: Orientation?
+    public var step: Int?
     public var options: [String]?
     public let createdOn: String
     public let updatedOn: String
@@ -27,6 +28,7 @@ public struct BehaviourResponseLegacy: Decodable {
         case max
         case numberOfDecimals
         case orientation
+        case step
         case options
         case createdOn
         case updatedOn
