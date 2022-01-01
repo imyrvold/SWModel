@@ -9,7 +9,7 @@
 import Foundation
 import BSON
 
-public struct BehaviourCreateBody: Encodable {
+public struct BehaviourCreateBody: Codable {
     public var id: ObjectId?
     public var name: String
     public var min: Int?
