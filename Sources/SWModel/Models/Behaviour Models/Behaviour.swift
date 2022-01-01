@@ -32,7 +32,20 @@ public struct Behaviour: Codable, Identifiable, Equatable, SidebarItemable {
     public var deletedAt: Date?
     public var menuName: NavigationItem {
         .behaviours
-    }    
+    }
+    
+    public init(id: ObjectId?, name: String, min: Int?, max: Int?, numberOfDecimals: Int?, orientation: Orientation?, options: [String]?, createdAt: Date, updatedAt: Date, deletedAt: Date?) {
+        self.id = id
+        self.name = name
+        self.min = min
+        self.max = max
+        self.numberOfDecimals = numberOfDecimals
+        self.orientation = orientation
+        self.options = options
+        self.createdAt = createdAt
+        self.updatedAt = updatedAt
+        self.deletedAt = deletedAt
+    }
 }
 
 extension Behaviour: Comparable {
@@ -44,7 +57,7 @@ extension Behaviour: Comparable {
 public extension Behaviour {
     static var empty: Behaviour {
         let date = Date()
-        return Behaviour(id: nil, name: "", min: nil, max: nil, numberOfDecimals: nil, orientation: nil, options: nil, updatedAt: date, createdAt: date, deletedAt: nil)
+        return Behaviour(id: nil, name: "", min: nil, max: nil, numberOfDecimals: nil, orientation: nil, options: nil, createdAt: date, updatedAt: date, deletedAt: nil)
     }
     var isEmpty: Bool {
         name.isEmpty
