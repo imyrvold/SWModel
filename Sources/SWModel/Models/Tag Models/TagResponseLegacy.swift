@@ -34,7 +34,7 @@ public struct TagResponseLegacy: Decodable {
     public let behaviour: BehaviourResponseLegacy?
     
     public enum CodingKeys: String, CodingKey {
-        case id
+        case id = "_id"
         case name
         case type
         case image
