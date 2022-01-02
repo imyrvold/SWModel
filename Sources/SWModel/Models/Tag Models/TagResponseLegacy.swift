@@ -32,4 +32,23 @@ public struct TagResponseLegacy: Decodable {
     public let claim: ClaimResponseMinimum
     public let appearance: AppearanceResponseLegacy?
     public let behaviour: BehaviourResponseLegacy?
+    
+    public enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case type
+        case image
+        case value
+        case valueType
+        case building
+        case group
+        case link
+        case sortIndex
+        case alarm
+        case action
+        case claim
+        case appearance
+        case behaviour
+    }
+
 }
