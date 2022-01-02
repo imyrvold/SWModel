@@ -12,10 +12,21 @@ public struct TagResponseLegacy: Decodable {
     public struct TagResponseMinimum: Decodable {
         public let id: ObjectId
         public let name: String
+        
+        public enum CodingKeys: String, CodingKey {
+            case id = "_id"
+            case name
+        }
+
     }
     public struct ClaimResponseMinimum: Decodable {
         public let id: ObjectId
         public let name: String
+
+        public enum CodingKeys: String, CodingKey {
+            case id = "_id"
+            case name
+        }
     }
     public let id: ObjectId
     public let name: String
