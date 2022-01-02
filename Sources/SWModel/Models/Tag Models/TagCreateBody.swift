@@ -28,8 +28,9 @@ public struct TagCreateBody: Codable {
     public var radio: [String]?
     public var alarmShow: Bool
     public var tagid: Int?
+    public var valueTexts: [String]?
     
-    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?) {
+    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?, valueTexts: [String]?) {
         self.id = id
         self.name = name
         self.type = type
@@ -48,6 +49,7 @@ public struct TagCreateBody: Codable {
         self.radio = radio
         self.alarmShow = alarmShow
         self.tagid = tagid
+        self.valueTexts = valueTexts
     }
 }
 
@@ -65,6 +67,6 @@ public extension TagCreateBody {
         } else {
             newLink = nil
         }
-        return TagCreateBody(id: tagLegacy.id, name: tagLegacy.name, type: tagLegacy.type, image: tagLegacy.image, value: tagLegacy.value, valueType: tagLegacy.valueType, building: tagLegacy.building.id, group: tagLegacy.group, link: newLink, sortIndex: tagLegacy.sortIndex, alarm: tagLegacy.alarm, action: tagLegacy.action?.id, claim: tagLegacy.claim.id, appearance: tagLegacy.appearance?.id, behaviour: tagLegacy.behaviour?.id, radio: tagLegacy.radio, alarmShow: tagLegacy.alarmShow, tagid: tagLegacy.tagid)
+        return TagCreateBody(id: tagLegacy.id, name: tagLegacy.name, type: tagLegacy.type, image: tagLegacy.image, value: tagLegacy.value, valueType: tagLegacy.valueType, building: tagLegacy.building.id, group: tagLegacy.group, link: newLink, sortIndex: tagLegacy.sortIndex, alarm: tagLegacy.alarm, action: tagLegacy.action?.id, claim: tagLegacy.claim.id, appearance: tagLegacy.appearance?.id, behaviour: tagLegacy.behaviour?.id, radio: tagLegacy.radio, alarmShow: tagLegacy.alarmShow, tagid: tagLegacy.tagid, valueTexts: tagLegacy.valueTexts)
     }
 }

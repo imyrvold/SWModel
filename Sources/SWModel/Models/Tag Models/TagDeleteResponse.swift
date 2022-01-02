@@ -28,8 +28,9 @@ public struct TagDeleteResponse {
     public var radio: [String]?
     public var alarmShow: Bool
     public var tagid: Int?
+    public var valueTexts: [String]?
     
-    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: String, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: String, appearanceID: String?, behaviourID: String?, radio: [String]?, alarmShow: Bool, tagid: Int?) {
+    public init(id: ObjectId, name: String, type: String, image: URL?, value: String, valueType: TagValueType, buildingID: String, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, actionID: String?, claimID: String, appearanceID: String?, behaviourID: String?, radio: [String]?, alarmShow: Bool, tagid: Int?, valueTexts: [String]?) {
         self.id = id
         self.name = name
         self.type = type
@@ -48,6 +49,7 @@ public struct TagDeleteResponse {
         self.radio = radio
         self.alarmShow = alarmShow
         self.tagid = tagid
+        self.valueTexts = valueTexts
     }
 
 }
@@ -71,5 +73,6 @@ extension TagDeleteResponse: Decodable {
         case radio
         case alarmShow
         case tagid
+        case valueTexts
     }
 }

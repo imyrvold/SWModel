@@ -117,6 +117,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     public var radio: [String]?
     public var alarmShow: Bool
     public var tagid: Int?
+    public var valueTexts: [String]?
     public var menuName: NavigationItem {
         .tags
     }
@@ -142,10 +143,11 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
         case radio
         case alarmShow
         case tagid
+        case valueTexts
     }
     
     
-    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?) {
+    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?, valueTexts: [String]?) {
         self.id = id
         self.name = name
         self.type = type
@@ -164,6 +166,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
         self.radio = radio
         self.alarmShow = alarmShow
         self.tagid = tagid
+        self.valueTexts = valueTexts
     }
     
     public var description: String {
@@ -209,6 +212,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
         self.radio = try? container.decode([String].self, forKey: .radio)
         self.alarmShow = try container.decode(Bool.self, forKey: .alarmShow)
         self.tagid = try? container.decode(Int.self, forKey: .tagid)
+        self.valueTexts = try? container.decode([String].self, forKey: .valueTexts)
     }
 
 }
@@ -230,6 +234,6 @@ extension Tag: Comparable {
 
 extension Tag {
     public convenience init(with tagResponse: TagResponse) {
-        self.init(id: tagResponse.id, name: tagResponse.name, type: tagResponse.type, image: tagResponse.image, value: tagResponse.value, valueType: tagResponse.valueType, building: tagResponse.building, group: tagResponse.group, link: tagResponse.link, sortIndex: tagResponse.sortIndex, alarm: tagResponse.alarm, action: tagResponse.action, claim: tagResponse.claim, appearance: tagResponse.appearance, behaviour: tagResponse.behaviour, radio: tagResponse.radio, alarmShow: tagResponse.alarmShow, tagid: tagResponse.tagid)
+        self.init(id: tagResponse.id, name: tagResponse.name, type: tagResponse.type, image: tagResponse.image, value: tagResponse.value, valueType: tagResponse.valueType, building: tagResponse.building, group: tagResponse.group, link: tagResponse.link, sortIndex: tagResponse.sortIndex, alarm: tagResponse.alarm, action: tagResponse.action, claim: tagResponse.claim, appearance: tagResponse.appearance, behaviour: tagResponse.behaviour, radio: tagResponse.radio, alarmShow: tagResponse.alarmShow, tagid: tagResponse.tagid, valueTexts: tagResponse.valueTexts)
     }
 }

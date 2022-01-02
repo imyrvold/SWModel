@@ -28,8 +28,9 @@ public struct TagResponse: Codable {
     public var radio: [String]?
     public var alarmShow: Bool
     public var tagid: Int?
+    public var valueTexts: [String]?
     
-    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?) {
+    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?, valueTexts: [String]?) {
         self.id = id
         self.name = name
         self.type = type
@@ -48,10 +49,11 @@ public struct TagResponse: Codable {
         self.radio = radio
         self.alarmShow = alarmShow
         self.tagid = tagid
+        self.valueTexts = valueTexts
     }
     
     public init(from tag: Tag) {
-        self.init(id: tag.id, name: tag.name, type: tag.type, image: tag.image, value: tag.value, valueType: tag.valueType, building: tag.building, group: tag.group, link: tag.link, sortIndex: tag.sortIndex, alarm: tag.alarm, action: tag.action, claim: tag.claim, appearance: tag.appearance, behaviour: tag.behaviour, radio: tag.radio, alarmShow: tag.alarmShow, tagid: tag.tagid)
+        self.init(id: tag.id, name: tag.name, type: tag.type, image: tag.image, value: tag.value, valueType: tag.valueType, building: tag.building, group: tag.group, link: tag.link, sortIndex: tag.sortIndex, alarm: tag.alarm, action: tag.action, claim: tag.claim, appearance: tag.appearance, behaviour: tag.behaviour, radio: tag.radio, alarmShow: tag.alarmShow, tagid: tag.tagid, valueTexts: tag.valueTexts)
     }
 
 }
