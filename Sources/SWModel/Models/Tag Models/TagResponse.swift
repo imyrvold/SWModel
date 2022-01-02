@@ -52,17 +52,10 @@ public struct TagResponse: Codable {
         self.alarmShow = alarmShow
         self.tagid = tagid
         self.valueTexts = valueTexts
-        print("TagResponse init 2")
-        print("TagResponse init counterValue:", counterValue)
-
         self.counterValue = counterValue
-        print("TagResponse init 3")
     }
     
     public init(from tag: Tag) {
-        print("TagResponse init from")
-        print("TagResponse init from tag.counterValue:", tag.counterValue)
-        print("TagResponse init from tag:", tag)
         self.init(id: tag.id, name: tag.name, type: tag.type, image: tag.image, value: tag.value, valueType: tag.valueType, building: tag.building, group: tag.group, link: tag.link, sortIndex: tag.sortIndex, alarm: tag.alarm, action: tag.action, claim: tag.claim, appearance: tag.appearance, behaviour: tag.behaviour, radio: tag.radio, alarmShow: tag.alarmShow, tagid: tag.tagid, valueTexts: tag.valueTexts, counterValue: tag.counterValue)
     }
 
