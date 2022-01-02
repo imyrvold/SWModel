@@ -27,9 +27,9 @@ public struct TagCreateBody: Codable {
     public var behaviour: ObjectId?
     public var radio: [String]?
     public var alarmShow: Bool
-    public var tagid: Int
+    public var tagid: Int?
     
-    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int) {
+    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?) {
         self.id = id
         self.name = name
         self.type = type

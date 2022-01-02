@@ -116,7 +116,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     public var behaviour: ObjectId?
     public var radio: [String]?
     public var alarmShow: Bool
-    public var tagid: Int
+    public var tagid: Int?
     public var menuName: NavigationItem {
         .tags
     }
@@ -145,7 +145,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
     }
     
     
-    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int) {
+    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?) {
         self.id = id
         self.name = name
         self.type = type
@@ -208,7 +208,7 @@ final public class Tag: Codable, CustomStringConvertible, SidebarItemable {
         self.behaviour = try? container.decode(ObjectId.self, forKey: .behaviour)
         self.radio = try? container.decode([String].self, forKey: .radio)
         self.alarmShow = try container.decode(Bool.self, forKey: .alarmShow)
-        self.tagid = try container.decode(Int.self, forKey: .tagid)
+        self.tagid = try? container.decode(Int.self, forKey: .tagid)
     }
 
 }
