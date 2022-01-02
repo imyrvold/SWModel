@@ -43,6 +43,9 @@ public struct TagResponseLegacy: Decodable {
     public let claim: ClaimResponseMinimum
     public let appearance: AppearanceResponseLegacy?
     public let behaviour: BehaviourResponseLegacy?
+    public let radio: [String]?
+    public let alarmShow: Bool
+    public let tagid: Int
     
     public enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -60,6 +63,9 @@ public struct TagResponseLegacy: Decodable {
         case claim
         case appearance
         case behaviour
+        case radio
+        case alarmShow
+        case tagid
     }
 
 }
