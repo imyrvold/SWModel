@@ -47,6 +47,7 @@ public struct TagResponseLegacy: Decodable {
     public let alarmShow: Bool
     public let tagid: Int?
     public let valueTexts: [String]?
+    public let counterValue: Int?
     
     public enum CodingKeys: String, CodingKey {
         case id = "_id"
@@ -68,6 +69,7 @@ public struct TagResponseLegacy: Decodable {
         case alarmShow
         case tagid
         case valueTexts
+        case counterValue
     }
 
 }

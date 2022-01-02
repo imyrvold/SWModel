@@ -29,8 +29,9 @@ public struct TagResponse: Codable {
     public var alarmShow: Bool
     public var tagid: Int?
     public var valueTexts: [String]?
+    public var counterValue: Int?
     
-    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?, valueTexts: [String]?) {
+    public init(id: ObjectId?, name: String, type: String, image: URL?, value: String, valueType: TagValueType, building: ObjectId, group: String?, link: URL?, sortIndex: Int?, alarm: Alarm?, action: ObjectId?, claim: ObjectId, appearance: ObjectId?, behaviour: ObjectId?, radio: [String]?, alarmShow: Bool, tagid: Int?, valueTexts: [String]?, counterValue: Int?) {
         self.id = id
         self.name = name
         self.type = type
@@ -50,10 +51,11 @@ public struct TagResponse: Codable {
         self.alarmShow = alarmShow
         self.tagid = tagid
         self.valueTexts = valueTexts
+        self.counterValue = counterValue
     }
     
     public init(from tag: Tag) {
-        self.init(id: tag.id, name: tag.name, type: tag.type, image: tag.image, value: tag.value, valueType: tag.valueType, building: tag.building, group: tag.group, link: tag.link, sortIndex: tag.sortIndex, alarm: tag.alarm, action: tag.action, claim: tag.claim, appearance: tag.appearance, behaviour: tag.behaviour, radio: tag.radio, alarmShow: tag.alarmShow, tagid: tag.tagid, valueTexts: tag.valueTexts)
+        self.init(id: tag.id, name: tag.name, type: tag.type, image: tag.image, value: tag.value, valueType: tag.valueType, building: tag.building, group: tag.group, link: tag.link, sortIndex: tag.sortIndex, alarm: tag.alarm, action: tag.action, claim: tag.claim, appearance: tag.appearance, behaviour: tag.behaviour, radio: tag.radio, alarmShow: tag.alarmShow, tagid: tag.tagid, valueTexts: tag.valueTexts, counterValue: tag.counterValue)
     }
 
 }
