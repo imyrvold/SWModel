@@ -9,7 +9,7 @@
 import Foundation
 import BSON
 
-public struct TagCreateBody: Encodable {
+public struct TagCreateBody: Codable {
     public var id: ObjectId?
     public var name: String
     public var type: String
